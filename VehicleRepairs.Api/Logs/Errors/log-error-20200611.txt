@@ -1,0 +1,331 @@
+[16:23:26 ERR] Error mapping types.
+
+Mapping types:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Type Map configuration:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Destination Member:
+OrderDetails
+
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Type Map configuration:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Destination Member:
+OrderDetails
+
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+OrderDetailCreateModel -> OrderDetail
+VehicleRepairs.Api.Services.Order.Models.OrderDetailCreateModel -> VehicleRepairs.Api.Domain.Entities.OrderDetail
+   at lambda_method(Closure , OrderDetailCreateModel , OrderDetail , ResolutionContext )
+   at lambda_method(Closure , OrderCreateRequest , Order , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , OrderCreateRequest , Order , ResolutionContext )
+   at lambda_method(Closure , Object , Object , ResolutionContext )
+   at VehicleRepairs.Api.Services.Order.OrderCreateHandler.Handle(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Services\Order\OrderCreateHandler.cs:line 38
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at VehicleRepairs.Api.Controllers.OrderController.PostAync(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Controllers\OrderController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+[16:24:13 ERR] Error mapping types.
+
+Mapping types:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Type Map configuration:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Destination Member:
+OrderDetails
+
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Type Map configuration:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Destination Member:
+OrderDetails
+
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+OrderDetailCreateModel -> OrderDetail
+VehicleRepairs.Api.Services.Order.Models.OrderDetailCreateModel -> VehicleRepairs.Api.Domain.Entities.OrderDetail
+   at lambda_method(Closure , OrderDetailCreateModel , OrderDetail , ResolutionContext )
+   at lambda_method(Closure , OrderCreateRequest , Order , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , OrderCreateRequest , Order , ResolutionContext )
+   at lambda_method(Closure , Object , Object , ResolutionContext )
+   at VehicleRepairs.Api.Services.Order.OrderCreateHandler.Handle(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Services\Order\OrderCreateHandler.cs:line 38
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at VehicleRepairs.Api.Controllers.OrderController.PostAync(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Controllers\OrderController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+[16:27:56 ERR] Error mapping types.
+
+Mapping types:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Type Map configuration:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Destination Member:
+OrderDetails
+
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Type Map configuration:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Destination Member:
+OrderDetails
+
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+OrderDetailCreateModel -> OrderDetail
+VehicleRepairs.Api.Services.Order.Models.OrderDetailCreateModel -> VehicleRepairs.Api.Domain.Entities.OrderDetail
+   at lambda_method(Closure , OrderDetailCreateModel , OrderDetail , ResolutionContext )
+   at lambda_method(Closure , OrderCreateRequest , Order , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , OrderCreateRequest , Order , ResolutionContext )
+   at lambda_method(Closure , Object , Object , ResolutionContext )
+   at VehicleRepairs.Api.Services.Order.OrderCreateHandler.Handle(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Services\Order\OrderCreateHandler.cs:line 38
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at VehicleRepairs.Api.Controllers.OrderController.PostAync(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Controllers\OrderController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+[16:55:49 ERR] Error mapping types.
+
+Mapping types:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Type Map configuration:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Destination Member:
+OrderDetails
+
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Type Map configuration:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Destination Member:
+OrderDetails
+
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+OrderDetailCreateModel -> OrderDetail
+VehicleRepairs.Api.Services.Order.Models.OrderDetailCreateModel -> VehicleRepairs.Api.Domain.Entities.OrderDetail
+   at lambda_method(Closure , OrderDetailCreateModel , OrderDetail , ResolutionContext )
+   at lambda_method(Closure , OrderCreateRequest , Order , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , OrderCreateRequest , Order , ResolutionContext )
+   at lambda_method(Closure , Object , Object , ResolutionContext )
+   at VehicleRepairs.Api.Services.Order.OrderCreateHandler.Handle(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Services\Order\OrderCreateHandler.cs:line 38
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at VehicleRepairs.Api.Controllers.OrderController.PostAync(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Controllers\OrderController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+[17:06:50 ERR] Error mapping types.
+
+Mapping types:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Type Map configuration:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Destination Member:
+OrderDetails
+
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Type Map configuration:
+OrderCreateRequest -> Order
+VehicleRepairs.Api.Services.Order.OrderCreateRequest -> VehicleRepairs.Api.Domain.Entities.Order
+
+Destination Member:
+OrderDetails
+
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+OrderDetailCreateModel -> OrderDetail
+VehicleRepairs.Api.Services.Order.Models.OrderDetailCreateModel -> VehicleRepairs.Api.Domain.Entities.OrderDetail
+   at lambda_method(Closure , OrderDetailCreateModel , OrderDetail , ResolutionContext )
+   at lambda_method(Closure , OrderCreateRequest , Order , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , OrderCreateRequest , Order , ResolutionContext )
+   at lambda_method(Closure , Object , Object , ResolutionContext )
+   at VehicleRepairs.Api.Services.Order.OrderCreateHandler.Handle(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Services\Order\OrderCreateHandler.cs:line 38
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at VehicleRepairs.Api.Controllers.OrderController.PostAync(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Controllers\OrderController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+[17:23:02 ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at VehicleRepairs.Api.Domain.Entities.Order.get_TotalPrice()
+   at VehicleRepairs.Api.Services.Order.Models.OrderBaseViewModel..ctor(Order order)
+   at VehicleRepairs.Api.Services.Order.Models.OrderDetailViewModel..ctor(Order order)
+   at VehicleRepairs.Api.Services.Order.OrderCreateHandler.Handle(OrderCreateRequest request, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at VehicleRepairs.Api.Controllers.OrderController.PostAync(OrderCreateRequest request, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+[17:29:58 ERR] Enumerator failed to MoveNextAsync.
+System.InvalidOperationException: Enumerator failed to MoveNextAsync.
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at VehicleRepairs.Api.Services.Order.OrderCreateHandler.Handle(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Services\Order\OrderCreateHandler.cs:line 45
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at VehicleRepairs.Api.Controllers.OrderController.PostAync(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Controllers\OrderController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+[17:30:22 ERR] Enumerator failed to MoveNextAsync.
+System.InvalidOperationException: Enumerator failed to MoveNextAsync.
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at VehicleRepairs.Api.Services.Order.OrderCreateHandler.Handle(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Services\Order\OrderCreateHandler.cs:line 45
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at VehicleRepairs.Api.Controllers.OrderController.PostAync(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Controllers\OrderController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+[17:35:34 ERR] Object reference not set to an instance of an object.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at VehicleRepairs.Api.Services.Order.Models.OrderDetailViewModel..ctor(Order order) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Services\Order\Models\OrderDetailViewModel.cs:line 16
+   at VehicleRepairs.Api.Services.Order.OrderCreateHandler.Handle(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Services\Order\OrderCreateHandler.cs:line 51
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next)
+   at VehicleRepairs.Api.Controllers.OrderController.PostAync(OrderCreateRequest request, CancellationToken cancellationToken) in D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\Controllers\OrderController.cs:line 30
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
