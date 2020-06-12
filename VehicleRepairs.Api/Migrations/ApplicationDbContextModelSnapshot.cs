@@ -568,7 +568,7 @@ namespace VehicleRepairs.Api.Migrations
                         .IsRequired();
 
                     b.HasOne("VehicleRepairs.Api.Domain.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

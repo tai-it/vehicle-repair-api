@@ -43,7 +43,7 @@
 
         [HttpPost]
         [Authorize(Roles = CommonConstants.Roles.STATION)]
-        public async Task<IActionResult> PostAync([FromBody] ServiceCreateRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> PostAsync([FromBody] ServiceCreateRequest request, CancellationToken cancellationToken)
         {
             var responseModel = await this.mediator.Send(request, cancellationToken);
             return new CustomActionResult(responseModel);

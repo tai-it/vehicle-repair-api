@@ -14,6 +14,7 @@
     using System.Linq;
     using System.Security.Claims;
     using System.Text;
+    using VehicleRepairs.Api.Domain.Contexts;
 
     public interface IIdentityService<T>
     {
@@ -159,12 +160,16 @@
 
         public async Task<ResponseModel> GetProfileAsync(string phoneNumber)
         {
-            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
+            var user = await _userManager.Users
+                    .Include(x => x.Orders)
+                        .ThenInclude(x => x.OrderDetails)
+                            .ThenInclude(x => x.Service)
+                    .FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
 
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = new UserProfileModel(user)
+                Data = new UserProfileViewModel(user)
             };
         }
 

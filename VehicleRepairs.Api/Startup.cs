@@ -22,6 +22,7 @@ namespace VehicleRepairs.Api
     using VehicleRepairs.Api.Infrastructure.Filters;
     using VehicleRepairs.Api.Infrastructure.Utilities;
     using VehicleRepairs.Api.Services.Identity;
+    using VehicleRepairs.Api.Services.Notification;
 
     public class Startup
     {
@@ -89,6 +90,8 @@ namespace VehicleRepairs.Api
                 .AddDefaultTokenProviders();
 
             services.AddTransient<IIdentityService<User>, IdentityService>();
+
+            services.AddSingleton<IFCMService, FCMService>();
 
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>

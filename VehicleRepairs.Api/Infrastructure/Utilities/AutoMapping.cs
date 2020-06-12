@@ -2,8 +2,8 @@
 {
     using AutoMapper;
     using VehicleRepairs.Api.Domain.Entities;
-    using VehicleRepairs.Api.Services.Order;
-    using VehicleRepairs.Api.Services.Order.Models;
+    using VehicleRepairs.Api.Services.Ordering;
+    using VehicleRepairs.Api.Services.Ordering.Models;
     using VehicleRepairs.Api.Services.Service;
     using VehicleRepairs.Api.Services.Station;
 

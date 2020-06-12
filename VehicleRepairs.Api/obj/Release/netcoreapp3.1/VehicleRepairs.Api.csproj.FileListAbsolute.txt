@@ -85,4 +85,3 @@ D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Release\netcoreapp3.1\s
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Release\netcoreapp3.1\VehicleRepairs.Api.dll
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Release\netcoreapp3.1\VehicleRepairs.Api.pdb
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Release\netcoreapp3.1\VehicleRepairs.Api.genruntimeconfig.cache
-D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Release\netcoreapp3.1\appsettings.Production.json

@@ -1,6 +1,7 @@
 ﻿namespace VehicleRepairs.Api.Domain.Entities
 {
     using Microsoft.AspNetCore.Identity;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public class User : IdentityUser
@@ -17,5 +18,7 @@
         public string DeviceToken { get; set; }
 
         public Station Station { get; set; }
+
+        public List<Order> Orders { get; set; }
     }
 }

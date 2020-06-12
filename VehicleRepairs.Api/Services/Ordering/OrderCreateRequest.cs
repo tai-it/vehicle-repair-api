@@ -1,11 +1,11 @@
-﻿namespace VehicleRepairs.Api.Services.Order
+﻿namespace VehicleRepairs.Api.Services.Ordering
 {
     using MediatR;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using VehicleRepairs.Api.Infrastructure.Common;
-    using VehicleRepairs.Api.Services.Order.Models;
+    using VehicleRepairs.Api.Services.Ordering.Models;
 
     public class OrderCreateRequest : IRequest<ResponseModel>
     {

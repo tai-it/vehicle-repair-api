@@ -1,10 +1,13 @@
 ﻿namespace VehicleRepairs.Api.Services.Identity.Models
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using VehicleRepairs.Api.Domain.Entities;
+    using VehicleRepairs.Api.Services.Ordering.Models;
 
-    public class UserProfileModel
+    public class UserProfileViewModel
     {
-        public UserProfileModel(User user)
+        public UserProfileViewModel(User user)
         {
             if (user != null)
             {
@@ -14,6 +17,7 @@
                 PhoneNumber = user.PhoneNumber;
                 Address = user.Address;
                 DeviceToken = user.DeviceToken;
+                Orders = user.Orders.Select(x => new OrderBaseViewModel(x)).ToList();
             }
         }
 
@@ -28,5 +32,7 @@
         public string Address { get; set; }
 
         public string DeviceToken { get; set; }
+
+        public List<OrderBaseViewModel> Orders { get; set; }
     }
 }

@@ -1,3 +1,8 @@
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.AssemblyInfoInputs.cache
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.AssemblyInfo.cs
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.csproj.CoreCompileInputs.cache
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.MvcApplicationPartsAssemblyInfo.cs
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.MvcApplicationPartsAssemblyInfo.cache
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\appsettings.json
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -72,11 +77,6 @@ D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\run
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.AssemblyInfoInputs.cache
-D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.AssemblyInfo.cs
-D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.csproj.CoreCompileInputs.cache
-D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.MvcApplicationPartsAssemblyInfo.cs
-D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.MvcApplicationPartsAssemblyInfo.cache
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.RazorTargetAssemblyInfo.cache
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.csproj.CopyComplete
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\staticwebassets\VehicleRepairs.Api.StaticWebAssets.Manifest.cache

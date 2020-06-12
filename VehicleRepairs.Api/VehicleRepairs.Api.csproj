@@ -48,9 +48,5 @@
     <None Include="appsettings.Production.json" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Notification\" />
-  </ItemGroup>
-
 
 </Project>

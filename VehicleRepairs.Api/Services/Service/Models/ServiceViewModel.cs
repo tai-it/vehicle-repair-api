@@ -5,9 +5,9 @@
 
     public class ServiceViewModel
     {
-        private Station x;
-
-        public ServiceViewModel() { }
+        public ServiceViewModel()
+        {
+        }
 
         public ServiceViewModel(Service service)
         {

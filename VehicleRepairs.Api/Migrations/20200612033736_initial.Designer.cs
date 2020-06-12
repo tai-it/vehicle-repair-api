@@ -10,7 +10,7 @@ using VehicleRepairs.Api.Domain.Contexts;
 namespace VehicleRepairs.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200611090646_initial")]
+    [Migration("20200612033736_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -570,7 +570,7 @@ namespace VehicleRepairs.Api.Migrations
                         .IsRequired();
 
                     b.HasOne("VehicleRepairs.Api.Domain.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

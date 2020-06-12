@@ -1,4 +1,4 @@
-﻿namespace VehicleRepairs.Api.Services.Order.Models
+﻿namespace VehicleRepairs.Api.Services.Ordering.Models
 {
     using System;
     using System.ComponentModel.DataAnnotations;

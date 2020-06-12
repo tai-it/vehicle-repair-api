@@ -31,6 +31,18 @@
                         StatusCode = (int)_responseModel.StatusCode
                     };
                     break;
+                case System.Net.HttpStatusCode.Unauthorized:
+                    objectResult = new ObjectResult("Please login to continue")
+                    {
+                        StatusCode = (int)System.Net.HttpStatusCode.Unauthorized,
+                    };
+                    break;
+                case System.Net.HttpStatusCode.Forbidden:
+                    objectResult = new ObjectResult("You don't have permission to access this route")
+                    {
+                        StatusCode = (int)System.Net.HttpStatusCode.Forbidden,
+                    };
+                    break;
                 default:
                     objectResult = new ObjectResult(_responseModel.Message)
                     {

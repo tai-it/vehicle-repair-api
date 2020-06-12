@@ -11,7 +11,7 @@
     {
         public Station() : base()
         {
-
+            Reviews = new List<Review>();
         }
 
         [Required]

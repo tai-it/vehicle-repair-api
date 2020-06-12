@@ -1,4 +1,4 @@
-﻿namespace VehicleRepairs.Api.Services.Order.Models
+﻿namespace VehicleRepairs.Api.Services.Ordering.Models
 {
     using System;
     using VehicleRepairs.Api.Domain.Entities;
@@ -11,8 +11,7 @@
         {
             if (order != null)
             {
-                UserId = order.UserId;
-                StationId = order.StationId;
+                Id = order.Id;
                 Address = order.Address;
                 Latitude = order.Latitude;
                 Longitude = order.Longitude;
@@ -24,9 +23,7 @@
             }
         }
 
-        public string UserId { get; set; }
-
-        public Guid StationId { get; set; }
+        public Guid Id { get; set; }
 
         public string Address { get; set; }
 
