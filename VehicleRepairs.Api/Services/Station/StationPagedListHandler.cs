@@ -26,6 +26,9 @@
             var list = await this.db.Stations
                 .Where(x => !x.IsDeleted)
                     .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Name.Contains(request.Query)))
+                    .Where(x => (string.IsNullOrEmpty(request.Vehicle)) || (x.Vehicle.ToLower().Equals(request.Vehicle.ToLower())))
+                    .Where(x => (!request.HasAmbulatory) || (x.HasAmbulatory))
+                    .Where(x => (string.IsNullOrEmpty(request.ServiceName)) || (x.Services.FirstOrDefault(x => x.Name.ToLower().Contains(request.ServiceName.ToLower()))) != null)
                         .Select(x => new StationBaseViewModel(x)).ToListAsync();
 
             var viewModelProperties = this.GetAllPropertyNameOfViewModel();

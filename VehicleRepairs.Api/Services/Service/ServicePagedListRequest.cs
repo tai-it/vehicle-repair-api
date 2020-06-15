@@ -4,7 +4,7 @@
     using VehicleRepairs.Api.Infrastructure.Common;
     using VehicleRepairs.Api.Services.Service.Models;
 
-    public class ServicePagedListRequest : BaseRequestModel, IRequest<PagedList<ServiceViewModel>>
+    public class ServicePagedListRequest : ServiceBaseRequest, IRequest<PagedList<ServiceViewModel>>
     {
     }
 }

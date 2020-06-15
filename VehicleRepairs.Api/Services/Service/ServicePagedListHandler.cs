@@ -26,7 +26,13 @@
             var list = await this.db.Services
                 .Where(x => !x.IsDeleted)
                     .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Name.Contains(request.Query)))
+                    .Where(x => (string.IsNullOrEmpty(request.Vehicle)) || (x.Station.Vehicle.ToLower().Equals(request.Vehicle.ToLower())))
                         .Select(x => new ServiceViewModel(x)).ToListAsync();
+
+            if (request.IsDistinct)
+            {
+                list = list.GroupBy(x => x.Name).Select(g => g.First()).ToList();
+            }
 
             var viewModelProperties = this.GetAllPropertyNameOfViewModel();
             var sortPropertyName = !string.IsNullOrEmpty(request.SortName) ? request.SortName.ToLower() : string.Empty;
