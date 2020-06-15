@@ -26,7 +26,28 @@
                 return new ResponseModel()
                 {
                     StatusCode = System.Net.HttpStatusCode.NotFound,
-                    Message = "Service not found"
+                    Message = "Không tìm thấy dịch vụ này"
+                };
+            }
+
+            var station = await this.db.Stations
+                    .Include(x => x.User)
+                        .FirstOrDefaultAsync(x => x.User.PhoneNumber == request.PhoneNumber);
+
+            if (station == null)
+            {
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.BadRequest,
+                    Message = "Vui lòng tạo cửa hàng trước khi thực hiện thêm, sửa hoặc xoá dịch vụ"
+                };
+            }
+            else if (service.StationId != station.Id)
+            {
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.Forbidden,
+                    Message = "Bạn không thể xoá dịch vụ của cửa hàng khác"
                 };
             }
 
@@ -36,7 +57,7 @@
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = "Service deleted successfully"
+                Data = "Xoá dịch vụ thành công"
             };
         }
     }

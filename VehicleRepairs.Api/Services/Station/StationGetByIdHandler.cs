@@ -32,7 +32,7 @@
                 return new ResponseModel()
                 {
                     StatusCode = System.Net.HttpStatusCode.NotFound,
-                    Message = "Station not found"
+                    Message = "Không tìm thấy cửa hàng này"
                 };
             }
 

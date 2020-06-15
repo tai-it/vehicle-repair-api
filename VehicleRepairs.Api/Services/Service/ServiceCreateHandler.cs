@@ -2,6 +2,8 @@
 {
     using AutoMapper;
     using MediatR;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
@@ -15,7 +17,7 @@
         private readonly ApplicationDbContext db;
         private readonly IMapper mapper;
 
-        public ServiceCreateHandler(ApplicationDbContext db, IMapper mapper)
+        public ServiceCreateHandler(ApplicationDbContext db, IMapper mapper, UserManager<User> userManager)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
@@ -23,7 +25,22 @@
 
         public async Task<ResponseModel> Handle(ServiceCreateRequest request, CancellationToken cancellationToken)
         {
+            var station = await this.db.Stations
+                .Include(x => x.User)
+                    .FirstOrDefaultAsync(x => x.User.PhoneNumber == request.PhoneNumber);
+
+            if (station == null)
+            {
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.BadRequest,
+                    Message = "Vui lòng tạo cửa hàng trước khi thêm dịch vụ"
+                };
+            }
+
             var service = this.mapper.Map<Service>(request);
+
+            service.StationId = station.Id;
 
             this.db.Services.Add(service);
 

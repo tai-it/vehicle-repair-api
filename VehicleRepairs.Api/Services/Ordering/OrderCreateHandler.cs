@@ -35,7 +35,7 @@
             //    return new ResponseModel()
             //    {
             //        StatusCode = System.Net.HttpStatusCode.BadRequest,
-            //        Message = "You are having uncompleted order, please waiting for accepted/done to make another request"
+            //        Message = "Bạn đang đặt một cuốc xe chưa hoàn thành, vui lòng huỷ để đặt cuốc xe mới"
             //    };
             //}
 

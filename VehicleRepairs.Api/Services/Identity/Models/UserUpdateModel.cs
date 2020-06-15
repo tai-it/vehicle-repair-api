@@ -4,6 +4,8 @@ namespace VehicleRepairs.Api.Services.Identity.Models
 {
     public class UserUpdateModel
     {
+        public string PhoneNumber { get; set; }
+
         public string Name { get; set; }
 
         [EmailAddress]

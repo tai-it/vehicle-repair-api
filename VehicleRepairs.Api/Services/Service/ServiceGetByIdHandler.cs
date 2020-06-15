@@ -27,7 +27,7 @@
                 return new ResponseModel()
                 {
                     StatusCode = System.Net.HttpStatusCode.NotFound,
-                    Message = "Service not found"
+                    Message = "Không tìm thấy dịch vụ này"
                 };
             }
 

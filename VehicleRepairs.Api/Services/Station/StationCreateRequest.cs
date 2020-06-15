@@ -9,8 +9,8 @@
 
     public class StationCreateRequest : IValidatableObject, IRequest<ResponseModel>
     {
-        [Required]
-        public string UserId { get; set; }
+        [Phone]
+        public string PhoneNumber { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -39,7 +39,7 @@
 
             if (station != null)
             {
-                yield return new ValidationResult("This station has already existed", new string[] { "Name" });
+                yield return new ValidationResult("Cửa hàng này đã tồn tại", new string[] { "Name" });
             }
         }
     }

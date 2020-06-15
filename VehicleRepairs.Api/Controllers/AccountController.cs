@@ -24,7 +24,7 @@
         }
 
         [Authorize]
-        [HttpPost("me")]
+        [HttpGet("me")]
         public async Task<IActionResult> GetProfile()
         {
             var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -49,18 +49,21 @@
         }
 
         [Authorize]
-        [HttpPost("{phoneNumber}/phoneconfirmed")]
-        public async Task<IActionResult> ConfirmPhoneNumber(string phoneNumber)
+        [HttpPut("phone/confirmed")]
+        public async Task<IActionResult> ConfirmPhoneNumber()
         {
+            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var responseModel = await _identityService.ConfirmPhoneNumberAsync(phoneNumber);
             return new CustomActionResult(responseModel);
         }
 
         [Authorize]
-        [HttpPut("{phoneNumber}")]
-        public async Task<IActionResult> UpdateProfile(string phoneNumber, [FromBody] UserUpdateModel model)
+        [HttpPut("me")]
+        public async Task<IActionResult> UpdateProfile([FromBody] UserUpdateModel model)
         {
-            var responseModel = await _identityService.UpdateProfileAsync(phoneNumber, model);
+            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.PhoneNumber = phoneNumber;
+            var responseModel = await _identityService.UpdateProfileAsync(model);
             return new CustomActionResult(responseModel);
         }
     }

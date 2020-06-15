@@ -26,7 +26,7 @@
 
         Task<ResponseModel> ConfirmPhoneNumberAsync(string phoneNumber);
 
-        Task<ResponseModel> UpdateProfileAsync(string phoneNumber, UserUpdateModel model);
+        Task<ResponseModel> UpdateProfileAsync(UserUpdateModel model);
     }
 
     public class IdentityService : IIdentityService<User>
@@ -62,7 +62,7 @@
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.BadRequest,
-                Message = "Username or password is incorrect"
+                Message = "Thông tin tài khoản hoặc mật khẩu không chính xác"
             };
         }
 
@@ -116,7 +116,7 @@
                 return new ResponseModel()
                 {
                     StatusCode = System.Net.HttpStatusCode.NotFound,
-                    Message = "Username not found"
+                    Message = "Tài khoản này đã bị ban hoặc không tìm thấy"
                 };
             }
 
@@ -127,20 +127,20 @@
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = "Phone number confirmed successfully"
+                Data = "Cập nhật tình trạng SĐT thành công"
             };
         }
 
-        public async Task<ResponseModel> UpdateProfileAsync(string phoneNumber, UserUpdateModel model)
+        public async Task<ResponseModel> UpdateProfileAsync(UserUpdateModel model)
         {
-            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == model.PhoneNumber);
 
             if (user == null)
             {
                 return new ResponseModel()
                 {
                     StatusCode = System.Net.HttpStatusCode.NotFound,
-                    Message = "Username not found"
+                    Message = "Tài khoản này đã bị ban hoặc không tìm thấy"
                 };
             }
 
@@ -154,7 +154,7 @@
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = "Profile updated successfully"
+                Data = "Cập nhật thông tin thành công"
             };
         }
 

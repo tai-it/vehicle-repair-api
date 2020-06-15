@@ -29,7 +29,7 @@
                 return new ResponseModel()
                 {
                     StatusCode = System.Net.HttpStatusCode.NotFound,
-                    Message = "Order not found"
+                    Message = "Không tìm thấy cuốc xe này"
                 };
             }
 
@@ -50,7 +50,7 @@
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = "Order updated successfully"
+                Data = "Cập nhật cuốc xe thành công"
             };
         }
     }

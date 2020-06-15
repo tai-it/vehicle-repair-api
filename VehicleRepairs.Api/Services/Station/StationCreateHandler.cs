@@ -3,6 +3,7 @@
     using AutoMapper;
     using MediatR;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
@@ -26,18 +27,22 @@
 
         public async Task<ResponseModel> Handle(StationCreateRequest request, CancellationToken cancellationToken)
         {
-            var user = await userManager.FindByIdAsync(request.UserId);
+            var user = await userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == request.PhoneNumber);
 
-            if (user == null)
+            var station = await this.db.Stations.FirstOrDefaultAsync(x => x.UserId == user.Id);
+
+            if (station != null)
             {
                 return new ResponseModel()
                 {
-                    StatusCode = System.Net.HttpStatusCode.NotFound,
-                    Message = "User Id not found"
+                    StatusCode = System.Net.HttpStatusCode.BadRequest,
+                    Message = "Xin lỗi, bạn đã tạo cửa hàng trước đó. Vui lòng thử lại bằng với cập nhật"
                 };
             }
 
-            var station = this.mapper.Map<Station>(request);
+            station = this.mapper.Map<Station>(request);
+
+            station.UserId = user.Id;
 
             this.db.Stations.Add(station);
 

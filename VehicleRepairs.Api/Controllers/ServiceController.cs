@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System;
+    using System.Security.Claims;
     using System.Threading;
     using System.Threading.Tasks;
     using VehicleRepairs.Api.Infrastructure.ActionResults;
@@ -41,10 +42,21 @@
             return new CustomActionResult(responseModel);
         }
 
+        [HttpGet("vehicle={vehicle}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetDistinctServiceByVehicleAsync(string vehicle, CancellationToken cancellationToken)
+        {
+            var request = new GetDistinctServiceByVehicleRequest() { Vehicle = vehicle };
+            var responseModel = await this.mediator.Send(request, cancellationToken);
+            return new CustomActionResult(responseModel);
+        }
+
         [HttpPost]
         [Authorize(Roles = CommonConstants.Roles.STATION)]
         public async Task<IActionResult> PostAsync([FromBody] ServiceCreateRequest request, CancellationToken cancellationToken)
         {
+            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            request.PhoneNumber = phoneNumber;
             var responseModel = await this.mediator.Send(request, cancellationToken);
             return new CustomActionResult(responseModel);
         }
@@ -53,6 +65,8 @@
         [Authorize(Roles = CommonConstants.Roles.STATION)]
         public async Task<IActionResult> PutAsync(Guid id, [FromBody] ServiceEditRequest request, CancellationToken cancellationToken)
         {
+            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            request.PhoneNumber = phoneNumber;
             request.Id = id;
             var responseModel = await this.mediator.Send(request, cancellationToken);
             return new CustomActionResult(responseModel);
@@ -62,7 +76,12 @@
         [Authorize(Roles = CommonConstants.Roles.STATION)]
         public async Task<IActionResult> DeleteAsync(Guid id, CancellationToken cancellationToken)
         {
-            var request = new ServiceDeleteRequest() { Id = id };
+            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var request = new ServiceDeleteRequest() 
+            { 
+                Id = id,
+                PhoneNumber = phoneNumber
+            };
             var responseModel = await this.mediator.Send(request, cancellationToken);
             return new CustomActionResult(responseModel);
         }

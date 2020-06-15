@@ -32,13 +32,13 @@
                     };
                     break;
                 case System.Net.HttpStatusCode.Unauthorized:
-                    objectResult = new ObjectResult("Please login to continue")
+                    objectResult = new ObjectResult("Vui lòng đăng nhập để tiếp tục")
                     {
                         StatusCode = (int)System.Net.HttpStatusCode.Unauthorized,
                     };
                     break;
                 case System.Net.HttpStatusCode.Forbidden:
-                    objectResult = new ObjectResult("You don't have permission to access this route")
+                    objectResult = new ObjectResult(_responseModel.Message)
                     {
                         StatusCode = (int)System.Net.HttpStatusCode.Forbidden,
                     };
