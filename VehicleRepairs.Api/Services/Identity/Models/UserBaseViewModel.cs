@@ -20,6 +20,7 @@
                 PhoneNumber = user.PhoneNumber;
                 Address = user.Address;
                 Roles = user.UserRoles.Select(x => x.Role.Name).ToList();
+                DeviceToken = user.DeviceToken;
             }
         }
 
@@ -34,5 +35,7 @@
         public string PhoneNumber { get; set; }
 
         public string Address { get; set; }
+
+        public string DeviceToken { get; set; }
     }
 }
