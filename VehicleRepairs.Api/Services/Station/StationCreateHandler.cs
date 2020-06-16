@@ -29,20 +29,9 @@
         {
             var user = await userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == request.PhoneNumber);
 
-            var station = await this.db.Stations.FirstOrDefaultAsync(x => x.UserId == user.Id);
+            var station = this.mapper.Map<Station>(request);
 
-            if (station != null)
-            {
-                return new ResponseModel()
-                {
-                    StatusCode = System.Net.HttpStatusCode.BadRequest,
-                    Message = "Xin lỗi, bạn đã tạo cửa hàng trước đó. Vui lòng thử lại bằng với cập nhật"
-                };
-            }
-
-            station = this.mapper.Map<Station>(request);
-
-            station.UserId = user.Id;
+            station.User = user;
 
             this.db.Stations.Add(station);
 

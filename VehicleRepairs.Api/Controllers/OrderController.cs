@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System;
+    using System.Security.Claims;
     using System.Threading;
     using System.Threading.Tasks;
     using VehicleRepairs.Api.Infrastructure.ActionResults;
@@ -25,10 +26,21 @@
             this.mediator = mediator;
         }
 
+        [HttpGet("me")]
+        [Authorize]
+        public async Task<PagedList<OrderBaseViewModel>> GetMineOdersAsync([FromQuery] GetMineOrderRequest request, CancellationToken cancellationToken)
+        {
+            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            request.PhoneNumber = phoneNumber;
+            return await this.mediator.Send(request, cancellationToken);
+        }
+
         [HttpPost]
         [Authorize(Roles = CommonConstants.Roles.USER)]
         public async Task<IActionResult> PostAsync([FromBody] OrderCreateRequest request, CancellationToken cancellationToken)
         {
+            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            request.PhoneNumber = phoneNumber;
             var responseModel = await this.mediator.Send(request, cancellationToken);
             return new CustomActionResult(responseModel);
         }
@@ -43,7 +55,7 @@
         }
 
         [HttpGet("stations/{stationId}")]
-        [Authorize(Roles = CommonConstants.Roles.STATION)]
+        [Authorize(Roles = CommonConstants.Roles.STATION + "," + CommonConstants.Roles.SUPER_ADMIN + "," + CommonConstants.Roles.ADMIN)]
         public async Task<PagedList<OrderBaseViewModel>> GetAsync(Guid stationId, [FromQuery] GetStationOrdersRequest request, CancellationToken cancellationToken)
         {
             request.Id = stationId;
@@ -54,6 +66,8 @@
         [Authorize(Roles = CommonConstants.Roles.USER + "," + CommonConstants.Roles.STATION)]
         public async Task<IActionResult> PutAsync(Guid id, [FromBody] OrderEditRequest request, CancellationToken cancellationToken)
         {
+            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            request.PhoneNumber = phoneNumber;
             request.Id = id;
             var responseModel = await this.mediator.Send(request, cancellationToken);
             return new CustomActionResult(responseModel);

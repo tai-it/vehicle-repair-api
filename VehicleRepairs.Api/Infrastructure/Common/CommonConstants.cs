@@ -23,8 +23,6 @@
 
         public class Vehicles
         {
-            public const string BIKE = "Xe đạp";
-
             public const string MOTOBIKE = "Xe máy";
 
             public const string CAR = "Ô tô";

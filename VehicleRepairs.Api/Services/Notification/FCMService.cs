@@ -114,6 +114,11 @@ namespace VehicleRepairs.Api.Services.Notification
 
         public void SendToDevice(Order order)
         {
+            if (order.User.DeviceToken == null || order.Station.User.DeviceToken == null)
+            {
+                return;
+            }
+
             WebRequest request = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
             request.Method = "post";
             request.Headers.Add(string.Format("Authorization: key={0}", "AAAAY5RUzHw:APA91bGd8rzR7qIsHARftOQrnhiotHrrbfyj0F9bdOXNxdU4ZjS2tGDnQ1xDv7wKFXujvmKGB-4r6KUZ84mr0dqog-dYdEiP7rDVLZEXOCHR_oqUoC870Cyy-klOtLH2P5tiCBXx0pnU"));

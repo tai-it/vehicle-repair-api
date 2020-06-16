@@ -9,8 +9,8 @@
 
     public class OrderCreateRequest : IRequest<ResponseModel>
     {
-        [Required]
-        public string UserId { get; set; }
+        [Phone]
+        public string PhoneNumber { get; set; }
 
         [Required]
         public Guid StationId { get; set; }

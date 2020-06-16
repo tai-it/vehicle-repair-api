@@ -17,7 +17,7 @@
         private readonly ApplicationDbContext db;
         private readonly IMapper mapper;
 
-        public ServiceCreateHandler(ApplicationDbContext db, IMapper mapper, UserManager<User> userManager)
+        public ServiceCreateHandler(ApplicationDbContext db, IMapper mapper)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
@@ -27,14 +27,23 @@
         {
             var station = await this.db.Stations
                 .Include(x => x.User)
-                    .FirstOrDefaultAsync(x => x.User.PhoneNumber == request.PhoneNumber);
+                    .FirstOrDefaultAsync(x => x.Id == request.StationId);
 
             if (station == null)
             {
                 return new ResponseModel()
                 {
                     StatusCode = System.Net.HttpStatusCode.BadRequest,
-                    Message = "Vui lòng tạo cửa hàng trước khi thêm dịch vụ"
+                    Message = "Cửa hàng này không tìm thấy hoặc đã bị xoá"
+                };
+            }
+
+            if (station.User.PhoneNumber != request.PhoneNumber)
+            {
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.Forbidden,
+                    Message = "Bạn không có quyền thêm dịch vụ cho cửa hàng khác"
                 };
             }
 

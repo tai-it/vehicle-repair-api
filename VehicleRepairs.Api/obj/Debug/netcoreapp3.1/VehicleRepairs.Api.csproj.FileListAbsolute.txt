@@ -84,3 +84,4 @@ D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\sta
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.dll
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.pdb
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.genruntimeconfig.cache
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.csprojAssemblyReference.cache
