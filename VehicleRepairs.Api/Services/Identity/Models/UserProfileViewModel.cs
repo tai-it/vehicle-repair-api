@@ -7,6 +7,10 @@
 
     public class UserProfileViewModel
     {
+        public UserProfileViewModel()
+        {
+        }
+
         public UserProfileViewModel(User user)
         {
             if (user != null)
@@ -16,6 +20,7 @@
                 Email = user.Email;
                 PhoneNumber = user.PhoneNumber;
                 Address = user.Address;
+                Roles = user.UserRoles.Select(x => x.Role.Name).ToList();
                 DeviceToken = user.DeviceToken;
                 Orders = user.Orders.Select(x => new OrderBaseViewModel(x)).ToList();
             }
@@ -24,6 +29,8 @@
         public string Id { get; set; }
 
         public string Name { get; set; }
+
+        public List<string> Roles { get; set; }
 
         public string Email { get; set; }
 

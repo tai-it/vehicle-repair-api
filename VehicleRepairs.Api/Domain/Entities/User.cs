@@ -20,5 +20,7 @@
         public Station Station { get; set; }
 
         public List<Order> Orders { get; set; }
+
+        public List<UserRole> UserRoles { get; set; }
     }
 }

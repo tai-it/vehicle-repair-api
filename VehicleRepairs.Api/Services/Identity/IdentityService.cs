@@ -14,13 +14,15 @@
     using System.Linq;
     using System.Security.Claims;
     using System.Text;
-    using VehicleRepairs.Api.Domain.Contexts;
+    using VehicleRepairs.Api.Infrastructure.Utilities;
 
     public interface IIdentityService<T>
     {
         Task<ResponseModel> LoginAsync(LoginDto model);
 
         Task<ResponseModel> RegisterAsync(RegisterDto model);
+
+        Task<PagedList<UserBaseViewModel>> GetUsersAsync(BaseRequestModel request);
 
         Task<ResponseModel> GetProfileAsync(string phoneNumber);
 
@@ -161,6 +163,8 @@
         public async Task<ResponseModel> GetProfileAsync(string phoneNumber)
         {
             var user = await _userManager.Users
+                    .Include(x => x.UserRoles)
+                        .ThenInclude(x => x.Role)
                     .Include(x => x.Orders)
                         .ThenInclude(x => x.OrderDetails)
                             .ThenInclude(x => x.Service)
@@ -169,8 +173,41 @@
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = new UserProfileViewModel(user)
+                Data = new UserBaseViewModel(user)
             };
+        }
+
+        public async Task<PagedList<UserBaseViewModel>> GetUsersAsync(BaseRequestModel request)
+        {
+            var list = await this._userManager.Users
+                    .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Name.Contains(request.Query)))
+                    .Include(x => x.UserRoles)
+                        .ThenInclude(x => x.Role)
+                            .Select(x => new UserBaseViewModel(x)).ToListAsync();
+
+            var viewModelProperties = this.GetAllPropertyNameOfViewModel();
+            var sortPropertyName = !string.IsNullOrEmpty(request.SortName) ? request.SortName.ToLower() : string.Empty;
+            var matchedPropertyName = viewModelProperties.FirstOrDefault(x => x == sortPropertyName);
+
+            if (string.IsNullOrEmpty(matchedPropertyName))
+            {
+                matchedPropertyName = "Name";
+            }
+
+            var viewModelType = typeof(UserBaseViewModel);
+            var sortProperty = viewModelType.GetProperty(matchedPropertyName);
+
+            list = request.IsDesc ? list.OrderByDescending(x => sortProperty.GetValue(x, null)).ToList() : list.OrderBy(x => sortProperty.GetValue(x, null)).ToList();
+
+            return new PagedList<UserBaseViewModel>(list, request.Offset ?? CommonConstants.Config.DEFAULT_SKIP, request.Limit ?? CommonConstants.Config.DEFAULT_TAKE);
+        }
+
+        private List<string> GetAllPropertyNameOfViewModel()
+        {
+            var viewModel = new UserBaseViewModel();
+            var type = viewModel.GetType();
+
+            return ReflectionUtilities.GetAllPropertyNamesOfType(type);
         }
 
         private object GenerateJwtToken(IdentityUser user, string[] roles)

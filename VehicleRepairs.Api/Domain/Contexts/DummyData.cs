@@ -1,7 +1,6 @@
 ﻿namespace VehicleRepairs.Api.Domain.Contexts
 {
     using Microsoft.AspNetCore.Identity;
-    using System;
     using System.Threading.Tasks;
     using VehicleRepairs.Api.Domain.Entities;
     using VehicleRepairs.Api.Infrastructure.Common;
@@ -10,7 +9,7 @@
     {
         public static async Task Initialize(ApplicationDbContext context,
                               UserManager<User> userManager,
-                              RoleManager<IdentityRole> roleManager)
+                              RoleManager<Role> roleManager)
         {
             context.Database.EnsureCreated();
 
@@ -18,19 +17,19 @@
 
             if (await roleManager.FindByNameAsync(CommonConstants.Roles.SUPER_ADMIN) == null)
             {
-                await roleManager.CreateAsync(new IdentityRole(CommonConstants.Roles.SUPER_ADMIN));
+                await roleManager.CreateAsync(new Role() { Name = CommonConstants.Roles.SUPER_ADMIN });
             }
             if (await roleManager.FindByNameAsync(CommonConstants.Roles.ADMIN) == null)
             {
-                await roleManager.CreateAsync(new IdentityRole(CommonConstants.Roles.ADMIN));
+                await roleManager.CreateAsync(new Role() { Name = CommonConstants.Roles.ADMIN });
             }
             if (await roleManager.FindByNameAsync(CommonConstants.Roles.STATION) == null)
             {
-                await roleManager.CreateAsync(new IdentityRole(CommonConstants.Roles.STATION));
+                await roleManager.CreateAsync(new Role() { Name = CommonConstants.Roles.STATION });
             }
             if (await roleManager.FindByNameAsync(CommonConstants.Roles.USER) == null)
             {
-                await roleManager.CreateAsync(new IdentityRole(CommonConstants.Roles.USER));
+                await roleManager.CreateAsync(new Role() { Name = CommonConstants.Roles.USER });
             }
 
             if (await userManager.FindByNameAsync("0915981110") == null)

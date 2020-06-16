@@ -84,8 +84,8 @@ namespace VehicleRepairs.Api
             services.AddMediatR(ReflectionUtilities.GetAssemblies());
             services.AddAutoMapper(ReflectionUtilities.GetAssemblies());
 
-            services.AddIdentity<User, IdentityRole>()
-                .AddRoles<IdentityRole>()
+            services.AddIdentity<User, Role>()
+                .AddRoles<Role>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -173,7 +173,7 @@ namespace VehicleRepairs.Api
         public void Configure(
             IApplicationBuilder app, IWebHostEnvironment env,
             ApplicationDbContext context,
-            RoleManager<IdentityRole> roleManager,
+            RoleManager<Role> roleManager,
             UserManager<User> userManager
             )
         {

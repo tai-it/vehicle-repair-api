@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Mvc;
     using VehicleRepairs.Api.Domain.Entities;
     using VehicleRepairs.Api.Infrastructure.ActionResults;
+    using VehicleRepairs.Api.Infrastructure.Common;
     using VehicleRepairs.Api.Infrastructure.Filters;
     using VehicleRepairs.Api.Services.Identity;
     using VehicleRepairs.Api.Services.Identity.Models;
@@ -21,6 +22,14 @@
         public AccountController(IIdentityService<User> identityService)
         {
             _identityService = identityService;
+        }
+
+        [Authorize(Roles = CommonConstants.Roles.ADMIN + "," + CommonConstants.Roles.SUPER_ADMIN)]
+        [HttpGet("users")]
+        public async Task<PagedList<UserBaseViewModel>> GetUsers([FromQuery] BaseRequestModel request)
+        {
+            var users = await _identityService.GetUsersAsync(request);
+            return users;
         }
 
         [Authorize]
