@@ -52,19 +52,19 @@
 
             var user = await this.userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == request.PhoneNumber);
 
-            //var order = await this.db.Orders
-            //        .FirstOrDefaultAsync(x => x.UserId == user.Id && (x.Status != CommonConstants.OrderStatus.DONE && x.Status != CommonConstants.OrderStatus.REJECTED && x.Status != CommonConstants.OrderStatus.CANCLED));
+            var order = await this.db.Orders
+                    .FirstOrDefaultAsync(x => x.UserId == user.Id && (x.Status != CommonConstants.OrderStatus.DONE && x.Status != CommonConstants.OrderStatus.REJECTED && x.Status != CommonConstants.OrderStatus.CANCLED));
 
-            //if (order != null)
-            //{
-            //    return new ResponseModel()
-            //    {
-            //        StatusCode = System.Net.HttpStatusCode.BadRequest,
-            //        Message = "Bạn đang có cuốc xe chưa hoàn thành, vui lòng huỷ để đặt cuốc xe mới"
-            //    };
-            //}
+            if (order != null)
+            {
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.BadRequest,
+                    Message = "Bạn đang có cuốc xe chưa hoàn thành, vui lòng huỷ để đặt cuốc xe mới"
+                };
+            }
 
-            var order = this.mapper.Map<Order>(request);
+            order = this.mapper.Map<Order>(request);
 
             order.User = user;
             order.Status = CommonConstants.OrderStatus.WAITING;
