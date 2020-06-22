@@ -19,6 +19,8 @@
 
         public DbSet<Order> Orders { get; set; }
 
+        public DbSet<Notification> Notifications { get; set; }
+
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

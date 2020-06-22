@@ -12,7 +12,7 @@
     using VehicleRepairs.Api.Domain.Contexts;
     using VehicleRepairs.Api.Domain.Entities;
     using VehicleRepairs.Api.Infrastructure.Common;
-    using VehicleRepairs.Api.Services.Notification;
+    using VehicleRepairs.Api.Services.Messaging;
 
     public class OrderEditHandler : IRequestHandler<OrderEditRequest, ResponseModel>
     {
@@ -79,7 +79,7 @@
                         .ThenInclude(x => x.Service)
                     .FirstOrDefaultAsync(x => x.Id == order.Id);
 
-            fcmService.SendToDevice(order);
+            await fcmService.SendToDevice(order);
 
             return new ResponseModel()
             {

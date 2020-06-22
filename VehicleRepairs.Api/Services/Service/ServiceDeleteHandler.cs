@@ -54,6 +54,8 @@
             service.IsDeleted = true;
             service.DeletedOn = DateTime.Now;
 
+            await this.db.SaveChangesAsync(cancellationToken);
+
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,

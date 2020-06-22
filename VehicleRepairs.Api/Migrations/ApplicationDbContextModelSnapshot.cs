@@ -108,6 +108,63 @@ namespace VehicleRepairs.Api.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Notification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Body")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("CreatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsActived")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsSeen")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string[]>("Targets")
+                        .HasColumnType("text[]");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("UpdatedBy")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Order", b =>
                 {
                     b.Property<Guid>("Id")
@@ -408,8 +465,7 @@ namespace VehicleRepairs.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Stations");
                 });
@@ -544,6 +600,19 @@ namespace VehicleRepairs.Api.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Notification", b =>
+                {
+                    b.HasOne("VehicleRepairs.Api.Domain.Entities.Order", "Order")
+                        .WithMany("Notifications")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VehicleRepairs.Api.Domain.Entities.User", "User")
+                        .WithMany("Notifications")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Order", b =>
                 {
                     b.HasOne("VehicleRepairs.Api.Domain.Entities.Station", "Station")
@@ -599,8 +668,8 @@ namespace VehicleRepairs.Api.Migrations
             modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Station", b =>
                 {
                     b.HasOne("VehicleRepairs.Api.Domain.Entities.User", "User")
-                        .WithOne("Station")
-                        .HasForeignKey("VehicleRepairs.Api.Domain.Entities.Station", "UserId");
+                        .WithMany("Stations")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.UserRole", b =>

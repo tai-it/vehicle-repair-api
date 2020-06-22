@@ -10,7 +10,7 @@
     using VehicleRepairs.Api.Domain.Contexts;
     using VehicleRepairs.Api.Domain.Entities;
     using VehicleRepairs.Api.Infrastructure.Common;
-    using VehicleRepairs.Api.Services.Notification;
+    using VehicleRepairs.Api.Services.Messaging;
     using VehicleRepairs.Api.Services.Ordering.Models;
 
     public class OrderCreateHandler : IRequestHandler<OrderCreateRequest, ResponseModel>
@@ -52,19 +52,19 @@
 
             var user = await this.userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == request.PhoneNumber);
 
-            var order = await this.db.Orders
-                    .FirstOrDefaultAsync(x => x.UserId == user.Id && (x.Status != CommonConstants.OrderStatus.DONE && x.Status != CommonConstants.OrderStatus.REJECTED && x.Status != CommonConstants.OrderStatus.CANCLED));
+            //var order = await this.db.Orders
+            //        .FirstOrDefaultAsync(x => x.UserId == user.Id && (x.Status != CommonConstants.OrderStatus.DONE && x.Status != CommonConstants.OrderStatus.REJECTED && x.Status != CommonConstants.OrderStatus.CANCLED));
 
-            if (order != null)
-            {
-                return new ResponseModel()
-                {
-                    StatusCode = System.Net.HttpStatusCode.BadRequest,
-                    Message = "Bạn đang có cuốc xe chưa hoàn thành, vui lòng huỷ để đặt cuốc xe mới"
-                };
-            }
+            //if (order != null)
+            //{
+            //    return new ResponseModel()
+            //    {
+            //        StatusCode = System.Net.HttpStatusCode.BadRequest,
+            //        Message = "Bạn đang có cuốc xe chưa hoàn thành, vui lòng huỷ để đặt cuốc xe mới"
+            //    };
+            //}
 
-            order = this.mapper.Map<Order>(request);
+            var order = this.mapper.Map<Order>(request);
 
             order.User = user;
             order.Status = CommonConstants.OrderStatus.WAITING;
@@ -81,7 +81,7 @@
                         .ThenInclude(x => x.Service)
                     .FirstOrDefaultAsync(x => x.Id == order.Id);
 
-            fcmService.SendToDevice(order);
+            await fcmService.SendToDevice(order);
 
             return new ResponseModel()
             {

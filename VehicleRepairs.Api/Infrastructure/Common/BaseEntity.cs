@@ -8,7 +8,7 @@
         public BaseEntity()
         {
             Id = Guid.NewGuid();
-            CreatedOn = DateTime.UtcNow;
+            CreatedOn = DateTime.Now;
         }
 
         [Key]

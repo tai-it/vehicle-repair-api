@@ -33,6 +33,16 @@
             return await this.mediator.Send(request, cancellationToken);
         }
 
+        [HttpGet("me")]
+        [Authorize(Roles = CommonConstants.Roles.STATION)]
+        public async Task<IActionResult> GetMineStationAsync(CancellationToken cancellationToken)
+        {
+            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var request = new GetMineStationRequest() { PhoneNumber = phoneNumber };
+            var responseModel = await this.mediator.Send(request, cancellationToken);
+            return new CustomActionResult(responseModel);
+        }
+
         [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetByIdAsync(Guid id, CancellationToken cancellationToken)
