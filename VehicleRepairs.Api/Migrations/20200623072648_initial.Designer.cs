@@ -10,7 +10,7 @@ using VehicleRepairs.Api.Domain.Contexts;
 namespace VehicleRepairs.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200622075723_initial")]
+    [Migration("20200623072648_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -143,8 +143,8 @@ namespace VehicleRepairs.Api.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uuid");
 
-                    b.Property<string[]>("Targets")
-                        .HasColumnType("text[]");
+                    b.Property<string>("Target")
+                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");

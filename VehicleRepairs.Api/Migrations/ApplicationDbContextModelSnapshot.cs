@@ -141,8 +141,8 @@ namespace VehicleRepairs.Api.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uuid");
 
-                    b.Property<string[]>("Targets")
-                        .HasColumnType("text[]");
+                    b.Property<string>("Target")
+                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");

@@ -13,7 +13,7 @@
 
         public bool IsSeen { get; set; }
 
-        public string[] Targets { get; set; }
+        public string Target { get; set; }
 
         public Guid OrderId { get; set; }
 

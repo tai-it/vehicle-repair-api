@@ -311,7 +311,7 @@ namespace VehicleRepairs.Api.Migrations
                     Title = table.Column<string>(nullable: true),
                     Body = table.Column<string>(nullable: true),
                     IsSeen = table.Column<bool>(nullable: false),
-                    Targets = table.Column<string[]>(nullable: true),
+                    Target = table.Column<string>(nullable: true),
                     OrderId = table.Column<Guid>(nullable: false),
                     UserId = table.Column<string>(nullable: true)
                 },
