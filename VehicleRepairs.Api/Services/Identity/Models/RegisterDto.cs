@@ -14,18 +14,18 @@
         public string Name { get; set; }
 
         [Required]
-        [Phone(ErrorMessage = "Phone number is invalid format")]
+        [Phone(ErrorMessage = "Số điện thoại không hợp lệ")]
         public string PhoneNumber
         {
             get { return this._phoneNumber; }
             set { this._phoneNumber = Regex.Replace(value, @"\s+", ""); }
         }
 
-        [EmailAddress(ErrorMessage = "Email address is invalid format")]
+        [EmailAddress(ErrorMessage = "Email không hợp lệ")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "Password length must be more than 8 and less then 100 charecters", MinimumLength = 8)]
+        [StringLength(100, ErrorMessage = "Mật khẩu không hợp lệ (8 - 100 kí tự)", MinimumLength = 8)]
         public string Password { get; set; }
 
         [Required]
@@ -39,7 +39,7 @@
         {
             if (Role != CommonConstants.Roles.STATION && Role != CommonConstants.Roles.USER)
             {
-                yield return new ValidationResult("User role not found", new string[] { "Role" });
+                yield return new ValidationResult("Không tìm thấy role", new string[] { "Role" });
             }
 
             var db = (ApplicationDbContext)validationContext.GetService(typeof(ApplicationDbContext));
@@ -48,7 +48,7 @@
 
             if (user != null)
             {
-                yield return new ValidationResult("Phone number has been taken", new string[] { "PhoneNumber" });
+                yield return new ValidationResult("Số điện thoại đã được sử dụng bởi tài khoản khác", new string[] { "PhoneNumber" });
             }
         }
     }

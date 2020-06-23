@@ -9,22 +9,22 @@
 
     public class StationCreateRequest : IValidatableObject, IRequest<ResponseModel>
     {
-        [Phone]
+        [Phone(ErrorMessage = "Số điện thoại không hợp lệ")]
         public string PhoneNumber { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Tên là trường bắt buộc")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Địa chỉ là trường bắt buộc")]
         public string Address { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Kinh độ là trường bắt buộc")]
         public decimal Latitude { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vĩ độ là trường bắt buộc")]
         public decimal Longitude { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Phương tiện là trường bắt buộc")]
         public string Vehicle { get; set; }
 
         public bool IsAvailable { get; set; } = false;

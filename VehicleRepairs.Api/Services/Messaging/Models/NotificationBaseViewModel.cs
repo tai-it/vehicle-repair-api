@@ -16,7 +16,7 @@
                 Id = notification.Id;
                 Title = notification.Title;
                 Body = notification.Body;
-                Seen = notification.IsSeen;
+                IsSeen = notification.IsSeen;
                 CreatedOn = notification.CreatedOn;
             }
         }
@@ -27,7 +27,7 @@
 
         public string Body { get; set; }
 
-        public bool Seen { get; set; }
+        public bool IsSeen { get; set; }
 
         public DateTime? CreatedOn { get; set; }
     }

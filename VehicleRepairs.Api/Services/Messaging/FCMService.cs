@@ -38,7 +38,7 @@ namespace VehicleRepairs.Api.Services.Messaging
                         Title = "Cuốc xe mới",
                         Body = "Bạn có một cuốc mới cách đây " + (order.Distance / 1000) + " km. Địa chỉ: " + order.Address,
                         Order = order,
-                        User = order.User,
+                        User = order.Station.User,
                         Targets = new string[] { order.Station.User.DeviceToken }
                     };
                 case CommonConstants.OrderStatus.ACCEPTED:
@@ -114,29 +114,22 @@ namespace VehicleRepairs.Api.Services.Messaging
                 string postbody = JsonConvert.SerializeObject(payload).ToString();
                 Byte[] byteArray = Encoding.UTF8.GetBytes(postbody);
                 request.ContentLength = byteArray.Length;
-                try
+                using (Stream dataStream = request.GetRequestStream())
                 {
-                    using (Stream dataStream = request.GetRequestStream())
+                    dataStream.Write(byteArray, 0, byteArray.Length);
+                    using (WebResponse response = request.GetResponse())
                     {
-                        dataStream.Write(byteArray, 0, byteArray.Length);
-                        using (WebResponse response = request.GetResponse())
+                        using (Stream dataStreamResponse = response.GetResponseStream())
                         {
-                            using (Stream dataStreamResponse = response.GetResponseStream())
+                            if (dataStreamResponse != null)
                             {
-                                if (dataStreamResponse != null)
+                                using (StreamReader tReader = new StreamReader(dataStreamResponse))
                                 {
-                                    using (StreamReader tReader = new StreamReader(dataStreamResponse))
-                                    {
-                                        String sResponseFromServer = tReader.ReadToEnd();
-                                    }
+                                    String sResponseFromServer = tReader.ReadToEnd();
                                 }
                             }
                         }
                     }
-                }
-                catch (Exception e)
-                {
-                    throw e;
                 }
             }
 

@@ -28,7 +28,7 @@
 
         [HttpGet("me")]
         [Authorize]
-        public async Task<PagedList<OrderBaseViewModel>> GetMineOdersAsync([FromQuery] GetMineOrderRequest request, CancellationToken cancellationToken)
+        public async Task<PagedList<OrderDetailViewModel>> GetMineOdersAsync([FromQuery] GetMineOrderRequest request, CancellationToken cancellationToken)
         {
             var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             request.PhoneNumber = phoneNumber;
@@ -56,7 +56,7 @@
 
         [HttpGet("stations/{stationId}")]
         [Authorize(Roles = CommonConstants.Roles.STATION + "," + CommonConstants.Roles.SUPER_ADMIN + "," + CommonConstants.Roles.ADMIN)]
-        public async Task<PagedList<OrderBaseViewModel>> GetAsync(Guid stationId, [FromQuery] GetStationOrdersRequest request, CancellationToken cancellationToken)
+        public async Task<PagedList<OrderDetailViewModel>> GetAsync(Guid stationId, [FromQuery] GetStationOrdersRequest request, CancellationToken cancellationToken)
         {
             request.Id = stationId;
             return await this.mediator.Send(request, cancellationToken);

@@ -5,6 +5,7 @@
     using System.Linq;
     using VehicleRepairs.Api.Domain.Entities;
     using VehicleRepairs.Api.Services.Service.Models;
+    using VehicleRepairs.Api.Services.Station.Models;
 
     public class OrderDetailViewModel : OrderBaseViewModel
     {
@@ -17,7 +18,7 @@
             UserId = order.UserId;
             CustomerName = order.User.Name;
             CustomerPhone = order.User.PhoneNumber;
-            StationId = order.StationId;
+            Station = new StationBaseViewModel(order.Station);
             Services = order.OrderDetails.Select(x => new ServiceViewModel(x)).ToList();
         }
 
@@ -27,8 +28,8 @@
 
         public string CustomerPhone { get; set; }
 
-        public Guid StationId { get; set; }
-
         public List<ServiceViewModel> Services { get; set; }
+
+        public StationBaseViewModel Station { get; set; }
     }
 }

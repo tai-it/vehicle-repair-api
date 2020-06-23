@@ -2,12 +2,10 @@
 {
     using MediatR;
     using System;
-    using System.ComponentModel.DataAnnotations;
     using VehicleRepairs.Api.Infrastructure.Common;
 
     public class ServiceEditRequest : IRequest<ResponseModel>
     {
-        [Phone]
         public string PhoneNumber { get; set; }
 
         public Guid Id { get; set; }

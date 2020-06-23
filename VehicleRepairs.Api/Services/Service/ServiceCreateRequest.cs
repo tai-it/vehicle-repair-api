@@ -7,7 +7,6 @@
 
     public class ServiceCreateRequest : IRequest<ResponseModel>
     {
-        [Phone]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Vui lòng chọn cửa hàng")]

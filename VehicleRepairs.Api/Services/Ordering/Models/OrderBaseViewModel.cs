@@ -20,6 +20,7 @@
                 AmbulatoryFee = order.AmbulatoryFee;
                 Status = order.Status;
                 TotalPrice = order.TotalPrice;
+                CreatedOn = order.CreatedOn;
             }
         }
 
@@ -40,5 +41,7 @@
         public decimal? TotalPrice { get; set; }
 
         public string Status { get; set; }
+
+        public DateTime? CreatedOn { get; set; }
     }
 }
