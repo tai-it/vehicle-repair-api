@@ -27,6 +27,8 @@
                     .Include(x => x.Order)
                         .ThenInclude(x => x.OrderDetails)
                             .ThenInclude(x => x.Service)
+                    .Include(x => x.Order)
+                        .ThenInclude(x => x.Station)
                                 .FirstOrDefaultAsync();
 
             if (notification == null)
