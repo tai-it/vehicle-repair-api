@@ -7,6 +7,7 @@
     using System.Threading.Tasks;
     using VehicleRepairs.Api.Domain.Contexts;
     using VehicleRepairs.Api.Infrastructure.Common;
+    using VehicleRepairs.Api.Services.Service.Models;
 
     public class ServiceEditHandler : IRequestHandler<ServiceEditRequest, ResponseModel>
     {
@@ -65,7 +66,7 @@
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = "Cập nhật dịch vụ thành công"
+                Data = new ServiceViewModel(service)
             };
         }
     }

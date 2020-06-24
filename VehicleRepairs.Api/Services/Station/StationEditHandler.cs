@@ -9,6 +9,7 @@
     using VehicleRepairs.Api.Domain.Contexts;
     using VehicleRepairs.Api.Domain.Entities;
     using VehicleRepairs.Api.Infrastructure.Common;
+    using VehicleRepairs.Api.Services.Station.Models;
 
     public class StationEditHandler : IRequestHandler<StationEditRequest, ResponseModel>
     {
@@ -23,7 +24,10 @@
 
         public async Task<ResponseModel> Handle(StationEditRequest request, CancellationToken cancellationToken)
         {
-            var station = await this.db.Stations.FirstOrDefaultAsync(x => x.Id == request.Id);
+            var station = await this.db.Stations
+                .Include(x => x.Services)
+                .Include(x => x.User)
+                .FirstOrDefaultAsync(x => x.Id == request.Id);
 
             if (station == null)
             {
@@ -68,7 +72,7 @@
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = "Cập nhật thông tin cửa hàng thành công"
+                Data = new StationDetailViewModel(station)
             };
         }
     }

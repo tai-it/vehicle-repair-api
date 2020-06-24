@@ -13,6 +13,7 @@
     using VehicleRepairs.Api.Domain.Entities;
     using VehicleRepairs.Api.Infrastructure.Common;
     using VehicleRepairs.Api.Services.Messaging;
+    using VehicleRepairs.Api.Services.Ordering.Models;
 
     public class OrderEditHandler : IRequestHandler<OrderEditRequest, ResponseModel>
     {
@@ -84,7 +85,7 @@
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = "Cập nhật cuốc xe thành công"
+                Data = new OrderDetailViewModel(order)
             };
         }
 

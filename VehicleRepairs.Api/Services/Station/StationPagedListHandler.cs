@@ -12,7 +12,7 @@
     using VehicleRepairs.Api.Infrastructure.Utilities;
     using VehicleRepairs.Api.Services.Station.Models;
 
-    public class StationPagedListHandler : IRequestHandler<StationPagedListRequest, PagedList<StationBaseViewModel>>
+    public class StationPagedListHandler : IRequestHandler<StationPagedListRequest, PagedList<StationDetailViewModel>>
     {
         private readonly ApplicationDbContext db;
 
@@ -21,7 +21,7 @@
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-        public async Task<PagedList<StationBaseViewModel>> Handle(StationPagedListRequest request, CancellationToken cancellationToken)
+        public async Task<PagedList<StationDetailViewModel>> Handle(StationPagedListRequest request, CancellationToken cancellationToken)
         {
             var list = await this.db.Stations
                 .Where(x => !x.IsDeleted)
@@ -29,7 +29,9 @@
                     .Where(x => (string.IsNullOrEmpty(request.Vehicle)) || (x.Vehicle.ToLower().Equals(request.Vehicle.ToLower())))
                     .Where(x => (!request.HasAmbulatory) || (x.HasAmbulatory))
                     .Where(x => (string.IsNullOrEmpty(request.ServiceName)) || (x.Services.FirstOrDefault(x => x.Name.ToLower().Contains(request.ServiceName.ToLower()))) != null)
-                        .Select(x => new StationBaseViewModel(x)).ToListAsync();
+                    .Include(x => x.User)
+                    .Include(x => x.Services)
+                    .Select(x => new StationDetailViewModel(x)).ToListAsync();
 
             var viewModelProperties = this.GetAllPropertyNameOfViewModel();
             var sortPropertyName = !string.IsNullOrEmpty(request.SortName) ? request.SortName.ToLower() : string.Empty;
@@ -40,18 +42,18 @@
                 matchedPropertyName = "Name";
             }
 
-            var viewModelType = typeof(StationBaseViewModel);
+            var viewModelType = typeof(StationDetailViewModel);
             var sortProperty = viewModelType.GetProperty(matchedPropertyName);
 
             list = request.IsDesc ? list.OrderByDescending(x => sortProperty.GetValue(x, null)).ToList() : list.OrderBy(x => sortProperty.GetValue(x, null)).ToList();
 
-            return new PagedList<StationBaseViewModel>(list, request.Offset ?? CommonConstants.Config.DEFAULT_SKIP, request.Limit ?? CommonConstants.Config.DEFAULT_TAKE);
+            return new PagedList<StationDetailViewModel>(list, request.Offset ?? CommonConstants.Config.DEFAULT_SKIP, request.Limit ?? CommonConstants.Config.DEFAULT_TAKE);
         }
 
         private List<string> GetAllPropertyNameOfViewModel()
         {
-            var stationBaseViewModel = new StationBaseViewModel();
-            var type = stationBaseViewModel.GetType();
+            var viewModel = new StationDetailViewModel();
+            var type = viewModel.GetType();
 
             return ReflectionUtilities.GetAllPropertyNamesOfType(type);
         }

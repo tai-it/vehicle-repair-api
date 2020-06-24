@@ -156,7 +156,7 @@
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = "Cập nhật thông tin thành công"
+                Data = new UserBaseViewModel(user)
             };
         }
 
