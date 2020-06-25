@@ -1,0 +1,9 @@
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Shared\bin\Debug\netcoreapp3.1\VehicleRepairs.Shared.deps.json
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Shared\bin\Debug\netcoreapp3.1\VehicleRepairs.Shared.dll
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.AssemblyInfoInputs.cache
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.AssemblyInfo.cs
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Shared\bin\Debug\netcoreapp3.1\VehicleRepairs.Shared.pdb
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.csproj.CoreCompileInputs.cache
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.dll
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.pdb
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.csprojAssemblyReference.cache

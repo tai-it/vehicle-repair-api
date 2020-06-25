@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRepairs.Api", "VehicleRepairs.Api\VehicleRepairs.Api.csproj", "{7289C3B0-CBCE-496A-A50F-5B1F16E87E06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRepairs.Api", "VehicleRepairs.Api\VehicleRepairs.Api.csproj", "{7289C3B0-CBCE-496A-A50F-5B1F16E87E06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRepairs.Database", "VehicleRepairs.Database\VehicleRepairs.Database.csproj", "{8308ADD6-B1A6-456F-9475-D07C50CA00E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRepairs.Shared", "VehicleRepairs.Shared\VehicleRepairs.Shared.csproj", "{F9C60A3A-6A4D-4654-8926-567422020093}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7289C3B0-CBCE-496A-A50F-5B1F16E87E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7289C3B0-CBCE-496A-A50F-5B1F16E87E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7289C3B0-CBCE-496A-A50F-5B1F16E87E06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8308ADD6-B1A6-456F-9475-D07C50CA00E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8308ADD6-B1A6-456F-9475-D07C50CA00E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8308ADD6-B1A6-456F-9475-D07C50CA00E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8308ADD6-B1A6-456F-9475-D07C50CA00E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9C60A3A-6A4D-4654-8926-567422020093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9C60A3A-6A4D-4654-8926-567422020093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9C60A3A-6A4D-4654-8926-567422020093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9C60A3A-6A4D-4654-8926-567422020093}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
