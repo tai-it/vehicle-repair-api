@@ -5,7 +5,7 @@
         public class Config
         {
             public const int DEFAULT_SKIP = 1;
-            public const int DEFAULT_TAKE = 30;
+            public const int DEFAULT_TAKE = 20;
         }
 
         public class Roles
@@ -23,9 +23,9 @@
 
         public class Vehicles
         {
-            public const string MOTOBIKE = "Xe máy";
+            public const string MOTOBIKE = "Motobike";
 
-            public const string CAR = "Ô tô";
+            public const string CAR = "Car";
         }
 
         public class OrderStatus
@@ -44,6 +44,13 @@
         public class Ambulatory
         {
             public const decimal COEFFICIENT = 8;
+        }
+
+        public class NotificationTypes
+        {
+            public const string ORDER_TRACKING = "ORDER_TRACKING";
+
+            public const string NOTIFY = "NOTIFY";
         }
     }
 }

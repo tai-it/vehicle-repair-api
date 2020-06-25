@@ -9,7 +9,6 @@
     using VehicleRepairs.Api.Services.Identity;
     using VehicleRepairs.Api.Services.Identity.Models;
     using VehicleRepairs.Database.Domain.Entities;
-    using VehicleRepairs.Shared.Common;
 
     [Route("api/account")]
     [Consumes("application/json")]
@@ -22,14 +21,6 @@
         public AccountController(IIdentityService<User> identityService)
         {
             _identityService = identityService;
-        }
-
-        [Authorize(Roles = CommonConstants.Roles.ADMIN + "," + CommonConstants.Roles.SUPER_ADMIN)]
-        [HttpGet("users")]
-        public async Task<PagedList<UserBaseViewModel>> GetUsers([FromQuery] BaseRequestModel request)
-        {
-            var users = await _identityService.GetUsersAsync(request);
-            return users;
         }
 
         [Authorize]

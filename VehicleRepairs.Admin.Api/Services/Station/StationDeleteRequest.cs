@@ -1,0 +1,11 @@
+﻿namespace VehicleRepairs.Admin.Api.Services.Station
+{
+    using MediatR;
+    using System;
+    using VehicleRepairs.Shared.Common;
+
+    public class StationDeleteRequest : IRequest<ResponseModel>
+    {
+        public Guid Id { get; set; }
+    }
+}

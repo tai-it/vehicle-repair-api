@@ -15,8 +15,10 @@
             {
                 Id = notification.Id;
                 Title = notification.Title;
+                Type = notification.Type;
                 Body = notification.Body;
                 IsSeen = notification.IsSeen;
+                IsSent = notification.IsSent;
                 CreatedOn = notification.CreatedOn;
             }
         }
@@ -27,7 +29,11 @@
 
         public string Body { get; set; }
 
+        public string Type { get; set; }
+
         public bool IsSeen { get; set; }
+
+        public bool IsSent { get; set; }
 
         public DateTime? CreatedOn { get; set; }
     }
