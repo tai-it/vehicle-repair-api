@@ -1,7 +1,7 @@
 ﻿namespace VehicleRepairs.Api.Services.Service.Models
 {
     using System;
-    using VehicleRepairs.Api.Domain.Entities;
+    using VehicleRepairs.Database.Domain.Entities;
 
     public class ServiceViewModel
     {

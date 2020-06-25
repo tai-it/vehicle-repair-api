@@ -4,12 +4,12 @@
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using VehicleRepairs.Api.Domain.Entities;
     using VehicleRepairs.Api.Infrastructure.ActionResults;
-    using VehicleRepairs.Api.Infrastructure.Common;
     using VehicleRepairs.Api.Infrastructure.Filters;
     using VehicleRepairs.Api.Services.Identity;
     using VehicleRepairs.Api.Services.Identity.Models;
+    using VehicleRepairs.Database.Domain.Entities;
+    using VehicleRepairs.Shared.Common;
 
     [Route("api/account")]
     [Consumes("application/json")]

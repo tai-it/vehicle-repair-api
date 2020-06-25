@@ -1,7 +1,7 @@
-﻿using VehicleRepairs.Api.Domain.Entities;
-
-namespace VehicleRepairs.Api.Services.Station.Models
+﻿namespace VehicleRepairs.Api.Services.Station.Models
 {
+    using VehicleRepairs.Database.Domain.Entities;
+
     public class StationOwner
     {
         public StationOwner()

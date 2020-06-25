@@ -45,7 +45,9 @@ namespace VehicleRepairs.Api.Migrations
                     Expiration = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
-                    DeviceToken = table.Column<string>(nullable: true)
+                    DeviceToken = table.Column<string>(nullable: true),
+                    IsActive = table.Column<bool>(nullable: false),
+                    CreatedOn = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {

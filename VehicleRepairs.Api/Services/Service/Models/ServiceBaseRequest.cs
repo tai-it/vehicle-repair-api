@@ -1,6 +1,7 @@
-﻿namespace VehicleRepairs.Api.Services.Service.Models
+﻿using VehicleRepairs.Shared.Common;
+
+namespace VehicleRepairs.Api.Services.Service.Models
 {
-    using VehicleRepairs.Api.Infrastructure.Common;
 
     public class ServiceBaseRequest : BaseRequestModel
     {

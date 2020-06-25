@@ -17,12 +17,12 @@ namespace VehicleRepairs.Api
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
-    using VehicleRepairs.Api.Domain.Contexts;
-    using VehicleRepairs.Api.Domain.Entities;
     using VehicleRepairs.Api.Infrastructure.Filters;
     using VehicleRepairs.Api.Infrastructure.Utilities;
     using VehicleRepairs.Api.Services.Identity;
     using VehicleRepairs.Api.Services.Messaging;
+    using VehicleRepairs.Database.Domain.Contexts;
+    using VehicleRepairs.Database.Domain.Entities;
 
     public class Startup
     {
@@ -79,6 +79,7 @@ namespace VehicleRepairs.Api
                     options =>
                     {
                         options.EnableRetryOnFailure();
+                        options.MigrationsAssembly("VehicleRepairs.Api");
                     }));
 
             services.AddMediatR(ReflectionUtilities.GetAssemblies());

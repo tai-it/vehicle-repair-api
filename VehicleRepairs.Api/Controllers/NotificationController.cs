@@ -8,9 +8,9 @@
     using System.Threading;
     using System.Threading.Tasks;
     using VehicleRepairs.Api.Infrastructure.ActionResults;
-    using VehicleRepairs.Api.Infrastructure.Common;
     using VehicleRepairs.Api.Services.Messaging;
     using VehicleRepairs.Api.Services.Messaging.Models;
+    using VehicleRepairs.Shared.Common;
 
     [Route("api/notifications")]
     [Consumes("application/json")]

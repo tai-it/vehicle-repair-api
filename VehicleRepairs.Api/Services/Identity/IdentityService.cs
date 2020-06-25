@@ -1,8 +1,6 @@
 ﻿namespace VehicleRepairs.Api.Services.Identity
 {
     using System.Threading.Tasks;
-    using VehicleRepairs.Api.Domain.Entities;
-    using VehicleRepairs.Api.Infrastructure.Common;
     using VehicleRepairs.Api.Services.Identity.Models;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
@@ -15,6 +13,8 @@
     using System.Security.Claims;
     using System.Text;
     using VehicleRepairs.Api.Infrastructure.Utilities;
+    using VehicleRepairs.Shared.Common;
+    using VehicleRepairs.Database.Domain.Entities;
 
     public interface IIdentityService<T>
     {

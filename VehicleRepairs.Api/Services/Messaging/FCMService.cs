@@ -5,9 +5,9 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using VehicleRepairs.Api.Domain.Contexts;
-using VehicleRepairs.Api.Domain.Entities;
-using VehicleRepairs.Api.Infrastructure.Common;
+using VehicleRepairs.Database.Domain.Contexts;
+using VehicleRepairs.Database.Domain.Entities;
+using VehicleRepairs.Shared.Common;
 
 namespace VehicleRepairs.Api.Services.Messaging
 {

@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
-    using VehicleRepairs.Api.Infrastructure.Common;
+    using VehicleRepairs.Shared.Common;
 
     public class CustomActionResult : IActionResult
     {

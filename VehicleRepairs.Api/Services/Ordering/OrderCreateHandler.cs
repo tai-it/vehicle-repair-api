@@ -7,11 +7,11 @@
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using VehicleRepairs.Api.Domain.Contexts;
-    using VehicleRepairs.Api.Domain.Entities;
-    using VehicleRepairs.Api.Infrastructure.Common;
     using VehicleRepairs.Api.Services.Messaging;
     using VehicleRepairs.Api.Services.Ordering.Models;
+    using VehicleRepairs.Database.Domain.Contexts;
+    using VehicleRepairs.Database.Domain.Entities;
+    using VehicleRepairs.Shared.Common;
 
     public class OrderCreateHandler : IRequestHandler<OrderCreateRequest, ResponseModel>
     {

@@ -4,8 +4,8 @@
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Text.RegularExpressions;
-    using VehicleRepairs.Api.Domain.Contexts;
-    using VehicleRepairs.Api.Infrastructure.Common;
+    using VehicleRepairs.Database.Domain.Contexts;
+    using VehicleRepairs.Shared.Common;
 
     public class RegisterDto : IValidatableObject
     {
@@ -13,7 +13,7 @@
 
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Số điện thoại là trường bắt buộc")]
         [Phone(ErrorMessage = "Số điện thoại không hợp lệ")]
         public string PhoneNumber
         {
@@ -24,11 +24,11 @@
         [EmailAddress(ErrorMessage = "Email không hợp lệ")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Mật khẩu là trường bắt buộc")]
         [StringLength(100, ErrorMessage = "Mật khẩu không hợp lệ (8 - 100 kí tự)", MinimumLength = 8)]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vai trò là trường bắt buộc")]
         public string Role { get; set; }
 
         public string Address { get; set; }
@@ -39,7 +39,7 @@
         {
             if (Role != CommonConstants.Roles.STATION && Role != CommonConstants.Roles.USER)
             {
-                yield return new ValidationResult("Không tìm thấy role", new string[] { "Role" });
+                yield return new ValidationResult("Không tìm thấy vai trò này", new string[] { "Role" });
             }
 
             var db = (ApplicationDbContext)validationContext.GetService(typeof(ApplicationDbContext));

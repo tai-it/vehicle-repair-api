@@ -1,7 +1,7 @@
 ﻿namespace VehicleRepairs.Api.Services.Station
 {
     using MediatR;
-    using VehicleRepairs.Api.Infrastructure.Common;
+    using VehicleRepairs.Shared.Common;
 
     public class GetMineStationRequest : IRequest<ResponseModel>
     {

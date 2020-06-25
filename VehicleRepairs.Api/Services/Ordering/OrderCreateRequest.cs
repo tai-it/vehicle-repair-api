@@ -4,8 +4,8 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using VehicleRepairs.Api.Infrastructure.Common;
     using VehicleRepairs.Api.Services.Ordering.Models;
+    using VehicleRepairs.Shared.Common;
 
     public class OrderCreateRequest : IRequest<ResponseModel>
     {

@@ -6,8 +6,8 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using VehicleRepairs.Api.Infrastructure.Common;
-    using VehicleRepairs.Api.Infrastructure.Helpers;
+    using VehicleRepairs.Shared.Common;
+    using VehicleRepairs.Shared.Helpers;
 
     [Route("api/media")]
     public class MediaController : Controller

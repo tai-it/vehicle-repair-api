@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using VehicleRepairs.Api.Domain.Entities;
     using VehicleRepairs.Api.Services.Service.Models;
+    using VehicleRepairs.Database.Domain.Entities;
 
     public class StationDetailViewModel : StationBaseViewModel
     {

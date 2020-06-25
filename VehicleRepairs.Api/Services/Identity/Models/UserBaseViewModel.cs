@@ -1,8 +1,9 @@
 ﻿namespace VehicleRepairs.Api.Services.Identity.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using VehicleRepairs.Api.Domain.Entities;
+    using VehicleRepairs.Database.Domain.Entities;
 
     public class UserBaseViewModel
     {
@@ -21,6 +22,8 @@
                 Address = user.Address;
                 Roles = user.UserRoles.Select(x => x.Role.Name).ToList();
                 DeviceToken = user.DeviceToken;
+                CreatedOn = user.CreatedOn;
+                IsActive = user.IsActive;
             }
         }
 
@@ -37,5 +40,9 @@
         public string Address { get; set; }
 
         public string DeviceToken { get; set; }
+
+        public DateTime? CreatedOn { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

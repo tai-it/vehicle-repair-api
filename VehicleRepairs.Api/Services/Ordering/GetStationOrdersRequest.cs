@@ -2,8 +2,8 @@
 {
     using MediatR;
     using System;
-    using VehicleRepairs.Api.Infrastructure.Common;
     using VehicleRepairs.Api.Services.Ordering.Models;
+    using VehicleRepairs.Shared.Common;
 
     public class GetStationOrdersRequest : BaseRequestModel, IRequest<PagedList<OrderDetailViewModel>>
     {

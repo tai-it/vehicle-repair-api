@@ -8,10 +8,10 @@
     using System.Threading;
     using System.Threading.Tasks;
     using VehicleRepairs.Api.Infrastructure.ActionResults;
-    using VehicleRepairs.Api.Infrastructure.Common;
     using VehicleRepairs.Api.Infrastructure.Filters;
     using VehicleRepairs.Api.Services.Ordering;
     using VehicleRepairs.Api.Services.Ordering.Models;
+    using VehicleRepairs.Shared.Common;
 
     [Route("api/orders")]
     [Consumes("application/json")]

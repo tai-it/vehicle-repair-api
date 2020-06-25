@@ -6,9 +6,9 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using VehicleRepairs.Api.Domain.Contexts;
-    using VehicleRepairs.Api.Infrastructure.Common;
     using VehicleRepairs.Api.Services.Station.Models;
+    using VehicleRepairs.Database.Domain.Contexts;
+    using VehicleRepairs.Shared.Common;
 
     public class GetMineStationHandler : IRequestHandler<GetMineStationRequest, ResponseModel>
     {

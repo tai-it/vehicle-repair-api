@@ -3,7 +3,7 @@
     using MediatR;
     using System;
     using System.ComponentModel.DataAnnotations;
-    using VehicleRepairs.Api.Infrastructure.Common;
+    using VehicleRepairs.Shared.Common;
 
     public class StationDeleteRequest : IRequest<ResponseModel>
     {

@@ -1,6 +1,7 @@
-﻿namespace VehicleRepairs.Api.Services.Station.Models
+﻿using VehicleRepairs.Shared.Common;
+
+namespace VehicleRepairs.Api.Services.Station.Models
 {
-    using VehicleRepairs.Api.Infrastructure.Common;
 
     public class StationBaseRequest : BaseRequestModel
     {

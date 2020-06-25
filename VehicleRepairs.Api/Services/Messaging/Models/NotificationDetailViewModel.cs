@@ -1,5 +1,5 @@
-﻿using VehicleRepairs.Api.Domain.Entities;
-using VehicleRepairs.Api.Services.Ordering.Models;
+﻿using VehicleRepairs.Api.Services.Ordering.Models;
+using VehicleRepairs.Database.Domain.Entities;
 
 namespace VehicleRepairs.Api.Services.Messaging.Models
 {

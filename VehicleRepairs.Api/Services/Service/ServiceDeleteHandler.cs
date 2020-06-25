@@ -5,8 +5,8 @@
     using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using VehicleRepairs.Api.Domain.Contexts;
-    using VehicleRepairs.Api.Infrastructure.Common;
+    using VehicleRepairs.Database.Domain.Contexts;
+    using VehicleRepairs.Shared.Common;
 
     public class ServiceDeleteHandler : IRequestHandler<ServiceDeleteRequest, ResponseModel>
     {

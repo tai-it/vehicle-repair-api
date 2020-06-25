@@ -1,8 +1,8 @@
 ﻿namespace VehicleRepairs.Api.Services.Station
 {
     using MediatR;
-    using VehicleRepairs.Api.Infrastructure.Common;
     using VehicleRepairs.Api.Services.Station.Models;
+    using VehicleRepairs.Shared.Common;
 
     public class StationPagedListRequest : StationBaseRequest, IRequest<PagedList<StationDetailViewModel>>
     {

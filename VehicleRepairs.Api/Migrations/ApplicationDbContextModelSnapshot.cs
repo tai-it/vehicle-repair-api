@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using VehicleRepairs.Api.Domain.Contexts;
+using VehicleRepairs.Database.Domain.Contexts;
 
 namespace VehicleRepairs.Api.Migrations
 {
@@ -108,7 +108,7 @@ namespace VehicleRepairs.Api.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Notification", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Notification", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -165,7 +165,7 @@ namespace VehicleRepairs.Api.Migrations
                     b.ToTable("Notifications");
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Order", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Order", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -231,7 +231,7 @@ namespace VehicleRepairs.Api.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.OrderDetail", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.OrderDetail", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -276,7 +276,7 @@ namespace VehicleRepairs.Api.Migrations
                     b.ToTable("OrderDetails");
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Review", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Review", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -327,7 +327,7 @@ namespace VehicleRepairs.Api.Migrations
                     b.ToTable("Reviews");
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Role", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Role", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
@@ -353,7 +353,7 @@ namespace VehicleRepairs.Api.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Service", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Service", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -406,7 +406,7 @@ namespace VehicleRepairs.Api.Migrations
                     b.ToTable("Services");
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Station", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Station", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -470,7 +470,7 @@ namespace VehicleRepairs.Api.Migrations
                     b.ToTable("Stations");
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.User", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
@@ -485,6 +485,9 @@ namespace VehicleRepairs.Api.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("text");
 
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("DeviceToken")
                         .HasColumnType("text");
 
@@ -497,6 +500,9 @@ namespace VehicleRepairs.Api.Migrations
 
                     b.Property<string>("Expiration")
                         .HasColumnType("text");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
@@ -549,7 +555,7 @@ namespace VehicleRepairs.Api.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.UserRole", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.UserRole", b =>
                 {
                     b.Property<string>("UserId")
                         .HasColumnType("text");
@@ -566,7 +572,7 @@ namespace VehicleRepairs.Api.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.Role", null)
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -575,7 +581,7 @@ namespace VehicleRepairs.Api.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.User", null)
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -584,7 +590,7 @@ namespace VehicleRepairs.Api.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.User", null)
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -593,94 +599,94 @@ namespace VehicleRepairs.Api.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.User", null)
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Notification", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Notification", b =>
                 {
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.Order", "Order")
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.Order", "Order")
                         .WithMany("Notifications")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.User", "User")
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.User", "User")
                         .WithMany("Notifications")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Order", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Order", b =>
                 {
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.Station", "Station")
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.Station", "Station")
                         .WithMany()
                         .HasForeignKey("StationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.User", "User")
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.OrderDetail", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.OrderDetail", b =>
                 {
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.Order", "Order")
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.Service", "Service")
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.Service", "Service")
                         .WithMany()
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Review", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Review", b =>
                 {
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.Station", "Station")
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.Station", "Station")
                         .WithMany("Reviews")
                         .HasForeignKey("StationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.User", "User")
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Service", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Service", b =>
                 {
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.Station", "Station")
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.Station", "Station")
                         .WithMany("Services")
                         .HasForeignKey("StationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.Station", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Station", b =>
                 {
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.User", "User")
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.User", "User")
                         .WithMany("Stations")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("VehicleRepairs.Api.Domain.Entities.UserRole", b =>
+            modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.UserRole", b =>
                 {
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.Role", "Role")
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.Role", "Role")
                         .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VehicleRepairs.Api.Domain.Entities.User", "User")
+                    b.HasOne("VehicleRepairs.Database.Domain.Entities.User", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

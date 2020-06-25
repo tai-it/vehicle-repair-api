@@ -2,7 +2,7 @@
 {
     using MediatR;
     using System;
-    using VehicleRepairs.Api.Infrastructure.Common;
+    using VehicleRepairs.Shared.Common;
 
     public class NotificationGetByIdRequest : IRequest<ResponseModel>
     {
