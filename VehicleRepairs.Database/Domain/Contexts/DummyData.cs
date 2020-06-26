@@ -36,6 +36,7 @@
             {
                 var user = new User
                 {
+                    Name = "Đặng Thành Tài",
                     UserName = "0915981110",
                     Email = "sa@suaxe.com",
                     PhoneNumber = "0915981110",
@@ -54,7 +55,8 @@
             {
                 var user = new User
                 {
-                    UserName = "0123456789",
+                    Name = "Đặng Phương Nam",
+                    UserName = "0987654321",
                     Email = "admin@suaxe.com",
                     PhoneNumber = "0123456789",
                     PhoneNumberConfirmed = true

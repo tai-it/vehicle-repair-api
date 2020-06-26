@@ -15,6 +15,7 @@
     [Route("api/notifications")]
     [Consumes("application/json")]
     [Produces("application/json")]
+    [Authorize(Roles = CommonConstants.Roles.ADMIN + "," + CommonConstants.Roles.SUPER_ADMIN)]
     public class NotificationController : ControllerBase
     {
         private readonly IMediator mediator;
@@ -25,8 +26,7 @@
         }
 
         [HttpGet]
-        [Authorize]
-        public async Task<PagedList<NotificationDetailViewModel>> GetAsync([FromQuery] NotificationPagedListRequest request, CancellationToken cancellationToken)
+        public async Task<PagedList<NotificationDetailViewModel>> GetAll([FromQuery] NotificationPagedListRequest request, CancellationToken cancellationToken)
         {
             var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             request.PhoneNumber = phoneNumber;
@@ -34,8 +34,7 @@
         }
 
         [HttpGet("{id}")]
-        [Authorize]
-        public async Task<IActionResult> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
         {
             var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var request = new NotificationGetByIdRequest() 
@@ -43,6 +42,13 @@
                 Id = id,
                 PhoneNumber = phoneNumber
             };
+            var responseModel = await this.mediator.Send(request, cancellationToken);
+            return new CustomActionResult(responseModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SendNotification([FromBody] SendNotificationRequest request, CancellationToken cancellationToken)
+        {
             var responseModel = await this.mediator.Send(request, cancellationToken);
             return new CustomActionResult(responseModel);
         }

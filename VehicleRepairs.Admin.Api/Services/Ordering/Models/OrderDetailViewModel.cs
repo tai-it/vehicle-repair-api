@@ -14,11 +14,16 @@
 
         public OrderDetailViewModel(Order order) : base(order)
         {
-            UserId = order.UserId;
-            CustomerName = order.User.Name;
-            CustomerPhone = order.User.PhoneNumber;
-            Station = new StationBaseViewModel(order.Station);
-            Services = order.OrderDetails.Select(x => new ServiceViewModel(x)).ToList();
+            if (order != null)
+            {
+                UserId = order.UserId;
+                CustomerName = order.User.Name;
+                CustomerPhone = order.User.PhoneNumber;
+                if (order.Station != null)
+                    Station = new StationBaseViewModel(order.Station);
+                if (order.OrderDetails.Any())
+                    Services = order.OrderDetails.Select(x => new ServiceViewModel(x)).ToList();
+            }
         }
 
         public string UserId { get; set; }

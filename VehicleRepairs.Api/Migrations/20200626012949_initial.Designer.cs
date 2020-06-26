@@ -10,7 +10,7 @@ using VehicleRepairs.Database.Domain.Contexts;
 namespace VehicleRepairs.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200625042649_initial")]
+    [Migration("20200626012949_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -140,6 +140,9 @@ namespace VehicleRepairs.Api.Migrations
                     b.Property<bool>("IsSeen")
                         .HasColumnType("boolean");
 
+                    b.Property<bool>("IsSent")
+                        .HasColumnType("boolean");
+
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uuid");
 
@@ -147,6 +150,9 @@ namespace VehicleRepairs.Api.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Type")
                         .HasColumnType("text");
 
                     b.Property<Guid?>("UpdatedBy")
@@ -611,7 +617,7 @@ namespace VehicleRepairs.Api.Migrations
             modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Notification", b =>
                 {
                     b.HasOne("VehicleRepairs.Database.Domain.Entities.Order", "Order")
-                        .WithMany("Notifications")
+                        .WithMany()
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

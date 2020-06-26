@@ -312,7 +312,9 @@ namespace VehicleRepairs.Api.Migrations
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Body = table.Column<string>(nullable: true),
+                    Type = table.Column<string>(nullable: true),
                     IsSeen = table.Column<bool>(nullable: false),
+                    IsSent = table.Column<bool>(nullable: false),
                     Target = table.Column<string>(nullable: true),
                     OrderId = table.Column<Guid>(nullable: false),
                     UserId = table.Column<string>(nullable: true)

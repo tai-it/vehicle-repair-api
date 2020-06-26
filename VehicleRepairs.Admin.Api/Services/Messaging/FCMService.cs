@@ -6,24 +6,16 @@
     using System.Net;
     using System.Text;
     using System.Threading.Tasks;
-    using VehicleRepairs.Database.Domain.Contexts;
     using VehicleRepairs.Database.Domain.Entities;
 
     public interface IFCMService
     {
-        Task SendNotification(Notification notification);
+        Task<bool> SendNotification(Notification notification);
     }
 
     public class FCMService : IFCMService
     {
-        private readonly ApplicationDbContext db;
-
-        public FCMService(ApplicationDbContext db)
-        {
-            this.db = db ?? throw new ArgumentNullException(nameof(db));
-        }
-
-        public async Task SendNotification(Notification notify)
+        public async Task<bool> SendNotification(Notification notify)
         {
             try
             {
@@ -64,8 +56,8 @@
                             {
                                 using (StreamReader tReader = new StreamReader(dataStreamResponse))
                                 {
-                                    notify.IsSent = true;
                                     String sResponseFromServer = tReader.ReadToEnd();
+                                    return true;
                                 }
                             }
                         }
@@ -75,8 +67,7 @@
             {
                 throw e;
             }
-            this.db.Add(notify);
-            await this.db.SaveChangesAsync();
+            return false;
         }
     }
 }

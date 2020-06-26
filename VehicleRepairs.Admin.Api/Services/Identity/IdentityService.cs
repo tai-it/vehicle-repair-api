@@ -22,13 +22,9 @@
 
         Task<ResponseModel> RegisterAsync(RegisterDto model);
 
+        Task<ResponseModel> DisableUserAsync(DisableUserRequest request);
+
         Task<PagedList<UserBaseViewModel>> GetUsersAsync(BaseRequestModel request);
-
-        Task<ResponseModel> GetProfileAsync(string phoneNumber);
-
-        Task<ResponseModel> ConfirmPhoneNumberAsync(string phoneNumber);
-
-        Task<ResponseModel> UpdateProfileAsync(UserUpdateModel model);
     }
 
     public class IdentityService : IIdentityService<User>
@@ -109,71 +105,30 @@
             };
         }
 
-        public async Task<ResponseModel> ConfirmPhoneNumberAsync(string phoneNumber)
+        public async Task<ResponseModel> DisableUserAsync(DisableUserRequest request)
         {
-            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
+            var user = await _userManager.Users.Where(x => x.Id == request.UserId && x.IsActive).FirstOrDefaultAsync();
 
             if (user == null)
             {
                 return new ResponseModel()
                 {
                     StatusCode = System.Net.HttpStatusCode.NotFound,
-                    Message = "Tài khoản này đã bị ban hoặc không tìm thấy"
+                    Message = "Tài khoản này không tìm thấy hoặc đã bị khoá"
                 };
             }
 
-            user.PhoneNumberConfirmed = true;
-
+            user.IsActive = request.IsActive;
             await _userManager.UpdateAsync(user);
 
-            return new ResponseModel()
-            {
-                StatusCode = System.Net.HttpStatusCode.OK,
-                Data = "Cập nhật tình trạng SĐT thành công"
-            };
-        }
+            // SEND NOTIFICATION HERE
 
-        public async Task<ResponseModel> UpdateProfileAsync(UserUpdateModel model)
-        {
-            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == model.PhoneNumber);
-
-            if (user == null)
-            {
-                return new ResponseModel()
-                {
-                    StatusCode = System.Net.HttpStatusCode.NotFound,
-                    Message = "Tài khoản này đã bị ban hoặc không tìm thấy"
-                };
-            }
-
-            user.Name = model.Name ?? user.Name;
-            user.Email = model.Email ?? user.Email;
-            user.Address = model.Address ?? user.Address;
-            user.DeviceToken = model.DeviceToken ?? user.DeviceToken;
-
-            await _userManager.UpdateAsync(user);
+            //
 
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = new UserBaseViewModel(user)
-            };
-        }
-
-        public async Task<ResponseModel> GetProfileAsync(string phoneNumber)
-        {
-            var user = await _userManager.Users
-                    .Include(x => x.UserRoles)
-                        .ThenInclude(x => x.Role)
-                    .Include(x => x.Orders)
-                        .ThenInclude(x => x.OrderDetails)
-                            .ThenInclude(x => x.Service)
-                    .FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
-
-            return new ResponseModel()
-            {
-                StatusCode = System.Net.HttpStatusCode.OK,
-                Data = new UserBaseViewModel(user)
+                Message = request.IsActive ? "Mở khoá tài khoản thành công" : "Khoá tài khoản thành công"
             };
         }
 

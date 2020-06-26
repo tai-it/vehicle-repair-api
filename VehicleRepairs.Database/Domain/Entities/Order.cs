@@ -69,8 +69,6 @@
             }
         }
 
-        public List<Notification> Notifications { get; set; }
-
         public List<OrderDetail> OrderDetails { get; set; }
     }
 }

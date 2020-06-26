@@ -64,6 +64,8 @@
             }
         }
 
+        public List<Order> Orders { get; set; }
+
         public List<Review> Reviews { get; set; }
 
         public List<Service> Services { get; set; }

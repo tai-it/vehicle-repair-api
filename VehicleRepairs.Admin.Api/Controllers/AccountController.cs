@@ -46,5 +46,14 @@
             var responseModel = await _identityService.RegisterAsync(model);
             return new CustomActionResult(responseModel);
         }
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = CommonConstants.Roles.ADMIN + "," + CommonConstants.Roles.SUPER_ADMIN)]
+        public async Task<IActionResult> Disabse(string id, [FromBody] DisableUserRequest request)
+        {
+            request.UserId = id;
+            var responseModel = await _identityService.DisableUserAsync(request);
+            return new CustomActionResult(responseModel);
+        }
     }
 }
