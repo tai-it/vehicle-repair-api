@@ -59,11 +59,21 @@
 
         [Authorize]
         [HttpPut("me")]
-        public async Task<IActionResult> UpdateProfile([FromBody] UserUpdateModel model)
+        public async Task<IActionResult> UpdateProfile([FromBody] UserUpdateRequestModel model)
         {
             var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.PhoneNumber = phoneNumber;
             var responseModel = await _identityService.UpdateProfileAsync(model);
+            return new CustomActionResult(responseModel);
+        }
+
+        [Authorize]
+        [HttpPut("password")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordRequestModel request)
+        {
+            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            request.PhoneNumber = phoneNumber;
+            var responseModel = await _identityService.ChangePasswordAsync(request);
             return new CustomActionResult(responseModel);
         }
     }

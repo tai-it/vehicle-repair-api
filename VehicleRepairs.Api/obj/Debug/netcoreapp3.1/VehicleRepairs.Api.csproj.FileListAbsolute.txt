@@ -1,8 +1,5 @@
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.AssemblyInfoInputs.cache
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.AssemblyInfo.cs
-D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.csproj.CoreCompileInputs.cache
-D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.MvcApplicationPartsAssemblyInfo.cs
-D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.MvcApplicationPartsAssemblyInfo.cache
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\appsettings.json
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -77,3 +74,6 @@ D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\Veh
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\VehicleRepairs.Shared.dll
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\VehicleRepairs.Database.pdb
 D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\bin\Debug\netcoreapp3.1\VehicleRepairs.Shared.pdb
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.csproj.CoreCompileInputs.cache
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.MvcApplicationPartsAssemblyInfo.cs
+D:\tai.tran\DotNet\VehicleRepairs\VehicleRepairs.Api\obj\Debug\netcoreapp3.1\VehicleRepairs.Api.MvcApplicationPartsAssemblyInfo.cache

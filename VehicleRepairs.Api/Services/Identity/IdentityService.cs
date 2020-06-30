@@ -28,7 +28,9 @@
 
         Task<ResponseModel> ConfirmPhoneNumberAsync(string phoneNumber);
 
-        Task<ResponseModel> UpdateProfileAsync(UserUpdateModel model);
+        Task<ResponseModel> UpdateProfileAsync(UserUpdateRequestModel model);
+
+        Task<ResponseModel> ChangePasswordAsync(ChangePasswordRequestModel request);
     }
 
     public class IdentityService : IIdentityService<User>
@@ -133,9 +135,12 @@
             };
         }
 
-        public async Task<ResponseModel> UpdateProfileAsync(UserUpdateModel model)
+        public async Task<ResponseModel> UpdateProfileAsync(UserUpdateRequestModel model)
         {
-            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == model.PhoneNumber);
+            var user = await _userManager.Users
+                .Include(x => x.UserRoles)
+                    .ThenInclude(x => x.Role)
+                .FirstOrDefaultAsync(x => x.PhoneNumber == model.PhoneNumber);
 
             if (user == null)
             {
@@ -200,6 +205,43 @@
             list = request.IsDesc ? list.OrderByDescending(x => sortProperty.GetValue(x, null)).ToList() : list.OrderBy(x => sortProperty.GetValue(x, null)).ToList();
 
             return new PagedList<UserBaseViewModel>(list, request.Offset ?? CommonConstants.Config.DEFAULT_SKIP, request.Limit ?? CommonConstants.Config.DEFAULT_TAKE);
+        }
+
+        public async Task<ResponseModel> ChangePasswordAsync(ChangePasswordRequestModel request)
+        {
+            var user = await this._userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == request.PhoneNumber);
+
+            var result = await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
+
+            if (result.Succeeded)
+            {
+                if (request.LogoutOnOtherDevices)
+                {
+                    await _signInManager.SignOutAsync();
+                }
+
+                var roles = await _userManager.GetRolesAsync(user);
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.OK,
+                    Data = GenerateJwtToken(user, roles.ToArray())
+                };
+            }
+
+            var errors = result.Errors;
+
+            var message = string.Empty;
+
+            foreach (var error in errors)
+            {
+                message += error.Description;
+            }
+
+            return new ResponseModel()
+            {
+                StatusCode = System.Net.HttpStatusCode.BadRequest,
+                Message = message
+            };
         }
 
         private List<string> GetAllPropertyNameOfViewModel()

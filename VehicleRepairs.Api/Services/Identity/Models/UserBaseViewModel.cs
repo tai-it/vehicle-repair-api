@@ -18,7 +18,9 @@
                 Id = user.Id;
                 Name = user.Name;
                 Email = user.Email;
+                EmailConfirmed = user.EmailConfirmed;
                 PhoneNumber = user.PhoneNumber;
+                PhoneNumberConfirmed = user.PhoneNumberConfirmed;
                 Address = user.Address;
                 Roles = user.UserRoles.Select(x => x.Role.Name).ToList();
                 DeviceToken = user.DeviceToken;
@@ -35,7 +37,11 @@
 
         public string Email { get; set; }
 
+        public bool EmailConfirmed { get; set; }
+
         public string PhoneNumber { get; set; }
+
+        public bool PhoneNumberConfirmed { get; set; }
 
         public string Address { get; set; }
 
