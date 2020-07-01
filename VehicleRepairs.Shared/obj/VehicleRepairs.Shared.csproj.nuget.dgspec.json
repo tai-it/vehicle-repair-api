@@ -41,6 +41,10 @@
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
               "version": "[3.1.5, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[3.1.5, )"
             }
           },
           "imports": [

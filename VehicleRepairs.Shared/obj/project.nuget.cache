@@ -1,10 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "/3deySLn98TTO6IXTqPBPVJzU7UyJ/icu+WKHsz6+0ISouC3Xs+9ixdvlHHEqXwtzM1Cdh6t4mDC8WdBDvnXTg==",
+  "dgSpecHash": "+7M/F8CA4a7oPXCGhOzv6Oms2mlxXDCsWVaIJ03H2+WSsxCL6NoBQCLuXlxFnHjp4vMtCI9yzPbKZrY7HsA4iw==",
   "success": true,
   "projectFilePath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tai.tran\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.1.5\\microsoft.aspnetcore.http.features.3.1.5.nupkg.sha512",
+    "C:\\Users\\tai.tran\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.5\\microsoft.extensions.caching.abstractions.3.1.5.nupkg.sha512",
+    "C:\\Users\\tai.tran\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.5\\microsoft.extensions.caching.memory.3.1.5.nupkg.sha512",
+    "C:\\Users\\tai.tran\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.5\\microsoft.extensions.dependencyinjection.abstractions.3.1.5.nupkg.sha512",
+    "C:\\Users\\tai.tran\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.5\\microsoft.extensions.logging.abstractions.3.1.5.nupkg.sha512",
+    "C:\\Users\\tai.tran\\.nuget\\packages\\microsoft.extensions.options\\3.1.5\\microsoft.extensions.options.3.1.5.nupkg.sha512",
     "C:\\Users\\tai.tran\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.5\\microsoft.extensions.primitives.3.1.5.nupkg.sha512",
     "C:\\Users\\tai.tran\\.nuget\\packages\\system.io.pipelines\\4.7.1\\system.io.pipelines.4.7.1.nupkg.sha512",
     "C:\\Users\\tai.tran\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"

@@ -23,6 +23,7 @@ namespace VehicleRepairs.Api
     using VehicleRepairs.Api.Services.Messaging;
     using VehicleRepairs.Database.Domain.Contexts;
     using VehicleRepairs.Database.Domain.Entities;
+    using VehicleRepairs.Shared.Caching;
 
     public class Startup
     {
@@ -91,8 +92,10 @@ namespace VehicleRepairs.Api
                 .AddDefaultTokenProviders();
 
             services.AddTransient<IIdentityService<User>, IdentityService>();
-
             services.AddScoped<IFCMService, FCMService>();
+            services.AddSingleton<ICacheManager, CacheManager>();
+
+            services.AddMemoryCache();
 
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>

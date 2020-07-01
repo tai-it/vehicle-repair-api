@@ -10,28 +10,35 @@
     using VehicleRepairs.Api.Infrastructure.Utilities;
     using VehicleRepairs.Api.Services.Station.Models;
     using VehicleRepairs.Database.Domain.Contexts;
+    using VehicleRepairs.Shared.Caching;
     using VehicleRepairs.Shared.Common;
 
     public class StationPagedListHandler : IRequestHandler<StationPagedListRequest, PagedList<StationDetailViewModel>>
     {
         private readonly ApplicationDbContext db;
 
-        public StationPagedListHandler(ApplicationDbContext db)
+        private readonly ICacheManager _cacheManager;
+
+        public StationPagedListHandler(ApplicationDbContext db, ICacheManager cacheManager)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
+            _cacheManager = cacheManager;
         }
 
         public async Task<PagedList<StationDetailViewModel>> Handle(StationPagedListRequest request, CancellationToken cancellationToken)
         {
-            var list = await this.db.Stations
-                .Where(x => !x.IsDeleted)
-                    .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Name.Contains(request.Query)))
-                    .Where(x => (string.IsNullOrEmpty(request.Vehicle)) || (x.Vehicle.ToLower().Equals(request.Vehicle.ToLower())))
-                    .Where(x => (!request.HasAmbulatory) || (x.HasAmbulatory))
-                    .Where(x => (string.IsNullOrEmpty(request.ServiceName)) || (x.Services.FirstOrDefault(x => x.Name.ToLower().Contains(request.ServiceName.ToLower()))) != null)
-                    .Include(x => x.User)
-                    .Include(x => x.Services)
-                    .Select(x => new StationDetailViewModel(x)).ToListAsync();
+            var list = await _cacheManager.GetAndSetAsync("list_stations", 60, async () =>
+            {
+                return await this.db.Stations
+                    .Where(x => !x.IsDeleted)
+                        .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Name.Contains(request.Query)))
+                        .Where(x => (string.IsNullOrEmpty(request.Vehicle)) || (x.Vehicle.ToLower().Equals(request.Vehicle.ToLower())))
+                        .Where(x => (!request.HasAmbulatory) || (x.HasAmbulatory))
+                        .Where(x => (string.IsNullOrEmpty(request.ServiceName)) || (x.Services.FirstOrDefault(x => x.Name.ToLower().Contains(request.ServiceName.ToLower()))) != null)
+                            .Include(x => x.User)
+                            .Include(x => x.Services)
+                                .Select(x => new StationDetailViewModel(x)).ToListAsync();
+            });
 
             var viewModelProperties = this.GetAllPropertyNameOfViewModel();
             var sortPropertyName = !string.IsNullOrEmpty(request.SortName) ? request.SortName.ToLower() : string.Empty;

@@ -10,24 +10,31 @@
     using VehicleRepairs.Api.Infrastructure.Utilities;
     using VehicleRepairs.Api.Services.Service.Models;
     using VehicleRepairs.Database.Domain.Contexts;
+    using VehicleRepairs.Shared.Caching;
     using VehicleRepairs.Shared.Common;
 
     public class ServicePagedListHandler : IRequestHandler<ServicePagedListRequest, PagedList<ServiceViewModel>>
     {
         private readonly ApplicationDbContext db;
 
-        public ServicePagedListHandler(ApplicationDbContext db)
+        private readonly ICacheManager _cacheManager;
+
+        public ServicePagedListHandler(ApplicationDbContext db, ICacheManager cacheManager)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
+            _cacheManager = cacheManager;
         }
 
         public async Task<PagedList<ServiceViewModel>> Handle(ServicePagedListRequest request, CancellationToken cancellationToken)
         {
-            var list = await this.db.Services
+            var list = await _cacheManager.GetAndSetAsync("list_services", 60, async () =>
+            {
+                return await this.db.Services
                 .Where(x => !x.IsDeleted)
                     .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Name.Contains(request.Query)))
                     .Where(x => (string.IsNullOrEmpty(request.Vehicle)) || (x.Station.Vehicle.ToLower().Equals(request.Vehicle.ToLower())))
                         .Select(x => new ServiceViewModel(x)).ToListAsync();
+            });
 
             if (request.IsDistinct)
             {
