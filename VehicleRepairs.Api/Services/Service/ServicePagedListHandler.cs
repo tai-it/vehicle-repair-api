@@ -27,14 +27,16 @@
 
         public async Task<PagedList<ServiceViewModel>> Handle(ServicePagedListRequest request, CancellationToken cancellationToken)
         {
-            var list = await _cacheManager.GetAndSetAsync("list_services", 60, async () =>
+            var services = await _cacheManager.GetAndSetAsync("list_services", 60, async () =>
             {
                 return await this.db.Services
                 .Where(x => !x.IsDeleted)
-                    .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Name.Contains(request.Query)))
-                    .Where(x => (string.IsNullOrEmpty(request.Vehicle)) || (x.Station.Vehicle.ToLower().Equals(request.Vehicle.ToLower())))
-                        .Select(x => new ServiceViewModel(x)).ToListAsync();
+                .ToListAsync();
             });
+
+            var list = services.Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Name.Contains(request.Query)))
+                    .Where(x => (string.IsNullOrEmpty(request.Vehicle)) || (x.Station.Vehicle.ToLower().Equals(request.Vehicle.ToLower())))
+                        .Select(x => new ServiceViewModel(x)).ToList();
 
             if (request.IsDistinct)
             {

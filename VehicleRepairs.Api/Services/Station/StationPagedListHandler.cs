@@ -27,18 +27,21 @@
 
         public async Task<PagedList<StationDetailViewModel>> Handle(StationPagedListRequest request, CancellationToken cancellationToken)
         {
-            var list = await _cacheManager.GetAndSetAsync("list_stations", 60, async () =>
+            var stations = await _cacheManager.GetAndSetAsync("list_stations", 60, async () =>
             {
                 return await this.db.Stations
                     .Where(x => !x.IsDeleted)
-                        .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Name.Contains(request.Query)))
+                    .Include(x => x.User)
+                    .Include(x => x.Services)
+                    .ToListAsync();
+            });
+
+            var list = stations.Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Name.Contains(request.Query)))
                         .Where(x => (string.IsNullOrEmpty(request.Vehicle)) || (x.Vehicle.ToLower().Equals(request.Vehicle.ToLower())))
                         .Where(x => (!request.HasAmbulatory) || (x.HasAmbulatory))
                         .Where(x => (string.IsNullOrEmpty(request.ServiceName)) || (x.Services.FirstOrDefault(x => x.Name.ToLower().Contains(request.ServiceName.ToLower()))) != null)
-                            .Include(x => x.User)
-                            .Include(x => x.Services)
-                                .Select(x => new StationDetailViewModel(x)).ToListAsync();
-            });
+                        .Select(x => new StationDetailViewModel(x))
+                        .ToList();
 
             var viewModelProperties = this.GetAllPropertyNameOfViewModel();
             var sortPropertyName = !string.IsNullOrEmpty(request.SortName) ? request.SortName.ToLower() : string.Empty;
