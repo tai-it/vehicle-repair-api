@@ -10,16 +10,16 @@
     using VehicleRepairs.Database.Domain.Contexts;
     using VehicleRepairs.Shared.Common;
 
-    public class NotificationGetByIdHandler : IRequestHandler<NotificationGetByIdRequest, ResponseModel>
+    public class NotificationMarkAsReadByIdHandler : IRequestHandler<NotificationMarkAsReadByIdRequest, ResponseModel>
     {
         private readonly ApplicationDbContext db;
 
-        public NotificationGetByIdHandler(ApplicationDbContext db)
+        public NotificationMarkAsReadByIdHandler(ApplicationDbContext db)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-        public async Task<ResponseModel> Handle(NotificationGetByIdRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseModel> Handle(NotificationMarkAsReadByIdRequest request, CancellationToken cancellationToken)
         {
             var notification = await this.db.Notifications
                 .Where(x => x.User.PhoneNumber == request.PhoneNumber && x.Id == request.Id)

@@ -30,6 +30,8 @@
                         .Include(x => x.Order)
                             .ThenInclude(x => x.Station)
                         .Include(x => x.Order)
+                            .ThenInclude(x => x.User)
+                        .Include(x => x.Order)
                             .ThenInclude(x => x.OrderDetails)
                                 .ThenInclude(x => x.Service)
                         .Select(x => new NotificationDetailViewModel(x)).ToListAsync();

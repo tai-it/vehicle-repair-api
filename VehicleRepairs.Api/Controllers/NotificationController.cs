@@ -43,12 +43,12 @@
             return new CustomActionResult(responseModel);
         }
 
-        [HttpGet("{id}")]
+        [HttpPut("/seen/{id}")]
         [Authorize]
-        public async Task<IActionResult> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        public async Task<IActionResult> MarkAsReadByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var request = new NotificationGetByIdRequest() 
+            var request = new NotificationMarkAsReadByIdRequest() 
             { 
                 Id = id,
                 PhoneNumber = phoneNumber

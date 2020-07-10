@@ -38,7 +38,7 @@
 
             if (string.IsNullOrEmpty(matchedPropertyName))
             {
-                matchedPropertyName = "StationName";
+                matchedPropertyName = "CreatedOn";
             }
 
             var viewModelType = typeof(StationStatisticViewModel);

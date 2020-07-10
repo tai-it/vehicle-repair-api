@@ -1,6 +1,7 @@
 ﻿namespace VehicleRepairs.Api.Services.Messaging
 {
     using MediatR;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
@@ -10,6 +11,7 @@
     using VehicleRepairs.Api.Infrastructure.Utilities;
     using VehicleRepairs.Api.Services.Messaging.Models;
     using VehicleRepairs.Database.Domain.Contexts;
+    using VehicleRepairs.Database.Domain.Entities;
     using VehicleRepairs.Shared.Common;
 
     public class NotificationPagedListHandler : IRequestHandler<NotificationPagedListRequest, PagedList<NotificationDetailViewModel>>
@@ -23,12 +25,15 @@
 
         public async Task<PagedList<NotificationDetailViewModel>> Handle(NotificationPagedListRequest request, CancellationToken cancellationToken)
         {
+
             var list = await this.db.Notifications
                 .Where(x => !x.IsDeleted)
                     .Where(x => x.User.PhoneNumber == request.PhoneNumber)
                         .Include(x => x.User)
                         .Include(x => x.Order)
                             .ThenInclude(x => x.Station)
+                        .Include(x => x.Order)
+                            .ThenInclude(x => x.User)
                         .Include(x => x.Order)
                             .ThenInclude(x => x.OrderDetails)
                                 .ThenInclude(x => x.Service)

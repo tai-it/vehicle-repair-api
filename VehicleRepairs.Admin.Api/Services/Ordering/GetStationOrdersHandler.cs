@@ -38,7 +38,7 @@
 
             if (string.IsNullOrEmpty(matchedPropertyName))
             {
-                matchedPropertyName = "Status";
+                matchedPropertyName = "CreatedOn";
             }
 
             var viewModelType = typeof(OrderDetailViewModel);

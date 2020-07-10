@@ -146,7 +146,7 @@
 
             if (string.IsNullOrEmpty(matchedPropertyName))
             {
-                matchedPropertyName = "Name";
+                matchedPropertyName = "CreatedOn";
             }
 
             var viewModelType = typeof(UserBaseViewModel);
