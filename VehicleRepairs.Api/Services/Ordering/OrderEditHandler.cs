@@ -31,6 +31,7 @@
         public async Task<ResponseModel> Handle(OrderEditRequest request, CancellationToken cancellationToken)
         {
             var order = await this.db.Orders
+                    .Include(x => x.OrderDetails)
                     .Include(x => x.Station)
                         .ThenInclude(x => x.User)
                             .FirstOrDefaultAsync(x => x.Id == request.Id);
@@ -68,7 +69,30 @@
                 };
             }
 
-            order.Status = request.Status;
+            var isStatusChange = false;
+
+            if (order.Status != request.Status)
+            {
+                order.Status = request.Status;
+                isStatusChange = true;
+            }
+
+            if (request.OrderDetails.Any())
+            {
+                var removingServices = order.OrderDetails.Where(x => !request.OrderDetails.Any(y => y.ServiceId == x.ServiceId)).ToList();
+
+                foreach (var service in removingServices)
+                {
+                    order.OrderDetails.Remove(service);
+                }
+
+                order.OrderDetails.AddRange(request.OrderDetails.Where(x => !order.OrderDetails.Any(y => y.ServiceId == x.ServiceId))
+                    .Select(x => new OrderDetail()
+                    {
+                        OrderId = order.Id,
+                        ServiceId = x.ServiceId
+                    }).ToList());
+            }
 
             await this.db.SaveChangesAsync(cancellationToken);
 
@@ -80,7 +104,10 @@
                         .ThenInclude(x => x.Service)
                     .FirstOrDefaultAsync(x => x.Id == order.Id);
 
-            await fcmService.SendToDevice(order);
+            if (isStatusChange)
+            {
+                await fcmService.SendToDevice(order);
+            }
 
             return new ResponseModel()
             {
@@ -97,6 +124,7 @@
                 case CommonConstants.OrderStatus.WAITING:
                     acceptableStatus = new List<string>
                     {
+                        CommonConstants.OrderStatus.WAITING,
                         CommonConstants.OrderStatus.ACCEPTED,
                         CommonConstants.OrderStatus.REJECTED,
                         CommonConstants.OrderStatus.CANCLED
@@ -106,6 +134,7 @@
                 case CommonConstants.OrderStatus.ACCEPTED:
                     acceptableStatus = new List<string>
                     {
+                        CommonConstants.OrderStatus.ACCEPTED,
                         CommonConstants.OrderStatus.DONE,
                         CommonConstants.OrderStatus.REJECTED,
                         CommonConstants.OrderStatus.CANCLED

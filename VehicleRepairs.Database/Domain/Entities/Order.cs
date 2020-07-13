@@ -10,6 +10,11 @@
     [Table("Orders")]
     public class Order : BaseEntity
     {
+        public Order()
+        {
+            OrderDetails = new List<OrderDetail>();
+        }
+
         [Required]
         public string UserId { get; set; }
 
