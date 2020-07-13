@@ -8,6 +8,12 @@
 
     public class OrderEditRequest : IRequest<ResponseModel>
     {
+
+        public OrderEditRequest()
+        {
+            OrderDetails = new List<OrderDetailCreateModel>();
+        }
+
         public Guid Id { get; set; }
 
         public string PhoneNumber { get; set; }
