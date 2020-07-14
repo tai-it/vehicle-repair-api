@@ -17,7 +17,7 @@
             if (station != null)
             {
                 var completedOrders = station.Orders.Where(x => x.Status == CommonConstants.OrderStatus.DONE).ToList();
-                foreach(var order in completedOrders)
+                foreach (var order in completedOrders)
                 {
                     TotalRevenue += order.TotalPrice;
                 }

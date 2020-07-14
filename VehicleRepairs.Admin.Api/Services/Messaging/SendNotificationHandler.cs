@@ -39,22 +39,15 @@
             var notify = this.mapper.Map<Notification>(request);
 
             notify.User = receiver;
-            //notify.Target = receiver.DeviceToken;
 
-            var isSent = await this.fcmService.SendNotification(notify);
+            await this.fcmService.SendNotification(notify);
 
-            if (isSent)
-            {
-                notify.IsSent = true;
-            }
-
-            this.db.Notifications.Add(notify);
-            await this.db.SaveChangesAsync(cancellationToken);
+            notify = await this.db.Notifications.FirstOrDefaultAsync(x => x.Id == notify.Id);
 
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = isSent ? "Đã gửi thông báo thành công" : "Thông báo đã được lưu trữ"
+                Data = notify.IsSent ? "Đã gửi thông báo thành công" : "Thông báo đã được lưu trữ"
             };
         }
     }
