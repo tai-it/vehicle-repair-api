@@ -8,10 +8,7 @@
     [Table("Services")]
     public class Service : BaseEntity
     {
-        public Service() : base()
-        {
-
-        }
+        public Service() : base() { }
 
         [Required]
         public string Name { get; set; }

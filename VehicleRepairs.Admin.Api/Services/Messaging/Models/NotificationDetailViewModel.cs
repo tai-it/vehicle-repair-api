@@ -11,7 +11,7 @@
 
         public NotificationDetailViewModel(Notification notification) : base(notification)
         {
-            Order = new OrderDetailViewModel(notification.Order);
+            //Order = new OrderDetailViewModel(notification.Order);
         }
 
         public OrderDetailViewModel Order { get; set; }

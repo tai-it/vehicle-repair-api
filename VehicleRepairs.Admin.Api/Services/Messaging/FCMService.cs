@@ -27,7 +27,7 @@
 
                 var payload = new
                 {
-                    to = notify.Target,
+                    to = notify.User.DeviceToken,
                     priority = "high",
                     content_available = true,
                     notification = new

@@ -39,7 +39,7 @@
             var notify = this.mapper.Map<Notification>(request);
 
             notify.User = receiver;
-            notify.Target = receiver.DeviceToken;
+            //notify.Target = receiver.DeviceToken;
 
             var isSent = await this.fcmService.SendNotification(notify);
 

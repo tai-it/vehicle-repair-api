@@ -10,26 +10,21 @@
     using VehicleRepairs.Database.Domain.Contexts;
     using VehicleRepairs.Shared.Common;
 
-    public class NotificationMarkAsReadByIdHandler : IRequestHandler<NotificationMarkAsReadByIdRequest, ResponseModel>
+    public class NotificationGetByIdHandler : IRequestHandler<NotificationGetByIdRequest, ResponseModel>
     {
         private readonly ApplicationDbContext db;
 
-        public NotificationMarkAsReadByIdHandler(ApplicationDbContext db)
+        public NotificationGetByIdHandler(ApplicationDbContext db)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-        public async Task<ResponseModel> Handle(NotificationMarkAsReadByIdRequest request, CancellationToken cancellationToken)
+        public async Task<ResponseModel> Handle(NotificationGetByIdRequest request, CancellationToken cancellationToken)
         {
             var notification = await this.db.Notifications
                 .Where(x => x.User.PhoneNumber == request.PhoneNumber && x.Id == request.Id)
                     .Include(x => x.User)
-                    .Include(x => x.Order)
-                        .ThenInclude(x => x.OrderDetails)
-                            .ThenInclude(x => x.Service)
-                    .Include(x => x.Order)
-                        .ThenInclude(x => x.Station)
-                                .FirstOrDefaultAsync();
+                        .FirstOrDefaultAsync();
 
             if (notification == null)
             {
@@ -44,10 +39,27 @@
 
             await this.db.SaveChangesAsync(cancellationToken);
 
+            if (notification.Type == CommonConstants.NotificationTypes.ORDER_TRACKING)
+            {
+                var order = await this.db.Orders
+                    .Where(x => x.Id == new Guid(notification.Data))
+                    .Include(x => x.User)
+                        .Include(x => x.Station)
+                    .Include(x => x.OrderDetails)
+                        .ThenInclude(x => x.Service)
+                    .FirstOrDefaultAsync();
+
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.OK,
+                    Data = new NotificationDetailViewModel(notification, order)
+                };
+            }
+
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = new NotificationDetailViewModel(notification)
+                Data = new NotificationBaseViewModel(notification)
             };
         }
     }

@@ -4,7 +4,7 @@
     using System;
     using VehicleRepairs.Shared.Common;
 
-    public class NotificationMarkAsReadByIdRequest : IRequest<ResponseModel>
+    public class NotificationGetByIdRequest : IRequest<ResponseModel>
     {
         public Guid Id { get; set; }
 

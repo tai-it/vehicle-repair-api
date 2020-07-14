@@ -54,11 +54,11 @@
             return new CustomActionResult(responseModel);
         }
 
-        [HttpGet("stations/{stationId}")]
+        [HttpGet("stations/{id}")]
         [Authorize(Roles = CommonConstants.Roles.STATION + "," + CommonConstants.Roles.SUPER_ADMIN + "," + CommonConstants.Roles.ADMIN)]
-        public async Task<PagedList<OrderDetailViewModel>> GetAsync(Guid stationId, [FromQuery] GetStationOrdersRequest request, CancellationToken cancellationToken)
+        public async Task<PagedList<OrderDetailViewModel>> GetAsync(Guid id, [FromQuery] GetStationOrdersRequest request, CancellationToken cancellationToken)
         {
-            request.Id = stationId;
+            request.Id = id;
             return await this.mediator.Send(request, cancellationToken);
         }
 

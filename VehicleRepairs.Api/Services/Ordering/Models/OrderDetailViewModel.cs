@@ -11,6 +11,7 @@
     {
         public OrderDetailViewModel()
         {
+            Services = new List<ServiceViewModel>();
         }
 
         public OrderDetailViewModel(Order order) : base(order)

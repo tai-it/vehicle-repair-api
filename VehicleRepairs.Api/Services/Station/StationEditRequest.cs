@@ -29,8 +29,28 @@
 
         public bool HasAmbulatory { get; set; }
 
+        public decimal Coefficient { get; set; }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+            if (Vehicle != CommonConstants.Vehicles.MOTOBIKE && Vehicle != CommonConstants.Vehicles.CAR)
+            {
+                yield return new ValidationResult("Không tìm thấy phương tiện này", new string[] { "Vehicle" });
+            }
+
+            if (!string.IsNullOrEmpty(Address))
+            {
+                if (Latitude == decimal.Zero)
+                {
+                    yield return new ValidationResult("Kinh độ là trường bắt buộc", new string[] { "Latitude" });
+                }
+
+                if (Latitude == decimal.Zero)
+                {
+                    yield return new ValidationResult("Vĩ độ là trường bắt buộc", new string[] { "Longitude" });
+                }
+            }
+
             if (Name != null)
             {
                 var db = (ApplicationDbContext)validationContext.GetService(typeof(ApplicationDbContext));

@@ -175,6 +175,15 @@
                             .ThenInclude(x => x.Service)
                     .FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
 
+            if (user == null)
+            {
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.BadRequest,
+                    Message = "Phiên đăng nhập đã hết hạn hoặc tài khoản không còn tồn tại"
+                };
+            }
+
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,

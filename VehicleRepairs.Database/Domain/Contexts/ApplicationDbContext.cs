@@ -41,6 +41,9 @@
                     .HasForeignKey(ur => ur.UserId)
                     .IsRequired();
             });
+
+            builder.Entity<OrderDetail>()
+                .HasKey(r => new { r.OrderId, r.ServiceId });
         }
     }
 }

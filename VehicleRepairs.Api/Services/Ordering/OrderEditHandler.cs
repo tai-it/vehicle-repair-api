@@ -106,7 +106,7 @@
 
             if (isStatusChange)
             {
-                await fcmService.SendToDevice(order);
+                await fcmService.SendNotifications(fcmService.GetNotificationsByOrder(order));
             }
 
             return new ResponseModel()

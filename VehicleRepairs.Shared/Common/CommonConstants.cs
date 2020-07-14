@@ -41,11 +41,6 @@
             public const string DONE = "Đã hoàn thành";
         }
 
-        public class Ambulatory
-        {
-            public const decimal COEFFICIENT = 8;
-        }
-
         public class NotificationTypes
         {
             public const string ORDER_TRACKING = "ORDER_TRACKING";

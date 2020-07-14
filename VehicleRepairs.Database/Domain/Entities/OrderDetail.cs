@@ -6,7 +6,7 @@
     using VehicleRepairs.Shared.Common;
     
     [Table("OrderDetails")]
-    public class OrderDetail : BaseEntity
+    public class OrderDetail
     {
         [Required]
         public Guid ServiceId { get; set; }

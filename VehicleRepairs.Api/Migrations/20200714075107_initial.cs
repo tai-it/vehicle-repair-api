@@ -161,6 +161,38 @@ namespace VehicleRepairs.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Notifications",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    IsActived = table.Column<bool>(nullable: false),
+                    CreatedOn = table.Column<DateTime>(nullable: true),
+                    CreatedBy = table.Column<Guid>(nullable: true),
+                    UpdatedOn = table.Column<DateTime>(nullable: true),
+                    UpdatedBy = table.Column<Guid>(nullable: true),
+                    DeletedBy = table.Column<Guid>(nullable: true),
+                    DeletedOn = table.Column<DateTime>(nullable: true),
+                    Type = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    Body = table.Column<string>(nullable: true),
+                    Data = table.Column<string>(nullable: true),
+                    IsSeen = table.Column<bool>(nullable: false),
+                    IsSent = table.Column<bool>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notifications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Notifications_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Stations",
                 columns: table => new
                 {
@@ -180,6 +212,7 @@ namespace VehicleRepairs.Api.Migrations
                     Vehicle = table.Column<string>(nullable: false),
                     IsAvailable = table.Column<bool>(nullable: false),
                     HasAmbulatory = table.Column<bool>(nullable: false),
+                    Coefficient = table.Column<decimal>(nullable: false),
                     UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -298,63 +331,15 @@ namespace VehicleRepairs.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Notifications",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    IsActived = table.Column<bool>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: true),
-                    CreatedBy = table.Column<Guid>(nullable: true),
-                    UpdatedOn = table.Column<DateTime>(nullable: true),
-                    UpdatedBy = table.Column<Guid>(nullable: true),
-                    DeletedBy = table.Column<Guid>(nullable: true),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
-                    Body = table.Column<string>(nullable: true),
-                    Type = table.Column<string>(nullable: true),
-                    IsSeen = table.Column<bool>(nullable: false),
-                    IsSent = table.Column<bool>(nullable: false),
-                    Target = table.Column<string>(nullable: true),
-                    OrderId = table.Column<Guid>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Notifications", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Notifications_Orders_OrderId",
-                        column: x => x.OrderId,
-                        principalTable: "Orders",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Notifications_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "OrderDetails",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    IsActived = table.Column<bool>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: true),
-                    CreatedBy = table.Column<Guid>(nullable: true),
-                    UpdatedOn = table.Column<DateTime>(nullable: true),
-                    UpdatedBy = table.Column<Guid>(nullable: true),
-                    DeletedBy = table.Column<Guid>(nullable: true),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
                     ServiceId = table.Column<Guid>(nullable: false),
                     OrderId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderDetails", x => x.Id);
+                    table.PrimaryKey("PK_OrderDetails", x => new { x.OrderId, x.ServiceId });
                     table.ForeignKey(
                         name: "FK_OrderDetails_Orders_OrderId",
                         column: x => x.OrderId,
@@ -407,19 +392,9 @@ namespace VehicleRepairs.Api.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Notifications_OrderId",
-                table: "Notifications",
-                column: "OrderId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Notifications_UserId",
                 table: "Notifications",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_OrderId",
-                table: "OrderDetails",
-                column: "OrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_ServiceId",

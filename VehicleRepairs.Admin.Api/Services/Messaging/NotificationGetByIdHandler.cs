@@ -24,11 +24,6 @@
             var notification = await this.db.Notifications
                 .Where(x => x.User.PhoneNumber == request.PhoneNumber && x.Id == request.Id)
                     .Include(x => x.User)
-                    .Include(x => x.Order)
-                        .ThenInclude(x => x.OrderDetails)
-                            .ThenInclude(x => x.Service)
-                    .Include(x => x.Order)
-                        .ThenInclude(x => x.Station)
                                 .FirstOrDefaultAsync();
 
             if (notification == null)

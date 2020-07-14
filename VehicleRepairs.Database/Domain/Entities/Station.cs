@@ -11,6 +11,8 @@
     {
         public Station() : base()
         {
+            Orders = new List<Order>();
+            Services = new List<Service>();
             Reviews = new List<Review>();
         }
 
@@ -31,7 +33,11 @@
 
         public bool IsAvailable { get; set; }
 
+        [Required]
         public bool HasAmbulatory { get; set; }
+
+        [Required]
+        public decimal Coefficient { get; set; }
 
         public int? StarRating
         {

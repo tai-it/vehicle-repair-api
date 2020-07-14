@@ -4,9 +4,7 @@
 
     public class StationOwner
     {
-        public StationOwner()
-        {
-        }
+        public StationOwner() { }
 
         public StationOwner(User user)
         {

@@ -11,6 +11,10 @@
         {
             CreatedOn = DateTime.Now;
             IsActive = true;
+            UserRoles = new List<UserRole>();
+            Stations = new List<Station>();
+            Orders = new List<Order>();
+            Notifications = new List<Notification>();
         }
 
         public string SecurityNumber { get; set; }
