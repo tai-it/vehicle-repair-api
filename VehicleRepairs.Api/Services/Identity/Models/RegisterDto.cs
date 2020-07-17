@@ -39,6 +39,8 @@
 
         public string DeviceToken { get; set; }
 
+        public bool PhoneNumberConfirmed { get; set; }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (Role != CommonConstants.Roles.STATION && Role != CommonConstants.Roles.USER)
