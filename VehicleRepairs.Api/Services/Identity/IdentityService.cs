@@ -20,6 +20,8 @@
     {
         Task<ResponseModel> LoginAsync(LoginDto model);
 
+        Task<ResponseModel> CheckIfPhoneIxistsAsync(string phoneNumber);
+
         Task<ResponseModel> RegisterAsync(RegisterDto model);
 
         Task<PagedList<UserBaseViewModel>> GetUsersAsync(BaseRequestModel request);
@@ -67,6 +69,17 @@
             {
                 StatusCode = System.Net.HttpStatusCode.BadRequest,
                 Message = "Thông tin tài khoản hoặc mật khẩu không chính xác"
+            };
+        }
+
+        public async Task<ResponseModel> CheckIfPhoneIxistsAsync(string phoneNumber)
+        {
+            var user = await this._userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
+
+            return new ResponseModel()
+            {
+                StatusCode = System.Net.HttpStatusCode.OK,
+                Data = user != null
             };
         }
 

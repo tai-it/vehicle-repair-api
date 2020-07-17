@@ -41,6 +41,14 @@
         }
 
         [AllowAnonymous]
+        [HttpPost("{phoneNumber}")]
+        public async Task<IActionResult> CheckIfExists(string phoneNumber)
+        {
+            var responseModel = await _identityService.CheckIfPhoneIxistsAsync(phoneNumber);
+            return new CustomActionResult(responseModel);
+        }
+
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto model)
         {
