@@ -26,6 +26,7 @@
                 StationOwner = station.User.Name;
                 TotalOrder = completedOrders.Count;
                 TotalService = station.Services.Count;
+                CreatedOn = station.CreatedOn;
             }
         }
 
@@ -40,5 +41,7 @@
         public int TotalService { get; set; }
 
         public decimal? TotalRevenue { get; set; } = 0;
+
+        public DateTime? CreatedOn { get; set; }
     }
 }
