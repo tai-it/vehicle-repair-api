@@ -7,7 +7,5 @@
     public class NotificationGetByIdRequest : IRequest<ResponseModel>
     {
         public Guid Id { get; set; }
-
-        public string PhoneNumber { get; set; }
     }
 }

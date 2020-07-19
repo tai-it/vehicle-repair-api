@@ -78,6 +78,10 @@
             {
                 throw e;
             }
+
+            this.db.Notifications.Add(notify);
+
+            await this.db.SaveChangesAsync();
         }
 
         public async Task SendNotifications(List<Notification> notifications)

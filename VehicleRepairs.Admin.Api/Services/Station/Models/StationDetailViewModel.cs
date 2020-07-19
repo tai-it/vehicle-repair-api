@@ -7,7 +7,10 @@
 
     public class StationDetailViewModel : StationBaseViewModel
     {
-        public StationDetailViewModel() : base() { }
+        public StationDetailViewModel() : base()
+        {
+            Services = new List<ServiceViewModel>();
+        }
 
         public StationDetailViewModel(Station station) : base(station)
         {

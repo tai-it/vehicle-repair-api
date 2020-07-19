@@ -23,7 +23,7 @@
 
         public class Vehicles
         {
-            public const string MOTOBIKE = "Motobike";
+            public const string MOTORBIKE = "Motorbike";
 
             public const string CAR = "Car";
         }

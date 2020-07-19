@@ -37,7 +37,7 @@
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (Vehicle != CommonConstants.Vehicles.MOTOBIKE && Vehicle != CommonConstants.Vehicles.CAR)
+            if (Vehicle != CommonConstants.Vehicles.MOTORBIKE && Vehicle != CommonConstants.Vehicles.CAR)
             {
                 yield return new ValidationResult("Không tìm thấy phương tiện này", new string[] { "Vehicle" });
             }

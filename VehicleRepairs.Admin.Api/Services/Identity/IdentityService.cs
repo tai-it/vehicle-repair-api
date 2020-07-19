@@ -73,7 +73,8 @@
                 Name = model.Name ?? null,
                 PhoneNumber = model.PhoneNumber,
                 Address = model.Address ?? null,
-                DeviceToken = model.DeviceToken ?? null
+                DeviceToken = model.DeviceToken ?? null,
+                PhoneNumberConfirmed = model.PhoneNumberConfirmed
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);

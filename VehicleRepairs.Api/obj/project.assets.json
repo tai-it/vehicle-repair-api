@@ -4128,19 +4128,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tai.tran\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
+      "projectUniqueName": "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
       "projectName": "VehicleRepairs.Api",
-      "projectPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
-      "packagesPath": "C:\\Users\\tai.tran\\.nuget\\packages\\",
-      "outputPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Api\\obj\\",
+      "projectPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tai.tran\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4153,8 +4153,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj": {
-              "projectPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj"
+            "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj": {
+              "projectPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj"
             }
           }
         }

@@ -11,10 +11,13 @@
     {
         private string _phoneNumber;
 
+        [Required(ErrorMessage = "Tên là trường bắt buộc")]
+        [StringLength(255, ErrorMessage = "Tên không hợp lệ", MinimumLength = 2)]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Số điện thoại là trường bắt buộc")]
         [Phone(ErrorMessage = "Số điện thoại không hợp lệ")]
+        [StringLength(11, ErrorMessage = "Số điện thoại không hợp lệ", MinimumLength = 10)]
         public string PhoneNumber
         {
             get { return this._phoneNumber; }
@@ -26,6 +29,7 @@
 
         [Required(ErrorMessage = "Mật khẩu là trường bắt buộc")]
         [StringLength(100, ErrorMessage = "Mật khẩu không hợp lệ (8 - 100 kí tự)", MinimumLength = 8)]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$", ErrorMessage = "Mật khẩu phải chứa ít nhất một chữ hoa, chữ thường, số và kí tự đặc biệt")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Vai trò là trường bắt buộc")]
@@ -35,9 +39,12 @@
 
         public string DeviceToken { get; set; }
 
+        [Required(ErrorMessage = "Tình trạng số điện thoại là trường bắt buộc")]
+        public bool PhoneNumberConfirmed { get; set; }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (Role != CommonConstants.Roles.STATION && Role != CommonConstants.Roles.USER && Role != CommonConstants.Roles.ADMIN)
+            if (Role != CommonConstants.Roles.STATION && Role != CommonConstants.Roles.USER)
             {
                 yield return new ValidationResult("Không tìm thấy vai trò này", new string[] { "Role" });
             }

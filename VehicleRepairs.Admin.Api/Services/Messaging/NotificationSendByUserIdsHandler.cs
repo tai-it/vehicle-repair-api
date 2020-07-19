@@ -1,4 +1,4 @@
-﻿namespace VehicleRepairs.Api.Services.Messaging
+﻿namespace VehicleRepairs.Admin.Api.Services.Messaging
 {
     using MediatR;
     using Microsoft.EntityFrameworkCore;
