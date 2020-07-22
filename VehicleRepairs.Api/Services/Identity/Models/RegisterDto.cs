@@ -39,6 +39,7 @@
 
         public string DeviceToken { get; set; }
 
+        [Required(ErrorMessage = "Tình trạng số điện thoại là trường bắt buộc")]
         public bool PhoneNumberConfirmed { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

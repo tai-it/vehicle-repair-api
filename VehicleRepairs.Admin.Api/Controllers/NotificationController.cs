@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using System;
-    using System.Security.Claims;
     using System.Threading;
     using System.Threading.Tasks;
     using VehicleRepairs.Admin.Api.Infrastructure.ActionResults;
@@ -26,28 +25,21 @@
         }
 
         [HttpGet]
-        public async Task<PagedList<NotificationDetailViewModel>> GetAll([FromQuery] NotificationPagedListRequest request, CancellationToken cancellationToken)
+        public async Task<PagedList<NotificationBaseViewModel>> GetAll([FromQuery] NotificationPagedListRequest request, CancellationToken cancellationToken)
         {
-            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            request.PhoneNumber = phoneNumber;
             return await this.mediator.Send(request, cancellationToken);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
         {
-            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var request = new NotificationGetByIdRequest() 
-            { 
-                Id = id,
-                PhoneNumber = phoneNumber
-            };
+            var request = new NotificationGetByIdRequest() { Id = id };
             var responseModel = await this.mediator.Send(request, cancellationToken);
             return new CustomActionResult(responseModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendNotification([FromBody] SendNotificationRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> SendNotifications([FromBody] NotificationSendByUserIdsRequest request, CancellationToken cancellationToken)
         {
             var responseModel = await this.mediator.Send(request, cancellationToken);
             return new CustomActionResult(responseModel);

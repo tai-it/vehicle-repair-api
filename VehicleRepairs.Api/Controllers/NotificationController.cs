@@ -47,13 +47,6 @@
             return new CustomActionResult(responseModel);
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> SendNotifications([FromBody] NotificationSendByUserIdsRequest request, CancellationToken cancellationToken)
-        //{
-        //    var responseModel = await this.mediator.Send(request, cancellationToken);
-        //    return new CustomActionResult(responseModel);
-        //}
-
         [HttpPut]
         [Authorize]
         public async Task<IActionResult> MarkAllAsReadAsync(CancellationToken cancellationToken)

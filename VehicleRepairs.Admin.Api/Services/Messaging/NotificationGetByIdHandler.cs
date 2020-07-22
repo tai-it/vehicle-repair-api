@@ -22,9 +22,9 @@
         public async Task<ResponseModel> Handle(NotificationGetByIdRequest request, CancellationToken cancellationToken)
         {
             var notification = await this.db.Notifications
-                .Where(x => x.User.PhoneNumber == request.PhoneNumber && x.Id == request.Id)
+                .Where(x => x.Id == request.Id)
                     .Include(x => x.User)
-                                .FirstOrDefaultAsync();
+                        .FirstOrDefaultAsync();
 
             if (notification == null)
             {
@@ -35,14 +35,27 @@
                 };
             }
 
-            notification.IsSeen = true;
+            if (notification.Type == CommonConstants.NotificationTypes.ORDER_TRACKING)
+            {
+                var order = await this.db.Orders
+                    .Where(x => x.Id == new Guid(notification.Data))
+                    .Include(x => x.User)
+                        .Include(x => x.Station)
+                    .Include(x => x.OrderDetails)
+                        .ThenInclude(x => x.Service)
+                    .FirstOrDefaultAsync();
 
-            await this.db.SaveChangesAsync(cancellationToken);
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.OK,
+                    Data = new NotificationDetailViewModel(notification, order)
+                };
+            }
 
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
-                Data = new NotificationDetailViewModel(notification)
+                Data = new NotificationBaseViewModel(notification)
             };
         }
     }

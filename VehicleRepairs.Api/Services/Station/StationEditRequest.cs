@@ -33,7 +33,7 @@
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (Vehicle != CommonConstants.Vehicles.MOTOBIKE && Vehicle != CommonConstants.Vehicles.CAR)
+            if (!string.IsNullOrEmpty(Vehicle) && Vehicle != CommonConstants.Vehicles.MOTORBIKE && Vehicle != CommonConstants.Vehicles.CAR)
             {
                 yield return new ValidationResult("Không tìm thấy phương tiện này", new string[] { "Vehicle" });
             }
@@ -51,7 +51,7 @@
                 }
             }
 
-            if (Name != null)
+            if (!string.IsNullOrEmpty(Name))
             {
                 var db = (ApplicationDbContext)validationContext.GetService(typeof(ApplicationDbContext));
 

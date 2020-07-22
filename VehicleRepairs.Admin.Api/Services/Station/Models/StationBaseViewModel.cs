@@ -5,9 +5,7 @@
 
     public class StationBaseViewModel
     {
-        public StationBaseViewModel()
-        {
-        }
+        public StationBaseViewModel() { }
 
         public StationBaseViewModel(Station station)
         {
@@ -21,6 +19,8 @@
                 Vehicle = station.Vehicle;
                 IsAvailable = station.IsAvailable;
                 HasAmbulatory = station.HasAmbulatory;
+                Coefficient = station.Coefficient;
+                CreatedOn = station.CreatedOn;
             }
         }
 
@@ -39,5 +39,9 @@
         public bool IsAvailable { get; set; }
 
         public bool HasAmbulatory { get; set; }
+
+        public decimal Coefficient { get; set; }
+
+        public DateTime? CreatedOn { get; set; }
     }
 }

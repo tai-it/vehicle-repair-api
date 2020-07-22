@@ -12,7 +12,7 @@
     using VehicleRepairs.Database.Domain.Contexts;
     using VehicleRepairs.Shared.Common;
 
-    public class NotificationPagedListHandler : IRequestHandler<NotificationPagedListRequest, PagedList<NotificationDetailViewModel>>
+    public class NotificationPagedListHandler : IRequestHandler<NotificationPagedListRequest, PagedList<NotificationBaseViewModel>>
     {
         private readonly ApplicationDbContext db;
 
@@ -21,13 +21,11 @@
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-        public async Task<PagedList<NotificationDetailViewModel>> Handle(NotificationPagedListRequest request, CancellationToken cancellationToken)
+        public async Task<PagedList<NotificationBaseViewModel>> Handle(NotificationPagedListRequest request, CancellationToken cancellationToken)
         {
             var list = await this.db.Notifications
-                .Where(x => !x.IsDeleted)
-                    .Where(x => x.User.PhoneNumber == request.PhoneNumber)
                         .Include(x => x.User)
-                        .Select(x => new NotificationDetailViewModel(x)).ToListAsync();
+                        .Select(x => new NotificationBaseViewModel(x)).ToListAsync();
 
             var viewModelProperties = this.GetAllPropertyNameOfViewModel();
             var sortPropertyName = !string.IsNullOrEmpty(request.SortName) ? request.SortName.ToLower() : string.Empty;
@@ -38,18 +36,18 @@
                 matchedPropertyName = "CreatedOn";
             }
 
-            var viewModelType = typeof(NotificationDetailViewModel);
+            var viewModelType = typeof(NotificationBaseViewModel);
             var sortProperty = viewModelType.GetProperty(matchedPropertyName);
 
             list = request.IsDesc ? list.OrderByDescending(x => sortProperty.GetValue(x, null)).ToList() : list.OrderBy(x => sortProperty.GetValue(x, null)).ToList();
 
-            return new PagedList<NotificationDetailViewModel>(list, request.Offset ?? CommonConstants.Config.DEFAULT_SKIP, request.Limit ?? CommonConstants.Config.DEFAULT_TAKE);
+            return new PagedList<NotificationBaseViewModel>(list, request.Offset ?? CommonConstants.Config.DEFAULT_SKIP, request.Limit ?? CommonConstants.Config.DEFAULT_TAKE);
         }
 
         private List<string> GetAllPropertyNameOfViewModel()
         {
-            var notificationDetailViewModel = new NotificationDetailViewModel();
-            var type = notificationDetailViewModel.GetType();
+            var notificationBaseViewModel = new NotificationBaseViewModel();
+            var type = notificationBaseViewModel.GetType();
 
             return ReflectionUtilities.GetAllPropertyNamesOfType(type);
         }
