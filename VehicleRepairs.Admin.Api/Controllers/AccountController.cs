@@ -1,5 +1,6 @@
 ﻿namespace VehicleRepairs.Admin.Api.Controllers
 {
+    using System.Security.Claims;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@
     [Consumes("application/json")]
     [Produces("application/json")]
     [ValidateModel]
+    [Authorize(Roles = CommonConstants.Roles.ADMIN + "," + CommonConstants.Roles.SUPER_ADMIN)]
     public class AccountController : ControllerBase
     {
         private readonly IIdentityService<User> _identityService;
@@ -24,23 +26,29 @@
         }
 
         [HttpGet("users")]
-        [Authorize(Roles = CommonConstants.Roles.ADMIN + "," + CommonConstants.Roles.SUPER_ADMIN)]
         public async Task<PagedList<UserBaseViewModel>> GetUsers([FromQuery] BaseRequestModel request)
         {
             var users = await _identityService.GetUsersAsync(request);
             return users;
         }
 
-        [AllowAnonymous]
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginDto model)
         {
             var responseModel = await _identityService.LoginAsync(model);
             return new CustomActionResult(responseModel);
         }
 
+        [HttpGet("me")]
+        public async Task<IActionResult> GetProfile()
+        {
+            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var responseModel = await _identityService.GetProfileAsync(phoneNumber);
+            return new CustomActionResult(responseModel);
+        }
+
         [HttpPost("register")]
-        [Authorize(Roles = CommonConstants.Roles.ADMIN + "," + CommonConstants.Roles.SUPER_ADMIN)]
         public async Task<IActionResult> Register([FromBody] RegisterDto model)
         {
             var responseModel = await _identityService.RegisterAsync(model);
@@ -48,7 +56,6 @@
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = CommonConstants.Roles.ADMIN + "," + CommonConstants.Roles.SUPER_ADMIN)]
         public async Task<IActionResult> Disabse(string id, [FromBody] DisableUserRequest request)
         {
             request.UserId = id;

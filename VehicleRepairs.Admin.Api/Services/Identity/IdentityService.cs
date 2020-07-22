@@ -20,6 +20,8 @@
     {
         Task<ResponseModel> LoginAsync(LoginDto model);
 
+        Task<ResponseModel> GetProfileAsync(string phoneNumber);
+
         Task<ResponseModel> RegisterAsync(RegisterDto model);
 
         Task<ResponseModel> DisableUserAsync(DisableUserRequest request);
@@ -51,16 +53,45 @@
             {
                 var appUser = _userManager.Users.SingleOrDefault(r => r.PhoneNumber == model.PhoneNumber);
                 var roles = await _userManager.GetRolesAsync(appUser);
-                return new ResponseModel()
+                if (roles.Any(x => x == CommonConstants.Roles.ADMIN || x == CommonConstants.Roles.SUPER_ADMIN))
                 {
-                    StatusCode = System.Net.HttpStatusCode.OK,
-                    Data = GenerateJwtToken(appUser, roles.ToArray())
-                };
+                    return new ResponseModel()
+                    {
+                        StatusCode = System.Net.HttpStatusCode.OK,
+                        Data = GenerateJwtToken(appUser, roles.ToArray())
+                    };
+                }
             }
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.BadRequest,
                 Message = "Thông tin tài khoản hoặc mật khẩu không chính xác"
+            };
+        }
+
+        public async Task<ResponseModel> GetProfileAsync(string phoneNumber)
+        {
+            var user = await _userManager.Users
+                    .Include(x => x.UserRoles)
+                        .ThenInclude(x => x.Role)
+                    .Include(x => x.Orders)
+                        .ThenInclude(x => x.OrderDetails)
+                            .ThenInclude(x => x.Service)
+                    .FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
+
+            if (user == null)
+            {
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.BadRequest,
+                    Message = "Phiên đăng nhập đã hết hạn hoặc tài khoản không còn tồn tại"
+                };
+            }
+
+            return new ResponseModel()
+            {
+                StatusCode = System.Net.HttpStatusCode.OK,
+                Data = new UserBaseViewModel(user)
             };
         }
 
@@ -115,6 +146,17 @@
                 {
                     StatusCode = System.Net.HttpStatusCode.NotFound,
                     Message = "Tài khoản này không tìm thấy hoặc đã bị khoá"
+                };
+            }
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            if (roles.Any(x => x == CommonConstants.Roles.SUPER_ADMIN))
+            {
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.BadRequest,
+                    Message = "Bạn không thể xoá tài khoản này"
                 };
             }
 

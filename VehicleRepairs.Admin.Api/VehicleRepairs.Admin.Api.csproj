@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <None Include="appsettings.Production.json" />
+    <None Include="bin\Release\netcoreapp3.1\publish\appsettings.Production.json" />
   </ItemGroup>
 
   <ItemGroup>
