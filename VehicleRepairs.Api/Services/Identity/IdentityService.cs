@@ -20,7 +20,7 @@
     {
         Task<ResponseModel> LoginAsync(LoginDto model);
 
-        Task<ResponseModel> CheckIfPhoneIxistsAsync(string phoneNumber);
+        Task<ResponseModel> CheckIfPhoneExistsAsync(string phoneNumber);
 
         Task<ResponseModel> RegisterAsync(RegisterDto model);
 
@@ -72,7 +72,7 @@
             };
         }
 
-        public async Task<ResponseModel> CheckIfPhoneIxistsAsync(string phoneNumber)
+        public async Task<ResponseModel> CheckIfPhoneExistsAsync(string phoneNumber)
         {
             var user = await this._userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
 
@@ -184,9 +184,6 @@
             var user = await _userManager.Users
                     .Include(x => x.UserRoles)
                         .ThenInclude(x => x.Role)
-                    .Include(x => x.Orders)
-                        .ThenInclude(x => x.OrderDetails)
-                            .ThenInclude(x => x.Service)
                     .FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
 
             if (user == null)

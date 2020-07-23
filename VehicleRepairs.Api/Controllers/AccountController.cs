@@ -44,7 +44,7 @@
         [HttpPost("{phoneNumber}")]
         public async Task<IActionResult> CheckIfExists(string phoneNumber)
         {
-            var responseModel = await _identityService.CheckIfPhoneIxistsAsync(phoneNumber);
+            var responseModel = await _identityService.CheckIfPhoneExistsAsync(phoneNumber);
             return new CustomActionResult(responseModel);
         }
 

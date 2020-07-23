@@ -32,6 +32,13 @@
             return users;
         }
 
+        [HttpGet("users/{id}")]
+        public async Task<IActionResult> GetProfile(string id)
+        {
+            var responseModel = await _identityService.GetByIdAsync(id);
+            return new CustomActionResult(responseModel);
+        }
+
         [HttpPost("login")]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginDto model)
@@ -60,6 +67,15 @@
         {
             request.UserId = id;
             var responseModel = await _identityService.DisableUserAsync(request);
+            return new CustomActionResult(responseModel);
+        }
+
+        [HttpPut("password")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordRequestModel request)
+        {
+            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            request.PhoneNumber = phoneNumber;
+            var responseModel = await _identityService.ChangePasswordAsync(request);
             return new CustomActionResult(responseModel);
         }
     }
