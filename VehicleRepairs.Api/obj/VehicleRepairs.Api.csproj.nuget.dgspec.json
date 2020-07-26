@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj": {}
+    "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj": {}
   },
   "projects": {
-    "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj": {
+    "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
+        "projectUniqueName": "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
         "projectName": "VehicleRepairs.Api",
-        "projectPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
-        "packagesPath": "C:\\Users\\tai.tran\\.nuget\\packages\\",
-        "outputPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Api\\obj\\",
+        "projectPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tai.tran\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj": {
-                "projectPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj"
+              "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj": {
+                "projectPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj"
               }
             }
           }
@@ -147,12 +147,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.2, 3.1.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -161,21 +155,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj": {
+    "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj",
+        "projectUniqueName": "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj",
         "projectName": "VehicleRepairs.Database",
-        "projectPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj",
-        "packagesPath": "C:\\Users\\tai.tran\\.nuget\\packages\\",
-        "outputPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Database\\obj\\",
+        "projectPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tai.tran\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -188,8 +182,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj": {
-                "projectPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj"
+              "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj": {
+                "projectPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj"
               }
             }
           }
@@ -226,32 +220,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.2, 3.1.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj": {
+    "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
+        "projectUniqueName": "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
         "projectName": "VehicleRepairs.Shared",
-        "projectPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
-        "packagesPath": "C:\\Users\\tai.tran\\.nuget\\packages\\",
-        "outputPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Shared\\obj\\",
+        "projectPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tai.tran\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -294,18 +282,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.2, 3.1.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

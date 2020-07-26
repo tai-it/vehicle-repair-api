@@ -176,10 +176,258 @@
                     await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
                 }
             }
+
+            if (await userManager.FindByNameAsync("0987654328") == null)
+            {
+                var user = new User
+                {
+                    Name = "Nguyễn Thành Công",
+                    UserName = "0987654328",
+                    Email = "cong.nguyen@gmail.com",
+                    PhoneNumber = "0987654328",
+                    PhoneNumberConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("0987654329") == null)
+            {
+                var user = new User
+                {
+                    Name = "Nguyễn Hoàng Phúc",
+                    UserName = "0987654329",
+                    Email = "phuc.nguyen@gmail.com",
+                    PhoneNumber = "0987654329",
+                    PhoneNumberConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("0987654310") == null)
+            {
+                var user = new User
+                {
+                    Name = "Đinh Như Luân",
+                    UserName = "0987654310",
+                    Email = "luan.dinh@gmail.com",
+                    PhoneNumber = "0987654310",
+                    PhoneNumberConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("0987654311") == null)
+            {
+                var user = new User
+                {
+                    Name = "Phùng Thanh Độ",
+                    UserName = "0987654311",
+                    Email = "mixi.phung@gmail.com",
+                    PhoneNumber = "0987654311",
+                    PhoneNumberConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("0987654312") == null)
+            {
+                var user = new User
+                {
+                    Name = "Trần Mạnh Tuấn",
+                    UserName = "0987654312",
+                    Email = "tuan.tran@gmail.com",
+                    PhoneNumber = "0987654312",
+                    PhoneNumberConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("0987654313") == null)
+            {
+                var user = new User
+                {
+                    Name = "Nguyễn Trường Giang",
+                    UserName = "0987654313",
+                    Email = "giang.nguyen@gmail.com",
+                    PhoneNumber = "0987654313",
+                    PhoneNumberConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("0987654314") == null)
+            {
+                var user = new User
+                {
+                    Name = "Phan Minh Cường",
+                    UserName = "0987654314",
+                    Email = "cuong.phan@gmail.com",
+                    PhoneNumber = "0987654314",
+                    PhoneNumberConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("0987654315") == null)
+            {
+                var user = new User
+                {
+                    Name = "Nguyễn Trần Duy Nhất",
+                    UserName = "0987654315",
+                    Email = "nhat.nguyen@gmail.com",
+                    PhoneNumber = "0987654315",
+                    PhoneNumberConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("0987654316") == null)
+            {
+                var user = new User
+                {
+                    Name = "Trần Nhất Nguyên",
+                    UserName = "0987654316",
+                    Email = "nguyen.tran@gmail.com",
+                    PhoneNumber = "0987654316",
+                    PhoneNumberConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("0987654317") == null)
+            {
+                var user = new User
+                {
+                    Name = "Trần Quang Thái",
+                    UserName = "0987654317",
+                    Email = "thai.tran@gmail.com",
+                    PhoneNumber = "0987654317",
+                    PhoneNumberConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("0987654318") == null)
+            {
+                var user = new User
+                {
+                    Name = "Hoàng Văn Nghĩa",
+                    UserName = "0987654318",
+                    Email = "nghia.hoang@gmail.com",
+                    PhoneNumber = "0987654318",
+                    PhoneNumberConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("0987654319") == null)
+            {
+                var user = new User
+                {
+                    Name = "Hồ Văn Huy",
+                    UserName = "0987654319",
+                    Email = "huy.ho@gmail.com",
+                    PhoneNumber = "0987654319",
+                    PhoneNumberConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
+                }
+            }
+
+            if (await userManager.FindByNameAsync("0987654320") == null)
+            {
+                var user = new User
+                {
+                    Name = "Nguyễn Thái Hoàng",
+                    UserName = "0987654320",
+                    Email = "hoang.nguyen@gmail.com",
+                    PhoneNumber = "0987654320",
+                    PhoneNumberConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, CommonConstants.Roles.STATION);
+                }
+            }
         }
 
         private static async Task InitStations(ApplicationDbContext db)
         {
+            // Motorbikes
             if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654323") == null)
             {
                 var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654323");
@@ -340,6 +588,528 @@
                     Address = "80 Võ Văn Kiệt, Sơn Trà, Đà Nẵng",
                     Latitude = (decimal)16.0627823,
                     Longitude = (decimal)108.2410708,
+                    Vehicle = CommonConstants.Vehicles.MOTORBIKE,
+                    IsAvailable = true,
+                    HasAmbulatory = true,
+                    Coefficient = 12,
+                    Services = new List<Service>()
+                    {
+                        new Service()
+                        {
+                            Name = "Thay gương",
+                            Price = 65000
+                        },
+                        new Service()
+                        {
+                            Name = "Dán decal",
+                            Price = 500000
+                        },
+                        new Service()
+                        {
+                            Name = "Vá xe",
+                            Price = 20000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay lốp",
+                            Price = 180000
+                        }
+                    }
+                };
+
+                db.Stations.Add(station);
+            }
+
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654327") == null)
+            {
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654327");
+
+                var station = new Station()
+                {
+                    User = owner,
+                    Name = "Hùng Garage",
+                    Address = "200 Nguyễn Hữu Thọ, Hải Châu, Đà Nẵng",
+                    Latitude = (decimal)16.06778,
+                    Longitude = (decimal)108.22083,
+                    Vehicle = CommonConstants.Vehicles.MOTORBIKE,
+                    IsAvailable = true,
+                    HasAmbulatory = true,
+                    Coefficient = 8,
+                    Services = new List<Service>()
+                    {
+                        new Service()
+                        {
+                            Name = "Thay gương",
+                            Price = 65000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay lọc máy",
+                            Price = 350000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay bugi",
+                            Price = 180000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay nhớt",
+                            Price = 160000
+                        },
+                        new Service()
+                        {
+                            Name = "Vá xe",
+                            Price = 20000
+                        }
+                    }
+                };
+
+                db.Stations.Add(station);
+            }
+
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654328") == null)
+            {
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654328");
+
+                var station = new Station()
+                {
+                    User = owner,
+                    Name = "TC Honda",
+                    Address = "90 Tô Hiến Thành, Sơn Trà, Đà Nẵng",
+                    Latitude = (decimal)16.06068,
+                    Longitude = (decimal)108.23256,
+                    Vehicle = CommonConstants.Vehicles.MOTORBIKE,
+                    IsAvailable = true,
+                    HasAmbulatory = true,
+                    Coefficient = 12,
+                    Services = new List<Service>()
+                    {
+                        new Service()
+                        {
+                            Name = "Thay gương",
+                            Price = 65000
+                        },
+                        new Service()
+                        {
+                            Name = "Dán decal",
+                            Price = 500000
+                        },
+                        new Service()
+                        {
+                            Name = "Vá xe",
+                            Price = 20000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay lốp",
+                            Price = 180000
+                        }
+                    }
+                };
+
+                db.Stations.Add(station);
+            }
+
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654329") == null)
+            {
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654329");
+
+                var station = new Station()
+                {
+                    User = owner,
+                    Name = "Phúc Motor",
+                    Address = "25 Trần Cao Vân, Hải Châu, Đà Nẵng",
+                    Latitude = (decimal)16.06778,
+                    Longitude = (decimal)108.22083,
+                    Vehicle = CommonConstants.Vehicles.MOTORBIKE,
+                    IsAvailable = true,
+                    HasAmbulatory = true,
+                    Coefficient = 12,
+                    Services = new List<Service>()
+                    {
+                        new Service()
+                        {
+                            Name = "Thay gương",
+                            Price = 65000
+                        },
+                        new Service()
+                        {
+                            Name = "Dán decal",
+                            Price = 500000
+                        },
+                        new Service()
+                        {
+                            Name = "Vá xe",
+                            Price = 20000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay lốp",
+                            Price = 180000
+                        }
+                    }
+                };
+
+                db.Stations.Add(station);
+            }
+
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654310") == null)
+            {
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654310");
+
+                var station = new Station()
+                {
+                    User = owner,
+                    Name = "Luân Honda",
+                    Address = "130 Nguyễn Thị Thập, Thanh Khê, Đà Nẵng",
+                    Latitude = (decimal)16.0729982,
+                    Longitude = (decimal)108.1746968,
+                    Vehicle = CommonConstants.Vehicles.MOTORBIKE,
+                    IsAvailable = true,
+                    HasAmbulatory = true,
+                    Coefficient = 12,
+                    Services = new List<Service>()
+                    {
+                        new Service()
+                        {
+                            Name = "Thay gương",
+                            Price = 65000
+                        },
+                        new Service()
+                        {
+                            Name = "Dán decal",
+                            Price = 500000
+                        },
+                        new Service()
+                        {
+                            Name = "Vá xe",
+                            Price = 20000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay lốp",
+                            Price = 180000
+                        }
+                    }
+                };
+
+                db.Stations.Add(station);
+            }
+
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654311") == null)
+            {
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654311");
+
+                var station = new Station()
+                {
+                    User = owner,
+                    Name = "Mixi Store",
+                    Address = "116 Lê Duẩn, Hải Châu, Đà Nẵng",
+                    Latitude = (decimal)16.0717262,
+                    Longitude = (decimal)108.2231675,
+                    Vehicle = CommonConstants.Vehicles.MOTORBIKE,
+                    IsAvailable = true,
+                    HasAmbulatory = true,
+                    Coefficient = 12,
+                    Services = new List<Service>()
+                    {
+                        new Service()
+                        {
+                            Name = "Thay gương",
+                            Price = 65000
+                        },
+                        new Service()
+                        {
+                            Name = "Dán decal",
+                            Price = 500000
+                        },
+                        new Service()
+                        {
+                            Name = "Vá xe",
+                            Price = 20000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay lốp",
+                            Price = 180000
+                        }
+                    }
+                };
+
+                db.Stations.Add(station);
+            }
+
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654312") == null)
+            {
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654312");
+
+                var station = new Station()
+                {
+                    User = owner,
+                    Name = "MT Motor",
+                    Address = "88 Trưng Nữ Vương, Hải Châu, Đà Nẵng",
+                    Latitude = (decimal)16.0456208,
+                    Longitude = (decimal)108.2099237,
+                    Vehicle = CommonConstants.Vehicles.MOTORBIKE,
+                    IsAvailable = true,
+                    HasAmbulatory = true,
+                    Coefficient = 12,
+                    Services = new List<Service>()
+                    {
+                        new Service()
+                        {
+                            Name = "Thay gương",
+                            Price = 65000
+                        },
+                        new Service()
+                        {
+                            Name = "Dán decal",
+                            Price = 500000
+                        },
+                        new Service()
+                        {
+                            Name = "Vá xe",
+                            Price = 20000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay lốp",
+                            Price = 180000
+                        }
+                    }
+                };
+
+                db.Stations.Add(station);
+            }
+
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654313") == null)
+            {
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654313");
+
+                var station = new Station()
+                {
+                    User = owner,
+                    Name = "TG Motor",
+                    Address = "96 Duy Tân, Hải Châu, Đà Nẵng",
+                    Latitude = (decimal)16.0483737,
+                    Longitude = (decimal)108.2124706,
+                    Vehicle = CommonConstants.Vehicles.MOTORBIKE,
+                    IsAvailable = true,
+                    HasAmbulatory = true,
+                    Coefficient = 12,
+                    Services = new List<Service>()
+                    {
+                        new Service()
+                        {
+                            Name = "Thay gương",
+                            Price = 65000
+                        },
+                        new Service()
+                        {
+                            Name = "Dán decal",
+                            Price = 500000
+                        },
+                        new Service()
+                        {
+                            Name = "Vá xe",
+                            Price = 20000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay lốp",
+                            Price = 180000
+                        }
+                    }
+                };
+
+                db.Stations.Add(station);
+            }
+
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654314") == null)
+            {
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654314");
+
+                var station = new Station()
+                {
+                    User = owner,
+                    Name = "Mr. Cường Store",
+                    Address = "166 Phan Đăng Lưu, Hải Châu, Đà Nẵng",
+                    Latitude = (decimal)16.0377394,
+                    Longitude = (decimal)108.223675,
+                    Vehicle = CommonConstants.Vehicles.MOTORBIKE,
+                    IsAvailable = true,
+                    HasAmbulatory = true,
+                    Coefficient = 12,
+                    Services = new List<Service>()
+                    {
+                        new Service()
+                        {
+                            Name = "Thay gương",
+                            Price = 65000
+                        },
+                        new Service()
+                        {
+                            Name = "Dán decal",
+                            Price = 500000
+                        },
+                        new Service()
+                        {
+                            Name = "Vá xe",
+                            Price = 20000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay lốp",
+                            Price = 180000
+                        }
+                    }
+                };
+
+                db.Stations.Add(station);
+            }
+
+            // Cars
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654315") == null)
+            {
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654315");
+
+                var station = new Station()
+                {
+                    User = owner,
+                    Name = "Nhất Garage",
+                    Address = "07 Đặng Vũ Hỷ, Sơn Trà, Đà Nẵng",
+                    Latitude = (decimal)16.06068,
+                    Longitude = (decimal)108.23256,
+                    Vehicle = CommonConstants.Vehicles.CAR,
+                    IsAvailable = true,
+                    HasAmbulatory = true,
+                    Coefficient = 12,
+                    Services = new List<Service>()
+                    {
+                        new Service()
+                        {
+                            Name = "Thay gương",
+                            Price = 2100000
+                        },
+                        new Service()
+                        {
+                            Name = "Dán decal",
+                            Price = 1500000
+                        },
+                        new Service()
+                        {
+                            Name = "Vá xe",
+                            Price = 250000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay lốp",
+                            Price = 800000
+                        }
+                    }
+                };
+
+                db.Stations.Add(station);
+            }
+
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654316") == null)
+            {
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654316");
+
+                var station = new Station()
+                {
+                    User = owner,
+                    Name = "Nguyên Garage",
+                    Address = "222 Ngô Quyền, Sơn Trà, Đà Nẵng",
+                    Latitude = (decimal)16.0759776,
+                    Longitude = (decimal)108.2310232,
+                    Vehicle = CommonConstants.Vehicles.CAR,
+                    IsAvailable = true,
+                    HasAmbulatory = true,
+                    Coefficient = 12,
+                    Services = new List<Service>()
+                    {
+                        new Service()
+                        {
+                            Name = "Thay gương",
+                            Price = 2100000
+                        },
+                        new Service()
+                        {
+                            Name = "Dán decal",
+                            Price = 1500000
+                        },
+                        new Service()
+                        {
+                            Name = "Vá xe",
+                            Price = 250000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay lốp",
+                            Price = 800000
+                        }
+                    }
+                };
+
+                db.Stations.Add(station);
+            }
+
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654317") == null)
+            {
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654317");
+
+                var station = new Station()
+                {
+                    User = owner,
+                    Name = "QT Garage",
+                    Address = "18 Võ Văn Kiệt, Sơn Trà, Đà Nẵng",
+                    Latitude = (decimal)16.0627823,
+                    Longitude = (decimal)108.2410708,
+                    Vehicle = CommonConstants.Vehicles.CAR,
+                    IsAvailable = true,
+                    HasAmbulatory = true,
+                    Coefficient = 12,
+                    Services = new List<Service>()
+                    {
+                        new Service()
+                        {
+                            Name = "Thay gương",
+                            Price = 2100000
+                        },
+                        new Service()
+                        {
+                            Name = "Dán decal",
+                            Price = 1500000
+                        },
+                        new Service()
+                        {
+                            Name = "Vá xe",
+                            Price = 250000
+                        },
+                        new Service()
+                        {
+                            Name = "Thay lốp",
+                            Price = 800000
+                        }
+                    }
+                };
+
+                db.Stations.Add(station);
+            }
+
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654318") == null)
+            {
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654318");
+
+                var station = new Station()
+                {
+                    User = owner,
+                    Name = "Nghĩa Garage",
+                    Address = "99 Lê Độ, Thanh Khê, Đà Nẵng",
+                    Latitude = (decimal)16.0660162,
+                    Longitude = (decimal)108.2021971,
                     Vehicle = CommonConstants.Vehicles.CAR,
                     IsAvailable = true,
                     HasAmbulatory = true,
@@ -372,15 +1142,58 @@
                 db.Stations.Add(station);
             }
 
-            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654327") == null)
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654319") == null)
             {
-                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654327");
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654319");
 
                 var station = new Station()
                 {
                     User = owner,
-                    Name = "Hùng Garage",
-                    Address = "200 Nguyễn Hữu Thọ, Hải Châu, Đà Nẵng",
+                    Name = "Huy Mers",
+                    Address = "118 Điện Biên Phủ, Thanh Khê, Đà Nẵng",
+                    Latitude = (decimal)16.0667234,
+                    Longitude = (decimal)108.2004599,
+                    Vehicle = CommonConstants.Vehicles.CAR,
+                    IsAvailable = true,
+                    HasAmbulatory = true,
+                    Coefficient = 12,
+                    Services = new List<Service>()
+                    {
+                        new Service()
+                        {
+                            Name = "Thay gương",
+                            Price = 2000000
+                        },
+                        new Service()
+                        {
+                            Name = "Dán decal",
+                            Price = 1600000
+                        },
+                        new Service()
+                        {
+                            Name = "Làm lốp",
+                            Price = 1500000
+                        },
+                        new Service()
+                        {
+                            Name = "Vá xe",
+                            Price = 200000
+                        }
+                    }
+                };
+
+                db.Stations.Add(station);
+            }
+
+            if (await db.Stations.FirstOrDefaultAsync(x => x.User.PhoneNumber == "0987654320") == null)
+            {
+                var owner = await db.Users.FirstOrDefaultAsync(x => x.PhoneNumber == "0987654320");
+
+                var station = new Station()
+                {
+                    User = owner,
+                    Name = "TH Garage",
+                    Address = "16 Lê Văn Linh, Hải Châu, Đà Nẵng",
                     Latitude = (decimal)16.06778,
                     Longitude = (decimal)108.22083,
                     Vehicle = CommonConstants.Vehicles.CAR,
@@ -392,22 +1205,22 @@
                         new Service()
                         {
                             Name = "Thay gương",
-                            Price = 2100000
+                            Price = 2000000
                         },
                         new Service()
                         {
                             Name = "Dán decal",
+                            Price = 1600000
+                        },
+                        new Service()
+                        {
+                            Name = "Làm lốp",
                             Price = 1500000
                         },
                         new Service()
                         {
                             Name = "Vá xe",
-                            Price = 250000
-                        },
-                        new Service()
-                        {
-                            Name = "Thay lốp",
-                            Price = 800000
+                            Price = 200000
                         }
                     }
                 };

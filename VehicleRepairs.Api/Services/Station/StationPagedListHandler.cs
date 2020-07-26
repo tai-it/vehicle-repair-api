@@ -27,7 +27,7 @@
 
         public async Task<PagedList<StationDetailViewModel>> Handle(StationPagedListRequest request, CancellationToken cancellationToken)
         {
-            var stations = await _cacheManager.GetAndSetAsync("list_stations", 60, async () =>
+            var stations = await _cacheManager.GetAndSetAsync("list_stations", 30, async () =>
             {
                 return await this.db.Stations
                     .Where(x => !x.IsDeleted)

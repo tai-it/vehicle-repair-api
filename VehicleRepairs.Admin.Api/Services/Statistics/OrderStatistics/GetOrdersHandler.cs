@@ -25,7 +25,7 @@
         {
             var list = await this.db.Orders
                 .Where(x => (x.CreatedOn >= request.FromDate && x.CreatedOn < request.ToDate))
-                    .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Address.Contains(request.Query)))
+                    .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Status.Equals(request.Query)))
                         .Include(x => x.OrderDetails)
                             .ThenInclude(x => x.Service)
                         .Include(x => x.User)
