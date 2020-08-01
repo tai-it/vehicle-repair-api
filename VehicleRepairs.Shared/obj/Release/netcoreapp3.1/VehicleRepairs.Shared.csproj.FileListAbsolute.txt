@@ -16,3 +16,12 @@ E:\SuaXe4.0\api\VehicleRepairs.Shared\obj\Release\netcoreapp3.1\VehicleRepairs.S
 E:\SuaXe4.0\api\VehicleRepairs.Shared\obj\Release\netcoreapp3.1\VehicleRepairs.Shared.csproj.CoreCompileInputs.cache
 E:\SuaXe4.0\api\VehicleRepairs.Shared\obj\Release\netcoreapp3.1\VehicleRepairs.Shared.dll
 E:\SuaXe4.0\api\VehicleRepairs.Shared\obj\Release\netcoreapp3.1\VehicleRepairs.Shared.pdb
+E:\VRS\api\VehicleRepairs.Shared\bin\Release\netcoreapp3.1\VehicleRepairs.Shared.deps.json
+E:\VRS\api\VehicleRepairs.Shared\bin\Release\netcoreapp3.1\VehicleRepairs.Shared.dll
+E:\VRS\api\VehicleRepairs.Shared\bin\Release\netcoreapp3.1\VehicleRepairs.Shared.pdb
+E:\VRS\api\VehicleRepairs.Shared\obj\Release\netcoreapp3.1\VehicleRepairs.Shared.csprojAssemblyReference.cache
+E:\VRS\api\VehicleRepairs.Shared\obj\Release\netcoreapp3.1\VehicleRepairs.Shared.AssemblyInfoInputs.cache
+E:\VRS\api\VehicleRepairs.Shared\obj\Release\netcoreapp3.1\VehicleRepairs.Shared.AssemblyInfo.cs
+E:\VRS\api\VehicleRepairs.Shared\obj\Release\netcoreapp3.1\VehicleRepairs.Shared.csproj.CoreCompileInputs.cache
+E:\VRS\api\VehicleRepairs.Shared\obj\Release\netcoreapp3.1\VehicleRepairs.Shared.dll
+E:\VRS\api\VehicleRepairs.Shared\obj\Release\netcoreapp3.1\VehicleRepairs.Shared.pdb

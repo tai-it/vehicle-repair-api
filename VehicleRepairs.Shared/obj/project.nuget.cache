@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MIZ8YsaHek17wiB+hNE5AV8vZi59fG4hLZYsvhe3SJTnkXdLKzCFp1iBM2Jii2Qm+fGPJeY8iQBQqopkWYe+VQ==",
+  "dgSpecHash": "naYKVYqgyTYs+4Fpg03VkYwEEJUlJLOxCC7n3Q1KxG91xxifSBOXuhuCJqW2+Ni5vgBMCfCq7dvmzcb7ixz5VQ==",
   "success": true,
-  "projectFilePath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
+  "projectFilePath": "E:\\VRS\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.1.5\\microsoft.aspnetcore.http.features.3.1.5.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.5\\microsoft.extensions.caching.abstractions.3.1.5.nupkg.sha512",

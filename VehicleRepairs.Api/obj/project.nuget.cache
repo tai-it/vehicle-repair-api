@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3UGMuVJDh20PnGy1fHE4Ta8irm8dZuJWVP3x8cug9Q/1vlIrInHZdQ/JSZjumlJlt0peTr+4Bu4uhe4PbOOLqw==",
+  "dgSpecHash": "0dZ6vi+LKFXI7n6VdLC3p0HsKquwcpjvLZkaG1RjEzlBGy/mZz+iGGL3iRPlcVU7MB+2hUklUqY3x8VZ4Gk9/Q==",
   "success": true,
-  "projectFilePath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
+  "projectFilePath": "E:\\VRS\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",

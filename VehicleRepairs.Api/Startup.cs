@@ -16,6 +16,7 @@ namespace VehicleRepairs.Api
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Reflection;
     using System.Text;
     using VehicleRepairs.Api.Infrastructure.Filters;
     using VehicleRepairs.Api.Infrastructure.Utilities;
@@ -135,6 +136,10 @@ namespace VehicleRepairs.Api
                     }
                 });
 
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
                 c.DescribeAllParametersInCamelCase();
             });
 
@@ -208,7 +213,7 @@ namespace VehicleRepairs.Api
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.RoutePrefix = "";
+                c.RoutePrefix = string.Empty;
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Vehicle Repair API V1");
             });
 

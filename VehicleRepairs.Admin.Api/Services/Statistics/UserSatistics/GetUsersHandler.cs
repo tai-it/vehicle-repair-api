@@ -24,7 +24,7 @@
         public async Task<PagedList<UserBaseViewModel>> Handle(GetUsersRequest request, CancellationToken cancellationToken)
         {
             var users = await this.db.Users
-                .Where(x => (x.CreatedOn >= request.FromDate && x.CreatedOn < request.ToDate))
+                .Where(x => (x.CreatedOn.Value.Date >= request.FromDate.Date && x.CreatedOn.Value.Date < request.ToDate.Date))
                 .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Name.Contains(request.Query)))
                 .Include(x => x.UserRoles)
                         .ThenInclude(x => x.Role)

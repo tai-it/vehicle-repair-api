@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj": {}
+    "E:\\VRS\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj": {}
   },
   "projects": {
-    "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj": {
+    "E:\\VRS\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
+        "projectUniqueName": "E:\\VRS\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
         "projectName": "VehicleRepairs.Api",
-        "projectPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
+        "projectPath": "E:\\VRS\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Api\\obj\\",
+        "outputPath": "E:\\VRS\\api\\VehicleRepairs.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj": {
-                "projectPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj"
+              "E:\\VRS\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj": {
+                "projectPath": "E:\\VRS\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj"
               }
             }
           }
@@ -159,14 +159,14 @@
         }
       }
     },
-    "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj": {
+    "E:\\VRS\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj",
+        "projectUniqueName": "E:\\VRS\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj",
         "projectName": "VehicleRepairs.Database",
-        "projectPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj",
+        "projectPath": "E:\\VRS\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Database\\obj\\",
+        "outputPath": "E:\\VRS\\api\\VehicleRepairs.Database\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -182,8 +182,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj": {
-                "projectPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj"
+              "E:\\VRS\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj": {
+                "projectPath": "E:\\VRS\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj"
               }
             }
           }
@@ -229,14 +229,14 @@
         }
       }
     },
-    "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj": {
+    "E:\\VRS\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
+        "projectUniqueName": "E:\\VRS\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
         "projectName": "VehicleRepairs.Shared",
-        "projectPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
+        "projectPath": "E:\\VRS\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\obj\\",
+        "outputPath": "E:\\VRS\\api\\VehicleRepairs.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

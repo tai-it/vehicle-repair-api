@@ -23,6 +23,9 @@
             _identityService = identityService;
         }
 
+        /// <summary>
+        /// Get logged in user's profile
+        /// </summary>
         [Authorize]
         [HttpGet("me")]
         public async Task<IActionResult> GetProfile()

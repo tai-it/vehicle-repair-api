@@ -47,5 +47,14 @@
 
             public const string NOTIFY = "NOTIFY";
         }
+
+        public class ChartTypes
+        {
+            public const string RANGE = "RANGE";
+
+            public const string MONTH = "MONTH";
+
+            public const string YEAR = "YEAR";
+        }
     }
 }

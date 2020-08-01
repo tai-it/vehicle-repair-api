@@ -240,11 +240,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
+      "projectUniqueName": "E:\\VRS\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
       "projectName": "VehicleRepairs.Shared",
-      "projectPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
+      "projectPath": "E:\\VRS\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "E:\\SuaXe4.0\\api\\VehicleRepairs.Shared\\obj\\",
+      "outputPath": "E:\\VRS\\api\\VehicleRepairs.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

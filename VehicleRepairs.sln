@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRepairs.Api", "VehicleRepairs.Api\VehicleRepairs.Api.csproj", "{7289C3B0-CBCE-496A-A50F-5B1F16E87E06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRepairs.Database", "VehicleRepairs.Database\VehicleRepairs.Database.csproj", "{8308ADD6-B1A6-456F-9475-D07C50CA00E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRepairs.Database", "VehicleRepairs.Database\VehicleRepairs.Database.csproj", "{8308ADD6-B1A6-456F-9475-D07C50CA00E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRepairs.Shared", "VehicleRepairs.Shared\VehicleRepairs.Shared.csproj", "{F9C60A3A-6A4D-4654-8926-567422020093}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRepairs.Shared", "VehicleRepairs.Shared\VehicleRepairs.Shared.csproj", "{F9C60A3A-6A4D-4654-8926-567422020093}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRepairs.Admin.Api", "VehicleRepairs.Admin.Api\VehicleRepairs.Admin.Api.csproj", "{E564A6E5-79C6-49CA-99AA-CFDF41069B10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRepairs.Admin.Api", "VehicleRepairs.Admin.Api\VehicleRepairs.Admin.Api.csproj", "{E564A6E5-79C6-49CA-99AA-CFDF41069B10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
