@@ -24,3 +24,11 @@ E:\VRS\api\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.A
 E:\VRS\api\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.csproj.CoreCompileInputs.cache
 E:\VRS\api\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.dll
 E:\VRS\api\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.pdb
+D:\tai.tran\VRS\api\VehicleRepairs.Shared\bin\Debug\netcoreapp3.1\VehicleRepairs.Shared.deps.json
+D:\tai.tran\VRS\api\VehicleRepairs.Shared\bin\Debug\netcoreapp3.1\VehicleRepairs.Shared.dll
+D:\tai.tran\VRS\api\VehicleRepairs.Shared\bin\Debug\netcoreapp3.1\VehicleRepairs.Shared.pdb
+D:\tai.tran\VRS\api\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.AssemblyInfoInputs.cache
+D:\tai.tran\VRS\api\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.AssemblyInfo.cs
+D:\tai.tran\VRS\api\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.csproj.CoreCompileInputs.cache
+D:\tai.tran\VRS\api\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.dll
+D:\tai.tran\VRS\api\VehicleRepairs.Shared\obj\Debug\netcoreapp3.1\VehicleRepairs.Shared.pdb
