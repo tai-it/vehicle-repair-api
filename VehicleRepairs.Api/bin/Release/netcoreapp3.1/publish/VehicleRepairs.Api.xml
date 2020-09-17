@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VehicleRepairs.Api</name>
+    </assembly>
+    <members>
+        <member name="M:VehicleRepairs.Api.Controllers.AccountController.GetProfile">
+            <summary>
+            Get logged in user's profile
+            </summary>
+        </member>
+        <member name="T:VehicleRepairs.Api.Infrastructure.Utilities.ReflectionUtilities">
+            <summary>
+            The Reflection Class
+            </summary>
+        </member>
+        <member name="M:VehicleRepairs.Api.Infrastructure.Utilities.ReflectionUtilities.GetAllPropertiesOfType(System.Type)">
+            <summary>
+            Get all properties from type
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VehicleRepairs.Api.Infrastructure.Utilities.ReflectionUtilities.GetAllPropertyNamesOfType(System.Type)">
+            <summary>
+            Get all property name from type
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VehicleRepairs.Api.Infrastructure.Utilities.ReflectionUtilities.GetAssemblies">
+            <summary>
+            Get  assemblies
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

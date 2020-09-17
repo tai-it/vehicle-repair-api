@@ -25,11 +25,12 @@
         {
             var list = await this.db.Orders
                     .Where(x => !x.IsDeleted && x.User.PhoneNumber == request.PhoneNumber)
-                        .Include(x => x.OrderDetails)
-                            .ThenInclude(x => x.Service)
-                        .Include(x => x.User)
-                        .Include(x => x.Station)
-                        .Select(x => new OrderDetailViewModel(x)).ToListAsync();
+                        .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Status.Equals(request.Query)))
+                            .Include(x => x.OrderDetails)
+                                .ThenInclude(x => x.Service)
+                            .Include(x => x.User)
+                            .Include(x => x.Station)
+                            .Select(x => new OrderDetailViewModel(x)).ToListAsync();
 
             var viewModelProperties = this.GetAllPropertyNameOfViewModel();
             var sortPropertyName = !string.IsNullOrEmpty(request.SortName) ? request.SortName.ToLower() : string.Empty;

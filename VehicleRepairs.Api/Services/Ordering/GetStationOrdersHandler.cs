@@ -25,12 +25,13 @@
         {
             var list = await this.db.Orders
                 .Where(x => !x.IsDeleted && x.StationId == request.Id)
-                    .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Address.Contains(request.Query)))
-                        .Include(x => x.OrderDetails)
-                            .ThenInclude(x => x.Service)
-                        .Include(x => x.User)
-                        .Include(x => x.Station)
-                            .Select(x => new OrderDetailViewModel(x)).ToListAsync();
+                .Where(x => (x.CreatedOn >= request.FromDate && x.CreatedOn < request.ToDate))
+                .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Status.Equals(request.Query)))
+                    .Include(x => x.OrderDetails)
+                        .ThenInclude(x => x.Service)
+                    .Include(x => x.User)
+                    .Include(x => x.Station)
+                        .Select(x => new OrderDetailViewModel(x)).ToListAsync();
 
             var viewModelProperties = this.GetAllPropertyNameOfViewModel();
             var sortPropertyName = !string.IsNullOrEmpty(request.SortName) ? request.SortName.ToLower() : string.Empty;
@@ -44,7 +45,7 @@
             var viewModelType = typeof(OrderDetailViewModel);
             var sortProperty = viewModelType.GetProperty(matchedPropertyName);
 
-            list = request.IsDesc ? list.OrderByDescending(x => sortProperty.GetValue(x, null)).ToList() : list.OrderBy(x => sortProperty.GetValue(x, null)).ToList();
+            list = request.IsDesc ? list.OrderBy(x => sortProperty.GetValue(x, null)).ToList() : list.OrderByDescending(x => sortProperty.GetValue(x, null)).ToList();
 
             return new PagedList<OrderDetailViewModel>(list, request.Offset ?? CommonConstants.Config.DEFAULT_SKIP, request.Limit ?? CommonConstants.Config.DEFAULT_TAKE);
         }

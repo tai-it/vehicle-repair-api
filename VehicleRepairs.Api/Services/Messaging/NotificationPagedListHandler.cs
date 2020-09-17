@@ -1,7 +1,6 @@
 ﻿namespace VehicleRepairs.Api.Services.Messaging
 {
     using MediatR;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.Collections.Generic;
@@ -11,10 +10,9 @@
     using VehicleRepairs.Api.Infrastructure.Utilities;
     using VehicleRepairs.Api.Services.Messaging.Models;
     using VehicleRepairs.Database.Domain.Contexts;
-    using VehicleRepairs.Database.Domain.Entities;
     using VehicleRepairs.Shared.Common;
 
-    public class NotificationPagedListHandler : IRequestHandler<NotificationPagedListRequest, PagedList<NotificationDetailViewModel>>
+    public class NotificationPagedListHandler : IRequestHandler<NotificationPagedListRequest, PagedList<NotificationBaseViewModel>>
     {
         private readonly ApplicationDbContext db;
 
@@ -23,21 +21,13 @@
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-        public async Task<PagedList<NotificationDetailViewModel>> Handle(NotificationPagedListRequest request, CancellationToken cancellationToken)
+        public async Task<PagedList<NotificationBaseViewModel>> Handle(NotificationPagedListRequest request, CancellationToken cancellationToken)
         {
-
             var list = await this.db.Notifications
                 .Where(x => !x.IsDeleted)
                     .Where(x => x.User.PhoneNumber == request.PhoneNumber)
                         .Include(x => x.User)
-                        .Include(x => x.Order)
-                            .ThenInclude(x => x.Station)
-                        .Include(x => x.Order)
-                            .ThenInclude(x => x.User)
-                        .Include(x => x.Order)
-                            .ThenInclude(x => x.OrderDetails)
-                                .ThenInclude(x => x.Service)
-                        .Select(x => new NotificationDetailViewModel(x)).ToListAsync();
+                        .Select(x => new NotificationBaseViewModel(x)).ToListAsync();
 
             var viewModelProperties = this.GetAllPropertyNameOfViewModel();
             var sortPropertyName = !string.IsNullOrEmpty(request.SortName) ? request.SortName.ToLower() : string.Empty;
@@ -48,17 +38,17 @@
                 matchedPropertyName = "CreatedOn";
             }
 
-            var viewModelType = typeof(NotificationDetailViewModel);
+            var viewModelType = typeof(NotificationBaseViewModel);
             var sortProperty = viewModelType.GetProperty(matchedPropertyName);
 
             list = request.IsDesc ? list.OrderByDescending(x => sortProperty.GetValue(x, null)).ToList() : list.OrderBy(x => sortProperty.GetValue(x, null)).ToList();
 
-            return new PagedList<NotificationDetailViewModel>(list, request.Offset ?? CommonConstants.Config.DEFAULT_SKIP, request.Limit ?? CommonConstants.Config.DEFAULT_TAKE);
+            return new PagedList<NotificationBaseViewModel>(list, request.Offset ?? CommonConstants.Config.DEFAULT_SKIP, request.Limit ?? CommonConstants.Config.DEFAULT_TAKE);
         }
 
         private List<string> GetAllPropertyNameOfViewModel()
         {
-            var notificationDetailViewModel = new NotificationDetailViewModel();
+            var notificationDetailViewModel = new NotificationBaseViewModel();
             var type = notificationDetailViewModel.GetType();
 
             return ReflectionUtilities.GetAllPropertyNamesOfType(type);

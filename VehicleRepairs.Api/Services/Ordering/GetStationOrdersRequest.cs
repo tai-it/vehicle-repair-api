@@ -8,5 +8,9 @@
     public class GetStationOrdersRequest : BaseRequestModel, IRequest<PagedList<OrderDetailViewModel>>
     {
         public Guid Id { get; set; }
+
+        public DateTime FromDate { get; set; }
+
+        public DateTime ToDate { get; set; } = DateTime.Now;
     }
 }

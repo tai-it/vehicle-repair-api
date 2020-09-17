@@ -34,6 +34,8 @@
                     .Include(x => x.OrderDetails)
                     .Include(x => x.Station)
                         .ThenInclude(x => x.User)
+                    .Include(x => x.Station)
+                        .ThenInclude(x => x.Services)
                             .FirstOrDefaultAsync(x => x.Id == request.Id);
 
             if (order == null)
@@ -79,19 +81,31 @@
 
             if (request.OrderDetails.Any())
             {
-                var removingServices = order.OrderDetails.Where(x => !request.OrderDetails.Any(y => y.ServiceId == x.ServiceId)).ToList();
+                var unknownServices = request.OrderDetails.Where(x => !order.Station.Services.Any(y => y.Id == x.ServiceId)).ToList();
 
-                foreach (var service in removingServices)
+                if (unknownServices.Any())
                 {
-                    order.OrderDetails.Remove(service);
+                    var unknownServiceIds = unknownServices.Select(x => x.ServiceId.ToString()).ToList();
+
+                    return new ResponseModel()
+                    {
+                        StatusCode = System.Net.HttpStatusCode.BadRequest,
+                        Message = "Không tìm thấy dịch vụ: " + String.Join(";", unknownServiceIds)
+                    };
                 }
 
-                order.OrderDetails.AddRange(request.OrderDetails.Where(x => !order.OrderDetails.Any(y => y.ServiceId == x.ServiceId))
-                    .Select(x => new OrderDetail()
-                    {
-                        OrderId = order.Id,
-                        ServiceId = x.ServiceId
-                    }).ToList());
+                order.OrderDetails.Clear();
+
+                order.OrderDetails
+                    .AddRange(
+                        request.OrderDetails.Select(x =>
+                            new OrderDetail()
+                            {
+                                ServiceId = x.ServiceId,
+                                OrderId = order.Id
+                            }
+                        )
+                    );
             }
 
             await this.db.SaveChangesAsync(cancellationToken);
@@ -106,7 +120,7 @@
 
             if (isStatusChange)
             {
-                await fcmService.SendToDevice(order);
+                await fcmService.SendNotifications(fcmService.GetNotificationsByOrder(order));
             }
 
             return new ResponseModel()

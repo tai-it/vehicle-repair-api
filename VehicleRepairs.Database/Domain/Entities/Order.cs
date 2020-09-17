@@ -46,7 +46,7 @@
             {
                 if (UseAmbulatory)
                 {
-                    return this.Distance * CommonConstants.Ambulatory.COEFFICIENT;
+                    return this.Distance * Station.Coefficient;
                 }
                 return 0;
             }

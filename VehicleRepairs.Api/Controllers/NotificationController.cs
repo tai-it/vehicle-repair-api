@@ -26,11 +26,25 @@
 
         [HttpGet]
         [Authorize]
-        public async Task<PagedList<NotificationDetailViewModel>> GetAsync([FromQuery] NotificationPagedListRequest request, CancellationToken cancellationToken)
+        public async Task<PagedList<NotificationBaseViewModel>> GetAsync([FromQuery] NotificationPagedListRequest request, CancellationToken cancellationToken)
         {
             var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             request.PhoneNumber = phoneNumber;
             return await this.mediator.Send(request, cancellationToken);
+        }
+
+        [HttpGet("{id}")]
+        [Authorize]
+        public async Task<IActionResult> MarkAsReadByIdAsync(Guid id, CancellationToken cancellationToken)
+        {
+            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var request = new NotificationGetByIdRequest()
+            {
+                Id = id,
+                PhoneNumber = phoneNumber
+            };
+            var responseModel = await this.mediator.Send(request, cancellationToken);
+            return new CustomActionResult(responseModel);
         }
 
         [HttpPut]
@@ -39,20 +53,6 @@
         {
             var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var request = new NotificationMarkAllAsReadRequest() { PhoneNumber = phoneNumber };
-            var responseModel = await this.mediator.Send(request, cancellationToken);
-            return new CustomActionResult(responseModel);
-        }
-
-        [HttpPut("/seen/{id}")]
-        [Authorize]
-        public async Task<IActionResult> MarkAsReadByIdAsync(Guid id, CancellationToken cancellationToken)
-        {
-            var phoneNumber = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var request = new NotificationMarkAsReadByIdRequest() 
-            { 
-                Id = id,
-                PhoneNumber = phoneNumber
-            };
             var responseModel = await this.mediator.Send(request, cancellationToken);
             return new CustomActionResult(responseModel);
         }

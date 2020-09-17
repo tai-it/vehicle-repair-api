@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using VehicleRepairs.Admin.Api.Services.Identity.Models;
     using VehicleRepairs.Admin.Api.Services.Ordering.Models;
+    using VehicleRepairs.Admin.Api.Services.Statistics.Dashboard;
     using VehicleRepairs.Admin.Api.Services.Statistics.OrderStatistics;
     using VehicleRepairs.Admin.Api.Services.Statistics.StationStatistics;
     using VehicleRepairs.Admin.Api.Services.Statistics.StationStatistics.Models;
@@ -26,22 +27,25 @@
         }
 
         [HttpGet("users")]
-        [Authorize(Roles = CommonConstants.Roles.ADMIN + "," + CommonConstants.Roles.SUPER_ADMIN)]
         public async Task<PagedList<UserBaseViewModel>> GetUsers([FromQuery] GetUsersRequest request)
         {
             return await this.mediator.Send(request);
         }
 
         [HttpGet("orders")]
-        [Authorize(Roles = CommonConstants.Roles.ADMIN + "," + CommonConstants.Roles.SUPER_ADMIN)]
         public async Task<PagedList<OrderDetailViewModel>> GetOrders([FromQuery] GetOrdersRequest request)
         {
             return await this.mediator.Send(request);
         }
 
         [HttpGet("stations")]
-        [Authorize(Roles = CommonConstants.Roles.ADMIN + "," + CommonConstants.Roles.SUPER_ADMIN)]
         public async Task<PagedList<StationStatisticViewModel>> GetStations([FromQuery] GetStationsStatisticRequest request)
+        {
+            return await this.mediator.Send(request);
+        }
+
+        [HttpGet("chart")]
+        public async Task<ResponseModel> GetChartData([FromQuery] ChartDataRequest request)
         {
             return await this.mediator.Send(request);
         }

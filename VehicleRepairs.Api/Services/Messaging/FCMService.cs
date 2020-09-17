@@ -13,9 +13,9 @@ namespace VehicleRepairs.Api.Services.Messaging
 {
     public interface IFCMService
     {
-        Task SendToDevice(Order order);
+        Task SendNotifications(List<Notification> notifications);
 
-        List<Notification> GetNotificationByOrder(Order order);
+        List<Notification> GetNotificationsByOrder(Order order);
     }
 
     public class FCMService : IFCMService
@@ -27,7 +27,7 @@ namespace VehicleRepairs.Api.Services.Messaging
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-        public List<Notification> GetNotificationByOrder(Order order)
+        public List<Notification> GetNotificationsByOrder(Order order)
         {
             switch (order.Status)
             {
@@ -39,18 +39,16 @@ namespace VehicleRepairs.Api.Services.Messaging
                             Title = "Đặt cuốc xe thành công",
                             Body = "Vui lòng chờ cửa hàng xác nhận cuốc xe của bạn. Nếu sau 5' vẫn chưa nhận được phải hồi, vui lòng huỷ và đặt lại cuốc xe mới",
                             Type = CommonConstants.NotificationTypes.ORDER_TRACKING,
-                            Order = order,
-                            User = order.User,
-                            Target = order.User.DeviceToken
+                            Data = order.Id.ToString(),
+                            User = order.User
                         },
                         new Notification()
                         {
                             Title = "Cuốc xe mới",
                             Body = "Bạn có một cuốc mới cách đây " + (order.Distance / 1000) + " km. Địa chỉ: " + order.Address,
                             Type = CommonConstants.NotificationTypes.ORDER_TRACKING,
-                            Order = order,
-                            User = order.Station.User,
-                            Target = order.Station.User.DeviceToken
+                            Data = order.Id.ToString(),
+                            User = order.Station.User
                         }
                     };
                 case CommonConstants.OrderStatus.ACCEPTED:
@@ -61,18 +59,16 @@ namespace VehicleRepairs.Api.Services.Messaging
                             Title = "Cuốc xe của bạn đã được chấp nhận",
                             Body = "Vui lòng chờ trong giây lát, chúng tôi sẽ liên lạc với bạn ngay",
                             Type = CommonConstants.NotificationTypes.ORDER_TRACKING,
-                            Order = order,
-                            User = order.User,
-                            Target = order.User.DeviceToken
+                            Data = order.Id.ToString(),
+                            User = order.User
                         },
                         new Notification()
                         {
                             Title = "Bạn đã nhận cuốc xe",
                             Body = "Vui lòng liên hệ với khách hàng để xác nhận thông tin",
                             Type = CommonConstants.NotificationTypes.ORDER_TRACKING,
-                            Order = order,
-                            User = order.Station.User,
-                            Target = order.Station.User.DeviceToken
+                            Data = order.Id.ToString(),
+                            User = order.Station.User
                         }
                     };
                 case CommonConstants.OrderStatus.REJECTED:
@@ -83,9 +79,8 @@ namespace VehicleRepairs.Api.Services.Messaging
                             Title = "Cuốc xe của bạn đã bị từ chối",
                             Body = "Cuốc xe bị huỷ vì cửa hàng đang bận hoặc bạn ở quá xe. Vui lòng chọn cửa hàng khác",
                             Type = CommonConstants.NotificationTypes.ORDER_TRACKING,
-                            Order = order,
-                            User = order.User,
-                            Target = order.User.DeviceToken
+                            Data = order.Id.ToString(),
+                            User = order.User
                         }
                     };
                 case CommonConstants.OrderStatus.CANCLED:
@@ -96,18 +91,16 @@ namespace VehicleRepairs.Api.Services.Messaging
                             Title = "Bạn đã huỷ cuốc xe thành công",
                             Body = "Bạn vẫn còn nhiều tiệm xe khác để lựa chọn",
                             Type = CommonConstants.NotificationTypes.ORDER_TRACKING,
-                            Order = order,
-                            User = order.User,
-                            Target = order.User.DeviceToken
+                            Data = order.Id.ToString(),
+                            User = order.User
                         },
                         new Notification()
                         {
                             Title = "Cuốc xe của bạn đã bị huỷ",
                             Body = "Cuốc xe của bạn đã bị huỷ do khách hàng không nhận được phản hồi từ bạn",
                             Type = CommonConstants.NotificationTypes.ORDER_TRACKING,
-                            Order = order,
-                            User = order.Station.User,
-                            Target = order.Station.User.DeviceToken
+                            Data = order.Id.ToString(),
+                            User = order.Station.User
                         }
                     };
                 case CommonConstants.OrderStatus.DONE:
@@ -118,18 +111,16 @@ namespace VehicleRepairs.Api.Services.Messaging
                             Title = "Cuốc xe hoàn thành",
                             Body = "Cảm ơn bạn đã tin dùng dịch vụ của chúng tôi. Vui lòng dành vài giây để đánh giá cuốc xe của bạn",
                             Type = CommonConstants.NotificationTypes.ORDER_TRACKING,
-                            Order = order,
-                            User = order.User,
-                            Target = order.User.DeviceToken
+                            Data = order.Id.ToString(),
+                            User = order.User
                         },
                         new Notification()
                         {
                             Title = "Cuốc xe hoàn thành",
                             Body = "Cảm ơn bạn đã tin dùng dịch vụ của chúng tôi",
                             Type = CommonConstants.NotificationTypes.ORDER_TRACKING,
-                            Order = order,
-                            User = order.Station.User,
-                            Target = order.Station.User.DeviceToken
+                            Data = order.Id.ToString(),
+                            User = order.Station.User
                         }
                     };
                 default:
@@ -137,13 +128,11 @@ namespace VehicleRepairs.Api.Services.Messaging
             }
         }
 
-        public async Task SendToDevice(Order order)
+        public async Task SendNotifications(List<Notification> notifications)
         {
-            var notifies = this.GetNotificationByOrder(order);
-
-            foreach (var notify in notifies)
+            foreach (var notify in notifications)
             {
-                if (!string.IsNullOrEmpty(notify.Target))
+                if (!string.IsNullOrEmpty(notify.User.DeviceToken))
                 {
                     try
                     {
@@ -155,7 +144,7 @@ namespace VehicleRepairs.Api.Services.Messaging
 
                         var payload = new
                         {
-                            to = notify.Target,
+                            to = notify.User.DeviceToken,
                             priority = "high",
                             content_available = true,
                             notification = new
@@ -199,7 +188,7 @@ namespace VehicleRepairs.Api.Services.Messaging
                 }
             }
 
-            this.db.Notifications.AddRange(notifies);
+            this.db.Notifications.AddRange(notifications);
 
             await this.db.SaveChangesAsync();
         }

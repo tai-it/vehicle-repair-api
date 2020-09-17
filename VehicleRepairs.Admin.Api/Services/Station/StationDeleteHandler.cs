@@ -47,7 +47,6 @@
                 Title = "Thông báo",
                 Body = "Cửa hàng của bạn đã bị đình chỉ hoạt động khỏi hệ thống. Vui lòng liên hệ hỗ trợ viên để biết thêm chi tiết",
                 User = station.User,
-                Target = station.User.DeviceToken,
                 Type = CommonConstants.NotificationTypes.NOTIFY
             };
 

@@ -123,6 +123,9 @@ namespace VehicleRepairs.Api.Migrations
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<string>("Data")
+                        .HasColumnType("text");
+
                     b.Property<Guid?>("DeletedBy")
                         .HasColumnType("uuid");
 
@@ -141,12 +144,6 @@ namespace VehicleRepairs.Api.Migrations
                     b.Property<bool>("IsSent")
                         .HasColumnType("boolean");
 
-                    b.Property<Guid>("OrderId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Target")
-                        .HasColumnType("text");
-
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
@@ -163,8 +160,6 @@ namespace VehicleRepairs.Api.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
 
                     b.HasIndex("UserId");
 
@@ -239,43 +234,13 @@ namespace VehicleRepairs.Api.Migrations
 
             modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.OrderDetail", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("CreatedOn")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<Guid?>("DeletedBy")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<bool>("IsActived")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("ServiceId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("UpdatedBy")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("UpdatedOn")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
+                    b.HasKey("OrderId", "ServiceId");
 
                     b.HasIndex("ServiceId");
 
@@ -421,6 +386,9 @@ namespace VehicleRepairs.Api.Migrations
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<decimal>("Coefficient")
+                        .HasColumnType("numeric");
 
                     b.Property<Guid?>("CreatedBy")
                         .HasColumnType("uuid");
@@ -614,12 +582,6 @@ namespace VehicleRepairs.Api.Migrations
 
             modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Notification", b =>
                 {
-                    b.HasOne("VehicleRepairs.Database.Domain.Entities.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("VehicleRepairs.Database.Domain.Entities.User", "User")
                         .WithMany("Notifications")
                         .HasForeignKey("UserId");
@@ -628,7 +590,7 @@ namespace VehicleRepairs.Api.Migrations
             modelBuilder.Entity("VehicleRepairs.Database.Domain.Entities.Order", b =>
                 {
                     b.HasOne("VehicleRepairs.Database.Domain.Entities.Station", "Station")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("StationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

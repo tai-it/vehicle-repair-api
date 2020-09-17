@@ -23,6 +23,9 @@
             _identityService = identityService;
         }
 
+        /// <summary>
+        /// Get logged in user's profile
+        /// </summary>
         [Authorize]
         [HttpGet("me")]
         public async Task<IActionResult> GetProfile()
@@ -37,6 +40,14 @@
         public async Task<IActionResult> Login([FromBody] LoginDto model)
         {
             var responseModel = await _identityService.LoginAsync(model);
+            return new CustomActionResult(responseModel);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("{phoneNumber}")]
+        public async Task<IActionResult> CheckIfExists(string phoneNumber)
+        {
+            var responseModel = await _identityService.CheckIfPhoneExistsAsync(phoneNumber);
             return new CustomActionResult(responseModel);
         }
 

@@ -29,10 +29,19 @@
 
         public bool IsAvailable { get; set; } = false;
 
+        [Required(ErrorMessage = "Tình trạng dịch vụ cứu hộ là trường bắt buộc")]
         public bool HasAmbulatory { get; set; } = false;
+
+        [Required(ErrorMessage = "Hệ số phí cứu hộ là trường bắt buộc")]
+        public decimal Coefficient { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+            if (Vehicle != CommonConstants.Vehicles.MOTORBIKE && Vehicle != CommonConstants.Vehicles.CAR)
+            {
+                yield return new ValidationResult("Không tìm thấy phương tiện này", new string[] { "Vehicle" });
+            }
+
             var db = (ApplicationDbContext)validationContext.GetService(typeof(ApplicationDbContext));
 
             var station = db.Stations.FirstOrDefault(x => x.Name == Name && x.Address == Address);

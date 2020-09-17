@@ -4,8 +4,8 @@
     using VehicleRepairs.Admin.Api.Services.Messaging.Models;
     using VehicleRepairs.Shared.Common;
 
-    public class NotificationPagedListRequest : BaseRequestModel, IRequest<PagedList<NotificationDetailViewModel>>
+    public class NotificationPagedListRequest : BaseRequestModel, IRequest<PagedList<NotificationBaseViewModel>>
     {
-        public string PhoneNumber { get; set; }
+
     }
 }

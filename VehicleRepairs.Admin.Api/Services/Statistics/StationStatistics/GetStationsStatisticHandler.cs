@@ -24,7 +24,8 @@
         public async Task<PagedList<StationStatisticViewModel>> Handle(GetStationsStatisticRequest request, CancellationToken cancellationToken)
         {
             var list = await this.db.Stations
-                    .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Address.Contains(request.Query)))
+                .Where(x => (x.CreatedOn.Value.Date >= request.FromDate.Date && x.CreatedOn.Value.Date < request.ToDate.Date))
+                    .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Name.Contains(request.Query)))
                         .Include(x => x.Orders)
                             .ThenInclude(x => x.OrderDetails)
                                 .ThenInclude(x => x.Service)

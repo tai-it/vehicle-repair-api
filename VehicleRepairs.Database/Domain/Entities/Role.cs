@@ -5,6 +5,11 @@
 
     public class Role : IdentityRole
     {
+        public Role()
+        {
+            UserRoles = new List<UserRole>();
+        }
+
         public List<UserRole> UserRoles { get; set; }
     }
 }

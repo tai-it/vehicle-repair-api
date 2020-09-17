@@ -20,11 +20,17 @@
     {
         Task<ResponseModel> LoginAsync(LoginDto model);
 
+        Task<ResponseModel> GetProfileAsync(string phoneNumber);
+
         Task<ResponseModel> RegisterAsync(RegisterDto model);
 
         Task<ResponseModel> DisableUserAsync(DisableUserRequest request);
 
         Task<PagedList<UserBaseViewModel>> GetUsersAsync(BaseRequestModel request);
+
+        Task<ResponseModel> GetByIdAsync(string id);
+
+        Task<ResponseModel> ChangePasswordAsync(ChangePasswordRequestModel request);
     }
 
     public class IdentityService : IIdentityService<User>
@@ -51,16 +57,42 @@
             {
                 var appUser = _userManager.Users.SingleOrDefault(r => r.PhoneNumber == model.PhoneNumber);
                 var roles = await _userManager.GetRolesAsync(appUser);
-                return new ResponseModel()
+                if (roles.Any(x => x == CommonConstants.Roles.ADMIN || x == CommonConstants.Roles.SUPER_ADMIN))
                 {
-                    StatusCode = System.Net.HttpStatusCode.OK,
-                    Data = GenerateJwtToken(appUser, roles.ToArray())
-                };
+                    return new ResponseModel()
+                    {
+                        StatusCode = System.Net.HttpStatusCode.OK,
+                        Data = GenerateJwtToken(appUser, roles.ToArray())
+                    };
+                }
             }
             return new ResponseModel()
             {
                 StatusCode = System.Net.HttpStatusCode.BadRequest,
                 Message = "Thông tin tài khoản hoặc mật khẩu không chính xác"
+            };
+        }
+
+        public async Task<ResponseModel> GetProfileAsync(string phoneNumber)
+        {
+            var user = await _userManager.Users
+                    .Include(x => x.UserRoles)
+                        .ThenInclude(x => x.Role)
+                    .FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
+
+            if (user == null)
+            {
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.BadRequest,
+                    Message = "Phiên đăng nhập đã hết hạn hoặc tài khoản không còn tồn tại"
+                };
+            }
+
+            return new ResponseModel()
+            {
+                StatusCode = System.Net.HttpStatusCode.OK,
+                Data = new UserBaseViewModel(user)
             };
         }
 
@@ -73,7 +105,8 @@
                 Name = model.Name ?? null,
                 PhoneNumber = model.PhoneNumber,
                 Address = model.Address ?? null,
-                DeviceToken = model.DeviceToken ?? null
+                DeviceToken = model.DeviceToken ?? null,
+                PhoneNumberConfirmed = model.PhoneNumberConfirmed
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -118,6 +151,17 @@
                 };
             }
 
+            var roles = await _userManager.GetRolesAsync(user);
+
+            if (roles.Any(x => x == CommonConstants.Roles.SUPER_ADMIN))
+            {
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.BadRequest,
+                    Message = "Bạn không thể xoá tài khoản này"
+                };
+            }
+
             user.IsActive = request.IsActive;
             await _userManager.UpdateAsync(user);
 
@@ -155,6 +199,66 @@
             list = request.IsDesc ? list.OrderByDescending(x => sortProperty.GetValue(x, null)).ToList() : list.OrderBy(x => sortProperty.GetValue(x, null)).ToList();
 
             return new PagedList<UserBaseViewModel>(list, request.Offset ?? CommonConstants.Config.DEFAULT_SKIP, request.Limit ?? CommonConstants.Config.DEFAULT_TAKE);
+        }
+
+        public async Task<ResponseModel> GetByIdAsync(string id)
+        {
+            var user = await _userManager.Users
+                    .Include(x => x.UserRoles)
+                        .ThenInclude(x => x.Role)
+                    .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (user == null)
+            {
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.NotFound,
+                    Message = "Tài khoản này không tồn tại hoặc đã bị xoá"
+                };
+            }
+
+            return new ResponseModel()
+            {
+                StatusCode = System.Net.HttpStatusCode.OK,
+                Data = new UserBaseViewModel(user)
+            };
+        }
+
+        public async Task<ResponseModel> ChangePasswordAsync(ChangePasswordRequestModel request)
+        {
+            var user = await this._userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == request.PhoneNumber);
+
+            var result = await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
+
+            if (result.Succeeded)
+            {
+                if (request.LogoutOnOtherDevices)
+                {
+                    await _signInManager.SignOutAsync();
+                }
+
+                var roles = await _userManager.GetRolesAsync(user);
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.OK,
+                    Data = GenerateJwtToken(user, roles.ToArray())
+                };
+            }
+
+            var errors = result.Errors;
+
+            var message = string.Empty;
+
+            foreach (var error in errors)
+            {
+                message += error.Description;
+            }
+
+            return new ResponseModel()
+            {
+                StatusCode = System.Net.HttpStatusCode.BadRequest,
+                Message = message
+            };
         }
 
         private List<string> GetAllPropertyNameOfViewModel()

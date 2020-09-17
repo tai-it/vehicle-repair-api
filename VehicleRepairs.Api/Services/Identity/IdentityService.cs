@@ -20,6 +20,8 @@
     {
         Task<ResponseModel> LoginAsync(LoginDto model);
 
+        Task<ResponseModel> CheckIfPhoneExistsAsync(string phoneNumber);
+
         Task<ResponseModel> RegisterAsync(RegisterDto model);
 
         Task<PagedList<UserBaseViewModel>> GetUsersAsync(BaseRequestModel request);
@@ -70,6 +72,17 @@
             };
         }
 
+        public async Task<ResponseModel> CheckIfPhoneExistsAsync(string phoneNumber)
+        {
+            var user = await this._userManager.Users.FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
+
+            return new ResponseModel()
+            {
+                StatusCode = System.Net.HttpStatusCode.OK,
+                Data = user != null
+            };
+        }
+
         public async Task<ResponseModel> RegisterAsync(RegisterDto model)
         {
             var user = new User
@@ -79,7 +92,8 @@
                 Name = model.Name ?? null,
                 PhoneNumber = model.PhoneNumber,
                 Address = model.Address ?? null,
-                DeviceToken = model.DeviceToken ?? null
+                DeviceToken = model.DeviceToken ?? null,
+                PhoneNumberConfirmed = model.PhoneNumberConfirmed
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -170,10 +184,16 @@
             var user = await _userManager.Users
                     .Include(x => x.UserRoles)
                         .ThenInclude(x => x.Role)
-                    .Include(x => x.Orders)
-                        .ThenInclude(x => x.OrderDetails)
-                            .ThenInclude(x => x.Service)
                     .FirstOrDefaultAsync(x => x.PhoneNumber == phoneNumber);
+
+            if (user == null)
+            {
+                return new ResponseModel()
+                {
+                    StatusCode = System.Net.HttpStatusCode.BadRequest,
+                    Message = "Phiên đăng nhập đã hết hạn hoặc tài khoản không còn tồn tại"
+                };
+            }
 
             return new ResponseModel()
             {

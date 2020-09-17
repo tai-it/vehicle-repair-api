@@ -14,9 +14,10 @@
             if (notification != null)
             {
                 Id = notification.Id;
-                Title = notification.Title;
                 Type = notification.Type;
+                Title = notification.Title;
                 Body = notification.Body;
+                Data = notification.Data;
                 IsSeen = notification.IsSeen;
                 IsSent = notification.IsSent;
                 CreatedOn = notification.CreatedOn;
@@ -25,11 +26,13 @@
 
         public Guid Id { get; set; }
 
+        public string Type { get; set; }
+
         public string Title { get; set; }
 
         public string Body { get; set; }
 
-        public string Type { get; set; }
+        public string Data { get; set; }
 
         public bool IsSeen { get; set; }
 

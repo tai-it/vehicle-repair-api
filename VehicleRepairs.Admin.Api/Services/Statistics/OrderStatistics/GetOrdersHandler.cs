@@ -24,8 +24,8 @@
         public async Task<PagedList<OrderDetailViewModel>> Handle(GetOrdersRequest request, CancellationToken cancellationToken)
         {
             var list = await this.db.Orders
-                .Where(x => (x.CreatedOn >= request.FromDate && x.CreatedOn < request.ToDate))
-                    .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Address.Contains(request.Query)))
+                .Where(x => (x.CreatedOn.Value.Date >= request.FromDate.Date && x.CreatedOn.Value.Date < request.ToDate.Date))
+                    .Where(x => (string.IsNullOrEmpty(request.Query)) || (x.Status.Equals(request.Query)))
                         .Include(x => x.OrderDetails)
                             .ThenInclude(x => x.Service)
                         .Include(x => x.User)

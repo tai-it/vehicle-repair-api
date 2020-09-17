@@ -50,15 +50,11 @@
             }
 
             station.Name = request.Name ?? station.Name;
-            station.Address = request.Address ?? station.Address;
 
-            if (request.Longitude != decimal.Zero)
+            if (!string.IsNullOrEmpty(request.Address))
             {
+                station.Address = request.Address;
                 station.Longitude = request.Longitude;
-            }
-
-            if (request.Latitude != decimal.Zero)
-            {
                 station.Latitude = request.Latitude;
             }
 
@@ -66,6 +62,7 @@
 
             station.IsAvailable = request.IsAvailable;
             station.HasAmbulatory = request.HasAmbulatory;
+            station.Coefficient = request.Coefficient;
 
             await this.db.SaveChangesAsync(cancellationToken);
 

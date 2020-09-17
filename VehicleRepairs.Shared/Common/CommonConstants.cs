@@ -23,7 +23,7 @@
 
         public class Vehicles
         {
-            public const string MOTOBIKE = "Motobike";
+            public const string MOTORBIKE = "Motorbike";
 
             public const string CAR = "Car";
         }
@@ -41,16 +41,20 @@
             public const string DONE = "Đã hoàn thành";
         }
 
-        public class Ambulatory
-        {
-            public const decimal COEFFICIENT = 8;
-        }
-
         public class NotificationTypes
         {
             public const string ORDER_TRACKING = "ORDER_TRACKING";
 
             public const string NOTIFY = "NOTIFY";
+        }
+
+        public class ChartTypes
+        {
+            public const string RANGE = "RANGE";
+
+            public const string MONTH = "MONTH";
+
+            public const string YEAR = "YEAR";
         }
     }
 }

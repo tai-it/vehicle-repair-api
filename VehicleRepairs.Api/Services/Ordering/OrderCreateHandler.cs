@@ -81,7 +81,7 @@
                         .ThenInclude(x => x.Service)
                     .FirstOrDefaultAsync(x => x.Id == order.Id);
 
-            await fcmService.SendToDevice(order);
+            await fcmService.SendNotifications(fcmService.GetNotificationsByOrder(order));
 
             return new ResponseModel()
             {

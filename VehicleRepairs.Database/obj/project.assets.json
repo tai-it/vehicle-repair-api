@@ -995,19 +995,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tai.tran\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj",
+      "projectUniqueName": "E:\\VRS\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj",
       "projectName": "VehicleRepairs.Database",
-      "projectPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj",
-      "packagesPath": "C:\\Users\\tai.tran\\.nuget\\packages\\",
-      "outputPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Database\\obj\\",
+      "projectPath": "E:\\VRS\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "E:\\VRS\\api\\VehicleRepairs.Database\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tai.tran\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1020,8 +1020,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj": {
-              "projectPath": "D:\\tai.tran\\DotNet\\VehicleRepairs\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj"
+            "E:\\VRS\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj": {
+              "projectPath": "E:\\VRS\\api\\VehicleRepairs.Shared\\VehicleRepairs.Shared.csproj"
             }
           }
         }
@@ -1058,18 +1058,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
