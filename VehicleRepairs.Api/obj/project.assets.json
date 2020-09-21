@@ -4128,19 +4128,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\tai.tran\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\VRS\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
+      "projectUniqueName": "D:\\tai.tran\\VRS\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
       "projectName": "VehicleRepairs.Api",
-      "projectPath": "E:\\VRS\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "E:\\VRS\\api\\VehicleRepairs.Api\\obj\\",
+      "projectPath": "D:\\tai.tran\\VRS\\api\\VehicleRepairs.Api\\VehicleRepairs.Api.csproj",
+      "packagesPath": "C:\\Users\\tai.tran\\.nuget\\packages\\",
+      "outputPath": "D:\\tai.tran\\VRS\\api\\VehicleRepairs.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tai.tran\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4153,8 +4153,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "E:\\VRS\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj": {
-              "projectPath": "E:\\VRS\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj"
+            "D:\\tai.tran\\VRS\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj": {
+              "projectPath": "D:\\tai.tran\\VRS\\api\\VehicleRepairs.Database\\VehicleRepairs.Database.csproj"
             }
           }
         }
@@ -4281,7 +4281,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
